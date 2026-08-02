@@ -203,6 +203,22 @@ WNBA_2026_COVERS_REAL = [
     ("WAS", 86, "NY", 83, "Jun 19", 168.5, 12.5, "NY"),       # WAS +12.5, NY fav
     ("TOR", 101, "CON", 97, "Jun 19", 168.5, 2.5, "CON"),     # TOR +2.5, CON fav
     ("MIN", 81, "GS", 75, "Jun 19", 166.0, 2.5, "MIN"),       # MIN -2.5
+    # ── Jun 20, 2026 ──
+    ("IND", 96, "ATL", 113, "Jun 20", 176.5, 5.5, "ATL"),     # ATL -5.5
+    ("SEA", 73, "PHO", 93, "Jun 20", 163.5, 6.5, "PHX"),      # PHO -6.5
+    ("CHI", 92, "DAL", 93, "Jun 20", 174.5, 10.5, "DAL"),     # CHI +10.5, DAL fav
+    # ── Jun 21, 2026 ──
+    ("GS", 73, "LV", 92, "Jun 21", 167.5, 3.5, "LV"),         # LV -3.5
+    ("WAS", 84, "MIN", 79, "Jun 21", 169.5, 14.5, "MIN"),     # WAS +14.5, MIN fav
+    ("NY", 97, "LA", 98, "Jun 21", 181.5, 6.5, "LA"),         # LA +6.5, NY fav
+    # ── Jun 24, 2026 ──
+    ("PHO", 111, "IND", 109, "Jun 24", 167.5, 16.5, "IND"),   # PHO +16.5, IND fav
+    ("MIN", 78, "WAS", 76, "Jun 24", 169.0, 0.5, "MIN"),      # MIN PK (use 0.5)
+    ("PDX", 78, "CHI", 101, "Jun 24", 168.5, 1.5, "CHI"),     # CHI -1.5
+    ("ATL", 66, "GS", 77, "Jun 24", 166.0, 2.5, "GS"),        # GS +2.5, ATL fav
+    # ── Jun 25, 2026 ──
+    ("DAL", 84, "LV", 99, "Jun 25", 179.5, 0.5, "LV"),        # LV PK (use 0.5)
+    ("NY", 88, "SEA", 99, "Jun 25", 167.0, 0.5, "SEA"),       # SEA PK (use 0.5)
     # ── Jul 2, 2026 ──
     ("ATL", 76, "WAS", 81, "Jul 2", 167.0, 8.5, "ATL"),       # WAS +8.5, ATL fav
     ("DAL", 86, "CON", 83, "Jul 2", 172.0, 6.5, "DAL"),       # CON +6.5, DAL fav
