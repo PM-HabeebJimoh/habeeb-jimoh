@@ -99,10 +99,20 @@ WNBA_2026_COVERS_REAL = [
     # ── Jun 1, 2026 (Commissioner's Cup) ──
     ("SEA", 56, "DAL", 79, "Jun 1", 166.5, 13.5, "DAL"),      # DAL -13.5
     ("MIN", 111, "PHO", 77, "Jun 1", 166.5, 2.5, "MIN"),      # MIN -2.5
+    # ── Jun 6, 2026 (Commissioner's Cup) ──
+    ("SEA", 68, "MIN", 88, "Jun 6", 162.0, 13.5, "MIN"),      # MIN -13.5
+    ("GS", 79, "LV", 84, "Jun 6", 166.5, 2.5, "LV"),          # LV -2.5
+    ("WAS", 77, "ATL", 109, "Jun 6", 160.5, 8.5, "ATL"),      # ATL -8.5
+    ("IND", 75, "NY", 83, "Jun 6", 174.5, 3.5, "NY"),         # NY -3.5
     # ── Jun 15, 2026 (Commissioner's Cup) ──
     ("PDX", 74, "MIN", 107, "Jun 15", 168.5, 13.5, "MIN"),    # MIN -13.5
     ("LV", 66, "DAL", 96, "Jun 15", 178.0, 2.5, "LV"),        # DAL +2.5, LV fav
     ("LA", 58, "GS", 78, "Jun 15", 173.0, 4.5, "GS"),         # GS -4.5
+    # ── Jun 17, 2026 (Commissioner's Cup) ──
+    ("WAS", 88, "CON", 81, "Jun 17", 160.0, 1.5, "CON"),      # WAS +1.5, CON fav
+    ("NY", 96, "CHI", 95, "Jun 17", 169.5, 10.5, "NY"),       # CHI +10.5, NY fav
+    ("SEA", 89, "PDX", 94, "Jun 17", 162.5, 4.5, "POR"),      # PDX -4.5
+    ("DAL", 80, "GS", 91, "Jun 17", 165.0, 3.5, "GS"),        # GS -3.5
     # ── Jul 2, 2026 ──
     ("ATL", 76, "WAS", 81, "Jul 2", 167.0, 8.5, "ATL"),       # WAS +8.5, ATL fav
     ("DAL", 86, "CON", 83, "Jul 2", 172.0, 6.5, "DAL"),       # CON +6.5, DAL fav
@@ -116,8 +126,21 @@ WNBA_2026_COVERS_REAL = [
     ("TOR", 93, "MIN", 100, "Jul 28", 187.0, 17.5, "MIN"),     # TOR +17.5, MIN fav
     ("IND", 105, "SEA", 95, "Jul 28", 186.5, 9.5, "IND"),      # IND -9.5
     ("NY", 113, "LA", 109, "Jul 28", 182.5, 4.5, "NY"),        # LA +4.5, NY fav
+    # ── Jul 11, 2026 ──
+    ("NY", 85, "MIN", 90, "Jul 11", 173.5, 4.5, "MIN"),        # MIN -4.5
+    ("PDX", 102, "ATL", 92, "Jul 11", 174.5, 12.5, "ATL"),     # PDX +12.5, ATL fav
+    ("PHO", 58, "LV", 106, "Jul 11", 168.5, 8.5, "LV"),        # LV -8.5
+    # ── Jul 22, 2026 ──
+    ("PHO", 86, "LA", 82, "Jul 22", 176.0, 1.5, "PHX"),        # PHO -1.5
+    ("MIN", 86, "SEA", 76, "Jul 22", 178.5, 10.5, "MIN"),      # SEA +10.5, MIN fav
+    ("CHI", 94, "NY", 95, "Jul 22", 178.0, 7.5, "NY"),         # CHI +7.5, NY fav
+    ("LV", 99, "WAS", 100, "Jul 22", 164.5, 5.5, "LV"),        # WAS +5.5, LV fav
+    # ── Jul 31, 2026 ──
+    ("SEA", 89, "ATL", 98, "Jul 31", 180.0, 12.5, "ATL"),      # SEA +12.5, ATL fav
+    ("DAL", 75, "WAS", 81, "Jul 31", 166.5, 3.5, "WSH"),       # WAS +3.5, DAL fav
+    ("IND", 112, "PDX", 98, "Jul 31", 189.0, 7.5, "IND"),      # IND -7.5
     # ── Aug 1, 2026 ──
-    ("LV", 83, "CHI", 84, "Aug 1", 184.0, 5.5, "LV"),         # CHI +5.5, LV fav
+    ("LV", 83, "CHI", 84, "Aug 1", 184.0, 5.5, "LV"),          # CHI +5.5, LV fav
     ("NY", 94, "PHO", 92, "Aug 1", 177.0, 2.5, "NY"),          # PHO +2.5, NY fav
 ]
 
