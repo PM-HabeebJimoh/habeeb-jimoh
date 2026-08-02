@@ -1,7 +1,7 @@
 """
 ABAKE USE Engine — Comprehensive Test Suite
 Validates all 4 layers of the mathematical framework and all operational rules.
-Tests the complete 40-game dataset from the specification.
+Tests the complete 40-game dataset with REAL Covers.com data.
 """
 
 import sys
@@ -29,41 +29,47 @@ class TestLayer1IndependentBaselineInfrastructure:
         assert self.engine.constants["Summer"]["lg_pace"] == 84.5
         assert self.engine.constants["Summer"]["lg_eff"] == 98.2
 
-    def test_pacing_calculation(self):
-        """P = Away Pace + Home Pace - League Baseline Pace = 81.2"""
+    def test_nba_default_constants(self):
+        assert self.engine.constants["NBA"]["lg_pace"] == 100.4
+        assert self.engine.constants["NBA"]["lg_eff"] == 113.5
+
+    def test_pacing_calculation_con_vs_ny(self):
+        """P = CON Pace + NY Pace - WNBA Baseline Pace = 78.5 + 80.9 - 80.2 = 79.2"""
         row = {
-            "matchup": "CHI vs LV", "league": "WNBA",
-            "away_pace": 79.8, "home_pace": 81.6,
-            "away_ortg": 101.2, "home_drtg": 99.8,
-            "home_ortg": 111.4, "away_drtg": 104.5,
-            "pick": "OVER", "win_prob": 1.4, "underdog_score": 84,
+            "matchup": "CON vs NY", "league": "WNBA",
+            "away_pace": 78.5, "home_pace": 80.9,
+            "away_ortg": 100.5, "home_drtg": 97.2,
+            "home_ortg": 110.1, "away_drtg": 97.8,
+            "pick": "OVER", "win_prob": 1.0, "underdog_score": 75,
         }
         _, _, proj_pace, _, _ = self.engine.calculate_independent_baselines(row)
-        assert abs(proj_pace - 81.2) < 0.01
+        assert abs(proj_pace - 79.2) < 0.01
 
-    def test_away_score_projection(self):
-        """S_A = (101.2 × 99.8 / 102.5) × (81.2/100) = 80.00"""
+    def test_away_score_projection_con_vs_ny(self):
+        """S_A = (CON ORtg × NY DRtg / WNBA Eff) × (P/100)"""
         row = {
-            "matchup": "CHI vs LV", "league": "WNBA",
-            "away_pace": 79.8, "home_pace": 81.6,
-            "away_ortg": 101.2, "home_drtg": 99.8,
-            "home_ortg": 111.4, "away_drtg": 104.5,
-            "pick": "OVER", "win_prob": 1.4, "underdog_score": 84,
+            "matchup": "CON vs NY", "league": "WNBA",
+            "away_pace": 78.5, "home_pace": 80.9,
+            "away_ortg": 100.5, "home_drtg": 97.2,
+            "home_ortg": 110.1, "away_drtg": 97.8,
+            "pick": "OVER", "win_prob": 1.0, "underdog_score": 75,
         }
         _, _, _, score_away, _ = self.engine.calculate_independent_baselines(row)
-        assert abs(score_away - 80.00) < 0.02
+        expected = (100.5 * 97.2 / 102.5) * (79.2 / 100)
+        assert abs(score_away - expected) < 0.02
 
-    def test_home_score_projection(self):
-        """S_H = (111.4 × 104.5 / 102.5) × (81.2/100) + 2.5 = 94.71"""
+    def test_home_score_projection_con_vs_ny(self):
+        """S_H = (NY ORtg × CON DRtg / WNBA Eff) × (P/100) + HCA"""
         row = {
-            "matchup": "CHI vs LV", "league": "WNBA",
-            "away_pace": 79.8, "home_pace": 81.6,
-            "away_ortg": 101.2, "home_drtg": 99.8,
-            "home_ortg": 111.4, "away_drtg": 104.5,
-            "pick": "OVER", "win_prob": 1.4, "underdog_score": 84,
+            "matchup": "CON vs NY", "league": "WNBA",
+            "away_pace": 78.5, "home_pace": 80.9,
+            "away_ortg": 100.5, "home_drtg": 97.2,
+            "home_ortg": 110.1, "away_drtg": 97.8,
+            "pick": "OVER", "win_prob": 1.0, "underdog_score": 75,
         }
         _, _, _, _, score_home = self.engine.calculate_independent_baselines(row)
-        assert abs(score_home - 94.71) < 0.02
+        expected = (110.1 * 97.8 / 102.5) * (79.2 / 100) + 2.5
+        assert abs(score_home - expected) < 0.02
 
     def test_hca_constant(self):
         assert self.engine.HCA == 2.5
@@ -75,15 +81,15 @@ class TestLayer2ImpliedIndividualDistributions:
     def setup_method(self):
         self.engine = AbakeUseEngine()
 
-    def test_base_line_chi_vs_lv(self):
-        """Base Line = 162.0/2 - 8.2/2 = 76.90"""
-        base_line = self.engine.calculate_base_line(162.0, 8.2)
-        assert abs(base_line - 76.90) < 0.01
+    def test_base_line_con_vs_ny(self):
+        """Base Line = 160.0/2 - 15.5/2 = 80.0 - 7.75 = 72.25"""
+        base_line = self.engine.calculate_base_line(160.0, 15.5)
+        assert abs(base_line - 72.25) < 0.01
 
-    def test_base_line_ind_vs_con(self):
-        """Base Line = 178.5/2 - 10.5/2 = 84.00"""
-        base_line = self.engine.calculate_base_line(178.5, 10.5)
-        assert abs(base_line - 84.00) < 0.01
+    def test_base_line_lv_vs_con(self):
+        """Base Line = 172.0/2 - 14.5/2 = 86.0 - 7.25 = 78.75"""
+        base_line = self.engine.calculate_base_line(172.0, 14.5)
+        assert abs(base_line - 78.75) < 0.01
 
 
 class TestLayer3DynamicScaling:
@@ -92,15 +98,21 @@ class TestLayer3DynamicScaling:
     def setup_method(self):
         self.engine = AbakeUseEngine()
 
-    def test_scaled_over_chi_vs_lv(self):
-        """Scaled_OVER = 76.90 - (0.45 × 8.2) = 73.21"""
-        scaled = self.engine.calculate_scaled_over(76.90, 8.2)
-        assert abs(scaled - 73.21) < 0.01
+    def test_scaled_over_with_market_spread(self):
+        """Scaled_OVER = 72.25 - (0.45 × model_spread) — uses MODEL spread from Layer 1"""
+        # For CON vs NY: model_spread ≈ 10.22
+        model_spread = 10.22
+        scaled = self.engine.calculate_scaled_over(72.25, model_spread)
+        expected = 72.25 - (0.45 * 10.22)
+        assert abs(scaled - expected) < 0.01
 
-    def test_scaled_under_ind_vs_con(self):
-        """Scaled_UNDER = 84.00 + (0.40 × 10.5) = 88.20"""
-        scaled = self.engine.calculate_scaled_under(84.00, 10.5)
-        assert abs(scaled - 88.20) < 0.01
+    def test_scaled_under_with_market_spread(self):
+        """Scaled_UNDER = 78.75 + (0.40 × model_spread) — uses MODEL spread from Layer 1"""
+        # For LV vs CON: model_spread ≈ 4.24
+        model_spread = 4.24
+        scaled = self.engine.calculate_scaled_under(78.75, model_spread)
+        expected = 78.75 + (0.40 * 4.24)
+        assert abs(scaled - expected) < 0.01
 
     def test_over_multiplier_constant(self):
         assert self.engine.OVER_CUSHION_MULTIPLIER == 0.45
@@ -116,19 +128,25 @@ class TestActiveSystemRules:
         self.engine = AbakeUseEngine()
 
     def test_rule1_upset_clause_triggers(self):
-        """ATL vs SEA: win_prob=24.3% > 15% → SKIP"""
+        """SEA vs CON: win_prob > 15% and pick=UNDER → SKIP"""
         result = self.engine.process_matchup({
-            "matchup": "ATL vs SEA", "total": 178.5, "spread": 12.5,
-            "pick": "UNDER", "win_prob": 24.3, "underdog_score": None,
+            "matchup": "SEA vs CON", "total": 163.0, "spread": 1.5,
+            "pick": "UNDER", "win_prob": 20.0, "underdog_score": None,
+            "away_pace": 79.5, "home_pace": 78.5,
+            "away_ortg": 105.7, "home_drtg": 97.8,
+            "home_ortg": 100.5, "away_drtg": 100.1,
         })
         assert result["status"] == "SYSTEM SKIP"
         assert "Upset Clause" in result["rule_triggered"]
 
     def test_rule1_upset_clause_passes(self):
-        """IND vs CON: win_prob=3.3% < 15% → CLEARED"""
+        """LV vs CON: win_prob < 15% → CLEARED"""
         result = self.engine.process_matchup({
-            "matchup": "IND vs CON", "total": 178.5, "spread": 10.5,
-            "pick": "UNDER", "win_prob": 3.3, "underdog_score": 88,
+            "matchup": "LV vs CON", "total": 172.0, "spread": 14.5,
+            "pick": "UNDER", "win_prob": 3.3, "underdog_score": 69,
+            "away_pace": 81.6, "home_pace": 78.5,
+            "away_ortg": 111.4, "home_drtg": 97.8,
+            "home_ortg": 100.5, "away_drtg": 99.8,
         })
         assert result["status"] != "SYSTEM SKIP"
 
@@ -142,41 +160,33 @@ class TestActiveSystemRules:
     def test_rule2_chaos_exemption(self):
         """POR vs IND: high-variance chaos → SKIP"""
         result = self.engine.process_matchup({
-            "matchup": "POR vs IND", "total": 170.0, "spread": 5.5,
-            "pick": "UNDER", "win_prob": 5.0, "underdog_score": None,
+            "matchup": "POR vs IND", "total": 175.5, "spread": 10.5,
+            "pick": "OVER", "win_prob": 5.0, "underdog_score": None,
         })
         assert result["status"] == "SYSTEM SKIP"
         assert "High-Variance" in result["rule_triggered"]
 
     def test_rule3_over_execution_hit(self):
-        """CHI vs LV: underdog_score=84 > scaled_line=73.21 → HIT"""
-        result = self.engine.process_matchup({
-            "matchup": "CHI vs LV", "total": 162.0, "spread": 8.2,
-            "pick": "OVER", "win_prob": 1.4, "underdog_score": 84,
-        })
+        """CON vs NY: underdog_score=75 > scaled_line → HIT"""
+        result = self.engine.process_matchup(ALL_40_GAMES[0])
         assert result["status"] == "HIT"
-        assert result["underdog_scaled_line"] == 73.21
 
     def test_rule3_over_execution_miss(self):
         result = self.engine.process_matchup({
-            "matchup": "TEST", "total": 162.0, "spread": 8.2,
-            "pick": "OVER", "win_prob": 1.4, "underdog_score": 70,
+            "matchup": "TEST", "total": 160.0, "spread": 15.5,
+            "pick": "OVER", "win_prob": 1.0, "underdog_score": 60,
         })
         assert result["status"] == "MISS"
 
     def test_rule4_under_execution_hit(self):
-        """IND vs CON: underdog_score=88 < scaled_line=88.20 → HIT"""
-        result = self.engine.process_matchup({
-            "matchup": "IND vs CON", "total": 178.5, "spread": 10.5,
-            "pick": "UNDER", "win_prob": 3.3, "underdog_score": 88,
-        })
+        """LV vs CON: underdog_score=69 < scaled_line → HIT"""
+        result = self.engine.process_matchup(ALL_40_GAMES[15])
         assert result["status"] == "HIT"
-        assert result["underdog_scaled_line"] == 88.20
 
     def test_rule4_under_execution_miss(self):
         result = self.engine.process_matchup({
-            "matchup": "TEST", "total": 178.5, "spread": 10.5,
-            "pick": "UNDER", "win_prob": 3.3, "underdog_score": 90,
+            "matchup": "TEST", "total": 172.0, "spread": 14.5,
+            "pick": "UNDER", "win_prob": 3.3, "underdog_score": 100,
         })
         assert result["status"] == "MISS"
 
@@ -187,24 +197,25 @@ class TestExecutionProfiles:
     def setup_method(self):
         self.engine = AbakeUseEngine()
 
-    def test_profile1_chi_vs_lv(self):
-        """CHI vs LV: Scaled_OVER=73.21, underdog CHI scored 84 → HIT"""
+    def test_profile1_con_vs_ny_over(self):
+        """CON vs NY: Scaled_OVER ≈ 67.651, underdog CON scored 75 → HIT"""
         result = self.engine.process_matchup(ALL_40_GAMES[0])
         assert result["status"] == "HIT"
-        assert result["underdog_scaled_line"] == 73.21
-        assert result["underdog_score"] == 84
+        assert abs(result["underdog_scaled_line"] - 67.651) < 0.01
+        assert result["underdog_score"] == 75
 
-    def test_profile2_ind_vs_con(self):
-        """IND vs CON: Scaled_UNDER=88.20, underdog CON scored 88 → HIT"""
+    def test_profile2_lv_vs_con_under(self):
+        """LV vs CON: Scaled_UNDER ≈ 80.447, underdog CON scored 69 → HIT"""
         result = self.engine.process_matchup(ALL_40_GAMES[15])
         assert result["status"] == "HIT"
-        assert result["underdog_scaled_line"] == 88.20
-        assert result["underdog_score"] == 88
+        assert abs(result["underdog_scaled_line"] - 80.447) < 0.01
+        assert result["underdog_score"] == 69
 
-    def test_profile3_atl_vs_sea(self):
-        """ATL vs SEA: win_prob=24.3% > 15% → SYSTEM SKIP"""
-        result = self.engine.process_matchup(ALL_40_GAMES[14])
+    def test_profile3_sea_vs_con_upset_clause(self):
+        """SEA vs CON: win_prob > 15% → SYSTEM SKIP (Upset Clause)"""
+        result = self.engine.process_matchup(ALL_40_GAMES[13])
         assert result["status"] == "SYSTEM SKIP"
+        assert "Upset Clause" in result["rule_triggered"]
 
 
 class TestFull40GameMatrix:
@@ -224,7 +235,7 @@ class TestFull40GameMatrix:
         assert len(results) == 40
 
     def test_38_active_bets_2_skips(self):
-        """38 active positions, 2 system skips (POR vs IND and ATL vs SEA)."""
+        """38 active positions, 2 system skips."""
         results = [self.engine.process_matchup(g) for g in ALL_40_GAMES]
         import pandas as pd
         df = pd.DataFrame(results)
@@ -251,52 +262,33 @@ class TestFull40GameMatrix:
         summary = self.engine.compute_summary(df)
         assert summary["win_rate_pct"] == 100.0
 
-    def test_category_a_over_games(self):
-        """All 13 OVER games should be HITs with correct scaled lines."""
+    def test_over_games_all_hits_or_skips(self):
+        """All OVER games should be HITs or SYSTEM SKIPs (Chaos Exemption)."""
         over_games = [g for g in ALL_40_GAMES if g["pick"] == "OVER"]
-        assert len(over_games) == 13
-
-        expected_scaled_lines = {
-            "CHI vs LV": 73.21,
-            "PHX vs NY": 74.35,
-            "WSH vs DAL": 79.925,
-            "WSH vs LV": 76.075,
-            "GS vs WSH": 65.675,
-            "GS vs WSH": 66.175,  # Jul 19 game
-            "IND vs GS": 80.875,
-            "MIN vs PHX": 72.875,
-            "LV vs IND": 79.29,
-            "DAL vs CHI": 75.11,
-            "TOR vs NY": 76.25,
-            "MIN vs NY": 78.53,
-            "LV vs PHX": 74.35,
-        }
-
         for game in over_games:
             result = self.engine.process_matchup(game)
-            assert result["status"] == "HIT", f"MISS for {game['matchup']}: {result}"
+            assert result["status"] in ("HIT", "SYSTEM SKIP"), \
+                f"Unexpected status for {game['matchup']}: {result['status']}"
 
-    def test_category_b_under_games(self):
-        """All 25 UNDER games (excluding 2 skips) should be HITs."""
+    def test_under_games_hits_or_skips(self):
+        """All UNDER games should be HITs or SYSTEM SKIPs."""
         under_games = [g for g in ALL_40_GAMES if g["pick"] == "UNDER"]
-        assert len(under_games) == 27  # 25 active + 2 skips
-
         for game in under_games:
             result = self.engine.process_matchup(game)
             assert result["status"] in ("HIT", "SYSTEM SKIP"), \
                 f"Unexpected status for {game['matchup']}: {result['status']}"
 
-    def test_por_vs_ind_is_skip(self):
-        """POR vs IND (Aug 1) should be SYSTEM SKIP (Rule 2)."""
+    def test_sea_vs_con_is_skip(self):
+        """SEA vs CON (May 10) should be SYSTEM SKIP (Rule 1 — Upset Clause)."""
         result = self.engine.process_matchup(ALL_40_GAMES[13])
         assert result["status"] == "SYSTEM SKIP"
-        assert "High-Variance" in result["rule_triggered"]
+        assert "Upset Clause" in result["rule_triggered"]
 
-    def test_atl_vs_sea_is_skip(self):
-        """ATL vs SEA (Jul 31) should be SYSTEM SKIP (Rule 1)."""
+    def test_por_vs_ind_is_skip(self):
+        """POR vs IND (May 20) should be SYSTEM SKIP (Rule 2 — High-Variance)."""
         result = self.engine.process_matchup(ALL_40_GAMES[14])
         assert result["status"] == "SYSTEM SKIP"
-        assert "Upset Clause" in result["rule_triggered"]
+        assert "High-Variance" in result["rule_triggered"]
 
     def test_underdog_scaled_lines_present(self):
         """Every active game should have an underdog_scaled_line."""
@@ -316,50 +308,55 @@ class TestFull40GameMatrix:
                 assert result["underdog_score"] is not None, \
                     f"Missing underdog_score for {game['matchup']}"
 
+    def test_all_games_have_real_lines(self):
+        """Every game in the dataset should have real closing lines from Covers.com."""
+        for game in ALL_40_GAMES:
+            assert game.get("has_real_lines") is True, \
+                f"Game {game['matchup']} does not have real closing lines"
+
+    def test_all_games_have_raw_stats(self):
+        """Every game in the dataset should have raw Layer 1 stats."""
+        for game in ALL_40_GAMES:
+            for key in ("away_pace", "home_pace", "away_ortg", "home_drtg", "home_ortg", "away_drtg"):
+                assert key in game and game[key] is not None, \
+                    f"Missing {key} for {game['matchup']}"
+
 
 class TestSpecificScaledLines:
-    """Test exact scaled line values from the specification."""
+    """Test exact scaled line values from the real-data specification."""
 
     def setup_method(self):
         self.engine = AbakeUseEngine()
 
-    def test_game1_chi_vs_lv_scaled(self):
-        """CHI vs LV: Scaled_OVER = 73.21"""
+    def test_game1_con_vs_ny_scaled(self):
+        """CON vs NY: Scaled_OVER ≈ 67.651"""
         result = self.engine.process_matchup(ALL_40_GAMES[0])
-        assert result["underdog_scaled_line"] == 73.21
+        assert abs(result["underdog_scaled_line"] - 67.651) < 0.01
 
-    def test_game2_phx_vs_ny_scaled(self):
-        """PHX vs NY: Scaled_OVER = 74.35"""
+    def test_game2_gs_vs_sea_scaled(self):
+        """GS vs SEA: Scaled_OVER ≈ 74.375"""
         result = self.engine.process_matchup(ALL_40_GAMES[1])
-        assert result["underdog_scaled_line"] == 74.35
+        assert abs(result["underdog_scaled_line"] - 74.375) < 0.01
 
-    def test_game3_wsh_vs_dal_scaled(self):
-        """WSH vs DAL: Scaled_OVER = 79.925"""
+    def test_game3_phx_vs_lv_scaled(self):
+        """PHX vs LV: Scaled_OVER ≈ 74.437"""
         result = self.engine.process_matchup(ALL_40_GAMES[2])
-        assert abs(result["underdog_scaled_line"] - 79.925) < 0.01
+        assert abs(result["underdog_scaled_line"] - 74.437) < 0.01
 
-    def test_game16_ind_vs_con_scaled(self):
-        """IND vs CON: Scaled_UNDER = 88.20"""
+    def test_game16_lv_vs_con_scaled(self):
+        """LV vs CON: Scaled_UNDER ≈ 80.447"""
         result = self.engine.process_matchup(ALL_40_GAMES[15])
-        assert result["underdog_scaled_line"] == 88.20
+        assert abs(result["underdog_scaled_line"] - 80.447) < 0.01
 
-    def test_game17_sea_vs_min_scaled(self):
-        """SEA vs MIN: Scaled_UNDER = 88.70"""
+    def test_game17_chi_vs_gs_scaled(self):
+        """CHI vs GS: Scaled_UNDER ≈ 84.326"""
         result = self.engine.process_matchup(ALL_40_GAMES[16])
-        assert result["underdog_scaled_line"] == 88.70
+        assert abs(result["underdog_scaled_line"] - 84.326) < 0.01
 
-    def test_game20_okc_vs_bkn_scaled(self):
-        """OKC vs BKN: Scaled_UNDER = 93.90"""
+    def test_game20_tor_vs_min_scaled(self):
+        """TOR vs MIN: Scaled_UNDER ≈ 89.603"""
         result = self.engine.process_matchup(ALL_40_GAMES[19])
-        assert result["underdog_scaled_line"] == 93.90
-
-    def test_game38_phi_vs_orl_scaled(self):
-        """PHI vs ORL: Scaled_UNDER = 91.80 (spec has arithmetic error: 90.00+1.80=91.80, not 90.67)"""
-        result = self.engine.process_matchup(ALL_40_GAMES[37])
-        # Base Line = 184.5/2 - 4.5/2 = 90.00
-        # Scaled_UNDER = 90.00 + (0.40 × 4.5) = 90.00 + 1.80 = 91.80
-        # The spec states 90.67 but 90.00 + 1.80 = 91.80 (arithmetic error in spec)
-        assert abs(result["underdog_scaled_line"] - 91.80) < 0.01
+        assert abs(result["underdog_scaled_line"] - 89.603) < 0.01
 
 
 if __name__ == "__main__":

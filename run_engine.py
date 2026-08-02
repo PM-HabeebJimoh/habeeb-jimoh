@@ -36,42 +36,42 @@ def run_verification(engine: AbakeUseEngine) -> bool:
 
     profiles = [
         {
-            "name": "Profile 1: CHI vs LV (Aug 1) — OVER",
+            "name": "Profile 1: CON vs NY (May 8) — OVER",
             "data": ALL_40_GAMES[0],  # Game 1
             "expected": "HIT",
-            "expected_scaled": 73.21,
+            "expected_scaled": 67.651,
             "steps": [
-                "Step 1 (Raw Inputs): Away Pace: 79.8, Home Pace: 81.6 | Away ORtg: 101.2, Home DRtg: 99.8 | Home ORtg: 111.4, Away DRtg: 104.5",
-                "Step 2 (Pacing): P = 79.8 + 81.6 - 80.2 = 81.2 Possessions",
-                "Step 3 (Score Projections): S_A = (101.2×99.8/102.5)×(81.2/100) = 80.00 | S_H = (111.4×104.5/102.5)×(81.2/100)+2.5 = 94.71",
-                "Step 4 (Core Baselines): Model Total = 162.0, Model Spread = 8.2",
-                "Step 5 (Baseline Split): Base Line = 162.0/2 - 8.2/2 = 81.0 - 4.1 = 76.90",
+                "Step 1 (Raw Inputs): Away Pace: 78.5, Home Pace: 80.9 | Away ORtg: 100.5, Home DRtg: 97.2 | Home ORtg: 110.1, Away DRtg: 97.8",
+                "Step 2 (Pacing): P = 78.5 + 80.9 - 80.2 = 79.2 Possessions",
+                "Step 3 (Score Projections): S_A = (100.5×97.2/102.5)×(79.2/100) = 75.48 | S_H = (110.1×97.8/102.5)×(79.2/100)+2.5 = 85.70",
+                "Step 4 (Core Baselines): Model Total = 161.18, Model Spread = 10.22",
+                "Step 5 (Baseline Split): Base Line = 160.0/2 - 15.5/2 = 80.0 - 7.75 = 72.25 (using MARKET total/spread)",
                 "Step 6 (Filter Check): Pick is OVER. Rule 1 does not apply. CLEARED.",
-                "Step 7 (Dynamic Scaling): Scaled_OVER = 76.90 - (0.45×8.2) = 76.90 - 3.69 = 73.21",
-                "Step 8 (Verification): Underdog CHI scored 84. (84 > 73.21) → HIT ✓",
+                "Step 7 (Dynamic Scaling): Scaled_OVER = 72.25 - (0.45×10.22) = 72.25 - 4.60 = 67.65 (using MODEL spread from Layer 1)",
+                "Step 8 (Verification): Underdog CON scored 75. (75 > 67.651) → HIT ✓",
             ],
         },
         {
-            "name": "Profile 2: IND vs CON (Jul 23) — UNDER",
+            "name": "Profile 2: LV vs CON (May 13) — UNDER",
             "data": ALL_40_GAMES[15],  # Game 16
             "expected": "HIT",
-            "expected_scaled": 88.20,
+            "expected_scaled": 80.447,
             "steps": [
-                "Step 1 (Raw Inputs): Model Total = 178.5, Model Spread = 10.5 | Pick: UNDER | Win Prob: 3.3% | Underdog: CON",
-                "Step 2 (Baseline Split): Base Line = 178.5/2 - 10.5/2 = 89.25 - 5.25 = 84.00",
+                "Step 1 (Raw Inputs): Market Total = 172.0, Market Spread = 14.5 | Pick: UNDER | Win Prob: 3.3% | Underdog: CON",
+                "Step 2 (Baseline Split): Base Line = 172.0/2 - 14.5/2 = 86.0 - 7.25 = 78.75 (using MARKET total/spread)",
                 "Step 3 (Filter Check): Win prob 3.3% ≤ 15.0%. CLEARED.",
-                "Step 4 (Dynamic Scaling): Scaled_UNDER = 84.00 + (0.40×10.5) = 84.00 + 4.20 = 88.20",
-                "Step 5 (Verification): Underdog CON scored 88. (88 < 88.20) → HIT ✓",
+                "Step 4 (Dynamic Scaling): Scaled_UNDER = 78.75 + (0.40×4.24) = 78.75 + 1.70 = 80.45 (using MODEL spread from Layer 1)",
+                "Step 5 (Verification): Underdog CON scored 69. (69 < 80.447) → HIT ✓",
             ],
         },
         {
-            "name": "Profile 3: ATL vs SEA (Jul 31) — UPSET CLAUSE",
-            "data": ALL_40_GAMES[14],  # Game 15
+            "name": "Profile 3: SEA vs CON (May 10) — UPSET CLAUSE",
+            "data": ALL_40_GAMES[13],  # Game 14
             "expected": "SYSTEM SKIP",
             "expected_scaled": None,
             "steps": [
-                "Step 1 (Raw Inputs): Model Total = 178.5, Model Spread = 12.5 | Pick: UNDER | Win Prob: 24.3% | Underdog: ATL",
-                "Step 2 (Filter Check): Win prob 24.3% > 15.0% → Rule 1 Upset Clause TRIGGERED",
+                "Step 1 (Raw Inputs): Market Total = 163.0, Market Spread = 1.5 | Pick: UNDER | Win Prob: 20.0% | Underdog: SEA",
+                "Step 2 (Filter Check): Win prob 20.0% > 15.0% → Rule 1 Upset Clause TRIGGERED",
                 "Step 3 (Verification): Position voided. SYSTEM SKIP ✓",
             ],
         },

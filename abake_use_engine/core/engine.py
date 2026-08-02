@@ -275,12 +275,19 @@ class AbakeUseEngine:
             }
 
         # ---- Layer 2: Implied Individual Distribution (Base Line) ----
+        # Uses the "total" and "spread" fields (MARKET or MODEL values)
         base_line = self.calculate_base_line(total, spread)
 
         # ---- Layer 3: Dynamic Scaling & Execution ----
+        # ABAKE USE spec: Layer 3 uses the MODEL spread from Layer 1,
+        # NOT the same spread as Layer 2.
+        # If Layer 1 computed an independent spread, use that for scaling.
+        # Otherwise fall back to the spread used in Layer 2.
+        model_spread_for_scaling = abs(independent_spread) if independent_spread is not None else spread
+
         if pick == "OVER":
             # Rule 3: The Over Execution
-            scaled_line = self.calculate_scaled_over(base_line, spread)
+            scaled_line = self.calculate_scaled_over(base_line, model_spread_for_scaling)
             if underdog_score is not None:
                 is_hit = underdog_score > scaled_line
                 status = "HIT" if is_hit else "MISS"
@@ -323,7 +330,9 @@ class AbakeUseEngine:
 
         elif pick == "UNDER":
             # Rule 4: The Under Execution
-            scaled_line = self.calculate_scaled_under(base_line, spread)
+            # ABAKE USE spec: Layer 3 uses the MODEL spread from Layer 1,
+            # NOT the same spread as Layer 2.
+            scaled_line = self.calculate_scaled_under(base_line, model_spread_for_scaling)
             if underdog_score is not None:
                 is_hit = underdog_score < scaled_line
                 status = "HIT" if is_hit else "MISS"
