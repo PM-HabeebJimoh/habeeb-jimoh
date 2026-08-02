@@ -301,17 +301,17 @@ class AbakeUseEngine:
                 # Layer 2 output
                 "base_line": round(base_line, 2),
                 # Layer 3 output — THE UNDERDOG SCALED LINE
-                "underdog_scaled_line": round(scaled_line, 2),
+                "underdog_scaled_line": round(scaled_line, 3),
                 "underdog": underdog,
                 "underdog_score": underdog_score,
                 # Verification
                 "is_hit": is_hit,
                 "details": (
-                    f"Underdog {underdog} OVER {scaled_line:.2f} | "
+                    f"Underdog {underdog} OVER {scaled_line:.3f} | "
                     f"Actual: {underdog_score} | "
                     f"{'✓ CLEARS' if is_hit else '✗ FAILS'}"
                     if underdog_score is not None
-                    else f"Underdog {underdog} OVER {scaled_line:.2f} | Awaiting result"
+                    else f"Underdog {underdog} OVER {scaled_line:.3f} | Awaiting result"
                 ),
                 # Layer 1 raw (if available)
                 "proj_pace": proj_pace,
@@ -344,17 +344,17 @@ class AbakeUseEngine:
                 # Layer 2 output
                 "base_line": round(base_line, 2),
                 # Layer 3 output — THE UNDERDOG SCALED LINE
-                "underdog_scaled_line": round(scaled_line, 2),
+                "underdog_scaled_line": round(scaled_line, 3),
                 "underdog": underdog,
                 "underdog_score": underdog_score,
                 # Verification
                 "is_hit": is_hit,
                 "details": (
-                    f"Underdog {underdog} UNDER {scaled_line:.2f} | "
+                    f"Underdog {underdog} UNDER {scaled_line:.3f} | "
                     f"Actual: {underdog_score} | "
                     f"{'✓ STAYS BELOW' if is_hit else '✗ EXCEEDS'}"
                     if underdog_score is not None
-                    else f"Underdog {underdog} UNDER {scaled_line:.2f} | Awaiting result"
+                    else f"Underdog {underdog} UNDER {scaled_line:.3f} | Awaiting result"
                 ),
                 # Layer 1 raw (if available)
                 "proj_pace": proj_pace,
