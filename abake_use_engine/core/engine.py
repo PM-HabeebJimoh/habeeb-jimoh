@@ -4,12 +4,19 @@ Enterprise-Grade Basketball Game Analysis System
 
 Implements the complete mathematical framework from the Ultimate Master Blueprint:
   Layer 1: Independent Baseline Infrastructure (Log-Linear Possession Regression)
-  Layer 2: Implied Individual Distributions (The Split)
-  Layer 3: Dynamic Scaling (The Pacing Buffers)
+  Layer 2: Implied Individual Distributions (The Split) — uses Model Total & Model Spread
+  Layer 3: Dynamic Scaling (The Pacing Buffers) — uses Model Spread
   Active System Rules 1-4
 
 The engine computes the UNDERDOG INDIVIDUAL TEAM TOTAL scaled line
 for every game, then compares the underdog's actual score against it.
+
+KEY ARCHITECTURE (from the spec):
+  - Layer 1 computes Model Game Total and Model Spread from raw team stats
+  - Layer 2 uses Model Total and Model Spread (NOT market lines)
+  - Layer 3 uses Model Spread (same as Layer 2)
+  - The "pick" (OVER/UNDER) is determined by comparing Model Total vs Market Total
+  - Market total and market spread are used ONLY for pick determination
 """
 
 import math
@@ -119,6 +126,7 @@ class AbakeUseEngine:
         Base Line = (Model Total / 2) - (Model Spread / 2)
         
         This isolates the underdog's default share of the total.
+        Uses Model Total and Model Spread from Layer 1.
         """
         return (total / 2) - (abs(spread) / 2)
 
@@ -192,19 +200,27 @@ class AbakeUseEngine:
         """
         Execute the complete ABAKE USE rule book over a data row.
         
-        For every game, the engine computes:
-          1. Model Game Total and Model Spread (from Layer 1 or provided)
-          2. Base Line (underdog's implied share)
-          3. Scaled Underdog Line (the actual betting target)
-          4. Whether the underdog's actual score clears the scaled line
+        ABAKE USE spec flow:
+          1. Layer 1: Compute Model Game Total and Model Spread from raw stats
+          2. Pick determination: Compare Model Total vs Market Total
+             - Model Total > Market Total → OVER
+             - Model Total < Market Total → UNDER
+          3. Layer 2: Base Line = Model Total / 2 - Model Spread / 2
+          4. Layer 3: Scaled_OVER = Base Line - (0.45 × Model Spread)
+                     Scaled_UNDER = Base Line + (0.40 × Model Spread)
+          5. Rules 1-4: Upset clause, chaos exemption, over/under execution
+          6. Check: Does underdog actual score clear the scaled line?
         
-        Returns a comprehensive result with ALL intermediate values.
+        The row dict can contain:
+          - Raw stats: away_pace, home_pace, away_ortg, home_drtg, home_ortg, away_drtg
+          - Market data: market_total, market_spread (for pick determination)
+          - OR pre-determined: pick, total, spread (for backward compatibility)
+          - Game info: matchup, league, underdog, underdog_score/actual_score, win_prob
         """
         matchup = row.get("matchup", "UNKNOWN")
-        pick = row.get("pick", "OVER")
-        win_prob = row.get("win_prob", 0.0)
         underdog = row.get("underdog", "")
         underdog_score = row.get("underdog_score", row.get("actual_score", None))
+        win_prob = row.get("win_prob", 0.0)
 
         # ---- Layer 1: Independent Baselines (if raw metrics available) ----
         independent_total = None
@@ -220,15 +236,21 @@ class AbakeUseEngine:
             )
 
         # ---- Determine Model Total and Model Spread ----
-        # These are the Layer 1 outputs used for Layer 2 and Layer 3
-        total = row.get("total", None)
-        spread = row.get("spread", None)
-
-        # If not provided, use independent baselines
-        if total is None and independent_total is not None:
+        # ABAKE USE spec: When raw stats are available (Layer 1 computed),
+        # ALWAYS use the model-computed total and spread for Layer 2 and Layer 3.
+        # This matches the spec's code:
+        #   if 'away_pace' in row:
+        #       total, spread = self.calculate_independent_baselines(row)
+        #   else:
+        #       total, spread = row['total'], row['spread']
+        if independent_total is not None:
+            # Layer 1 computed model values — use them for Layer 2 and Layer 3
             total = round(independent_total * 2) / 2
-        if spread is None and independent_spread is not None:
             spread = abs(round(independent_spread * 2) / 2)
+        else:
+            # No raw stats — use the row's total and spread as fallback
+            total = row.get("total", None)
+            spread = row.get("spread", None)
 
         if total is None or spread is None:
             return {
@@ -244,6 +266,19 @@ class AbakeUseEngine:
         # Ensure spread is absolute value (positive)
         spread = abs(spread)
 
+        # ---- Pick Determination ----
+        # ABAKE USE spec: Compare Model Total vs Market Total to determine pick
+        # Model Total > Market Total → OVER (model thinks more points)
+        # Model Total < Market Total → UNDER (model thinks fewer points)
+        # If market_total is not provided, use the row's pre-determined pick
+        market_total = row.get("market_total", None)
+        if market_total is not None and independent_total is not None:
+            # Determine pick from Model Total vs Market Total
+            pick = "OVER" if independent_total > market_total else "UNDER"
+        else:
+            # Fallback to row's pick (backward compatibility)
+            pick = row.get("pick", "OVER")
+
         # ---- Rule 2: Chaos Exemption ----
         chaos_result = self.check_chaos_exemption(matchup, total)
         if chaos_result:
@@ -254,6 +289,8 @@ class AbakeUseEngine:
                 "details": chaos_result["reason"],
                 "model_total": total,
                 "model_spread": spread,
+                "market_total": market_total,
+                "pick": pick,
                 "underdog": underdog,
                 "underdog_score": underdog_score,
                 "timestamp": datetime.utcnow().isoformat(),
@@ -269,25 +306,26 @@ class AbakeUseEngine:
                 "details": upset_result["reason"],
                 "model_total": total,
                 "model_spread": spread,
+                "market_total": market_total,
+                "pick": pick,
                 "underdog": underdog,
                 "underdog_score": underdog_score,
                 "timestamp": datetime.utcnow().isoformat(),
             }
 
         # ---- Layer 2: Implied Individual Distribution (Base Line) ----
-        # Uses the "total" and "spread" fields (MARKET or MODEL values)
+        # ABAKE USE spec: Base Line = Model Total / 2 - Model Spread / 2
+        # Uses the Model Total and Model Spread from Layer 1
         base_line = self.calculate_base_line(total, spread)
 
         # ---- Layer 3: Dynamic Scaling & Execution ----
-        # ABAKE USE spec: Layer 3 uses the MODEL spread from Layer 1,
-        # NOT the same spread as Layer 2.
-        # If Layer 1 computed an independent spread, use that for scaling.
-        # Otherwise fall back to the spread used in Layer 2.
-        model_spread_for_scaling = abs(independent_spread) if independent_spread is not None else spread
+        # ABAKE USE spec: Layer 3 uses the SAME Model Spread as Layer 2.
+        # Scaled_OVER = Base Line - (0.45 × Model Spread)
+        # Scaled_UNDER = Base Line + (0.40 × Model Spread)
 
         if pick == "OVER":
             # Rule 3: The Over Execution
-            scaled_line = self.calculate_scaled_over(base_line, model_spread_for_scaling)
+            scaled_line = self.calculate_scaled_over(base_line, spread)
             if underdog_score is not None:
                 is_hit = underdog_score > scaled_line
                 status = "HIT" if is_hit else "MISS"
@@ -300,11 +338,13 @@ class AbakeUseEngine:
                 "status": status,
                 "rule_triggered": "Rule 3 — Over Execution",
                 "category": "OVER",
-                # Layer 1 outputs
+                # Layer 1 outputs (MODEL values)
                 "model_total": total,
                 "model_spread": spread,
                 "independent_total": round(independent_total, 2) if independent_total else None,
                 "independent_spread": round(independent_spread, 2) if independent_spread else None,
+                # Market data
+                "market_total": market_total,
                 # Layer 2 output
                 "base_line": round(base_line, 2),
                 # Layer 3 output — THE UNDERDOG SCALED LINE
@@ -330,9 +370,8 @@ class AbakeUseEngine:
 
         elif pick == "UNDER":
             # Rule 4: The Under Execution
-            # ABAKE USE spec: Layer 3 uses the MODEL spread from Layer 1,
-            # NOT the same spread as Layer 2.
-            scaled_line = self.calculate_scaled_under(base_line, model_spread_for_scaling)
+            # ABAKE USE spec: Scaled_UNDER = Base Line + (0.40 × Model Spread)
+            scaled_line = self.calculate_scaled_under(base_line, spread)
             if underdog_score is not None:
                 is_hit = underdog_score < scaled_line
                 status = "HIT" if is_hit else "MISS"
@@ -345,11 +384,13 @@ class AbakeUseEngine:
                 "status": status,
                 "rule_triggered": "Rule 4 — Under Execution",
                 "category": "UNDER",
-                # Layer 1 outputs
+                # Layer 1 outputs (MODEL values)
                 "model_total": total,
                 "model_spread": spread,
                 "independent_total": round(independent_total, 2) if independent_total else None,
                 "independent_spread": round(independent_spread, 2) if independent_spread else None,
+                # Market data
+                "market_total": market_total,
                 # Layer 2 output
                 "base_line": round(base_line, 2),
                 # Layer 3 output — THE UNDERDOG SCALED LINE

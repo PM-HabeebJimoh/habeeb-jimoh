@@ -1,10 +1,14 @@
 """
 ABAKE USE Engine — Complete 40-Game Dataset (REAL DATA)
-ALL game scores, closing totals, and closing spreads are REAL from Covers.com.
+ALL game scores and closing lines are REAL from Covers.com.
 NO fabricated data. Every game has verified real closing lines.
 
-Layer 2 uses MARKET total and MARKET spread (closing lines from Covers.com).
-Layer 3 uses MODEL spread from Layer 1 (computed from real team stats).
+Data structure per game:
+  - total, spread: MARKET closing lines from Covers.com (for pick determination)
+  - market_total, market_spread: Same as total/spread (explicit market reference)
+  - away_pace, home_pace, etc.: Raw Layer 1 stats (engine computes Model Total/Spread)
+  - Engine uses Model Total/Model Spread for Layers 2&3 (per ABAKE USE spec)
+  - Pick: OVER if Model Total > Market Total, UNDER if Model Total < Market Total
 """
 
 ALL_40_GAMES = [
@@ -24,6 +28,86 @@ ALL_40_GAMES = [
         "away_ortg": 100.5, "home_drtg": 97.2,
         "home_ortg": 110.1, "away_drtg": 97.8,
         "has_real_lines": True,
+        "market_total": 236.0,
+        "market_spread": 10.5,
+        "market_total": 184.0,
+        "market_spread": 5.5,
+        "market_total": 178.5,
+        "market_spread": 10.5,
+        "market_total": 165.5,
+        "market_spread": 4.5,
+        "market_total": 183.5,
+        "market_spread": 7.5,
+        "market_total": 181.5,
+        "market_spread": 10.5,
+        "market_total": 180.5,
+        "market_spread": 5.5,
+        "market_total": 173.5,
+        "market_spread": 4.5,
+        "market_total": 170.5,
+        "market_spread": 4.5,
+        "market_total": 172.0,
+        "market_spread": 6.5,
+        "market_total": 173.0,
+        "market_spread": 4.5,
+        "market_total": 170.5,
+        "market_spread": 6.5,
+        "market_total": 170.5,
+        "market_spread": 8.5,
+        "market_total": 171.5,
+        "market_spread": 5.5,
+        "market_total": 173.5,
+        "market_spread": 7.5,
+        "market_total": 176.5,
+        "market_spread": 7.5,
+        "market_total": 172.5,
+        "market_spread": 4.5,
+        "market_total": 165.5,
+        "market_spread": 7.5,
+        "market_total": 158.0,
+        "market_spread": 13.5,
+        "market_total": 174.0,
+        "market_spread": 5.5,
+        "market_total": 173.0,
+        "market_spread": 5.5,
+        "market_total": 165.5,
+        "market_spread": 5.5,
+        "market_total": 176.5,
+        "market_spread": 11.5,
+        "market_total": 166.5,
+        "market_spread": 5.5,
+        "market_total": 172.0,
+        "market_spread": 14.5,
+        "market_total": 175.5,
+        "market_spread": 10.5,
+        "market_total": 163.0,
+        "market_spread": 1.5,
+        "market_total": 171.5,
+        "market_spread": 3.5,
+        "market_total": 165.5,
+        "market_spread": 4.0,
+        "market_total": 170.0,
+        "market_spread": 8.5,
+        "market_total": 175.0,
+        "market_spread": 11.5,
+        "market_total": 167.0,
+        "market_spread": 4.5,
+        "market_total": 173.5,
+        "market_spread": 12.5,
+        "market_total": 157.5,
+        "market_spread": 2.5,
+        "market_total": 165.0,
+        "market_spread": 5.5,
+        "market_total": 163.5,
+        "market_spread": 5.5,
+        "market_total": 160.5,
+        "market_spread": 5.5,
+        "market_total": 168.5,
+        "market_spread": 9.5,
+        "market_total": 156.5,
+        "market_spread": 5.5,
+        "market_total": 160.0,
+        "market_spread": 15.5,
     },
 
     # 2. GS vs SEA (May 8) — OVER
