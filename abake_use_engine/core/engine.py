@@ -17,6 +17,17 @@ KEY ARCHITECTURE (from the spec):
   - Layer 3 uses Model Spread (same as Layer 2)
   - The "pick" (OVER/UNDER) is determined by comparing Model Total vs Market Total
   - Market total and market spread are used ONLY for pick determination
+
+V11 MARKET-IMPLIED MODEL (MIM):
+  When market closing lines are available, the engine can use them as the
+  Model Total and Model Spread instead of computing from stale team stats.
+  This is the V11 Market-Implied Model approach:
+    - Model Total  = Market Closing Total   (best estimate of game total)
+    - Model Spread = Market Closing Spread   (best estimate of point spread)
+    - Pick Direction = Layer 1 Edge Signal (computed total vs market total)
+  To use V11 mode, provide 'total' and 'spread' in the row dict (set to market
+  values) WITHOUT providing raw stats (away_pace, home_pace, etc.).
+  The engine's fallback mechanism will use the row's total/spread directly.
 """
 
 import math

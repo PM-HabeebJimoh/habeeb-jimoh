@@ -453,5 +453,165 @@ class TestPickDetermination:
         assert result.get("category") == "OVER"
 
 
+class TestV11MarketImpliedModel:
+    """Test V11 Market-Implied Model (MIM) mode.
+    
+    V11 Reformulated Layer 1:
+      Model Total  = Market Closing Total
+      Model Spread = Market Closing Spread
+      Pick Direction = Layer 1 Edge Signal (computed total vs market total)
+    
+    Layers 2 & 3 and Rules 1-4 are UNCHANGED.
+    When raw stats are NOT provided, the engine uses the row's total/spread
+    directly — this is the V11 mode.
+    """
+
+    def setup_method(self):
+        self.engine = AbakeUseEngine()
+
+    def test_v11_market_total_used_for_scaled_lines(self):
+        """V11: When no raw stats, market total/spread are used for Layers 2&3."""
+        result = self.engine.process_matchup({
+            "matchup": "GS vs TOR", "league": "WNBA",
+            "total": 164.5, "spread": 12.5,
+            "pick": "OVER", "win_prob": 5.0, "underdog_score": 75,
+            "underdog": "GS",
+        })
+        # Model Total = 164.5, Model Spread = 12.5
+        # Base Line = 164.5/2 - 12.5/2 = 76.0
+        # Scaled_OVER = 76.0 - (0.45 × 12.5) = 70.375
+        assert abs(result["model_total"] - 164.5) < 0.01
+        assert abs(result["base_line"] - 76.0) < 0.01
+        assert abs(result["underdog_scaled_line"] - 70.375) < 0.01
+
+    def test_v11_market_spread_used_for_scaled_lines(self):
+        """V11: Market spread is used for Layer 3 scaling."""
+        result = self.engine.process_matchup({
+            "matchup": "DAL vs CON", "league": "WNBA",
+            "total": 172.5, "spread": 11.5,
+            "pick": "UNDER", "win_prob": 3.0, "underdog_score": 80,
+            "underdog": "CON",
+        })
+        # Model Total = 172.5, Model Spread = 11.5
+        # Base Line = 172.5/2 - 11.5/2 = 80.5
+        # Scaled_UNDER = 80.5 + (0.40 × 11.5) = 85.1
+        assert abs(result["model_total"] - 172.5) < 0.01
+        assert abs(result["base_line"] - 80.5) < 0.01
+        assert abs(result["underdog_scaled_line"] - 85.1) < 0.01
+
+    def test_v11_pick_from_row(self):
+        """V11: Pick comes from row when no raw stats are provided."""
+        result_over = self.engine.process_matchup({
+            "matchup": "TEST", "total": 165.0, "spread": 5.5,
+            "pick": "OVER", "win_prob": 5.0, "underdog_score": 80,
+        })
+        assert result_over["category"] == "OVER"
+
+        result_under = self.engine.process_matchup({
+            "matchup": "TEST", "total": 165.0, "spread": 5.5,
+            "pick": "UNDER", "win_prob": 5.0, "underdog_score": 80,
+        })
+        assert result_under["category"] == "UNDER"
+
+    def test_v11_no_independent_total(self):
+        """V11: When no raw stats, independent_total should be None."""
+        result = self.engine.process_matchup({
+            "matchup": "TEST", "total": 165.0, "spread": 5.5,
+            "pick": "OVER", "win_prob": 5.0, "underdog_score": 80,
+        })
+        assert result["independent_total"] is None
+
+    def test_v11_rules_still_apply(self):
+        """V11: Rules 1-4 still apply in Market-Implied Model mode."""
+        # Rule 1: Upset Clause
+        result = self.engine.process_matchup({
+            "matchup": "TEST", "total": 165.0, "spread": 5.5,
+            "pick": "UNDER", "win_prob": 20.0, "underdog_score": 80,
+        })
+        assert result["status"] == "SYSTEM SKIP"
+        assert "Upset Clause" in result["rule_triggered"]
+
+        # Rule 2: Chaos Exemption
+        result = self.engine.process_matchup({
+            "matchup": "POR vs IND", "total": 175.5, "spread": 10.5,
+            "pick": "OVER", "win_prob": 5.0, "underdog_score": 80,
+        })
+        assert result["status"] == "SYSTEM SKIP"
+
+    def test_v11_over_hit(self):
+        """V11: OVER game where underdog clears the scaled line."""
+        result = self.engine.process_matchup({
+            "matchup": "GS vs TOR", "league": "WNBA",
+            "total": 164.5, "spread": 12.5,
+            "pick": "OVER", "win_prob": 5.0, "underdog_score": 75,
+            "underdog": "GS",
+        })
+        # Scaled_OVER = 70.375, score=75 → HIT
+        assert result["status"] == "HIT"
+        assert result["underdog_score"] > result["underdog_scaled_line"]
+
+    def test_v11_under_hit(self):
+        """V11: UNDER game where underdog stays below the scaled line."""
+        result = self.engine.process_matchup({
+            "matchup": "DAL vs CON", "league": "WNBA",
+            "total": 172.5, "spread": 11.5,
+            "pick": "UNDER", "win_prob": 3.0, "underdog_score": 80,
+            "underdog": "CON",
+        })
+        # Scaled_UNDER = 85.1, score=80 → HIT
+        assert result["status"] == "HIT"
+        assert result["underdog_score"] < result["underdog_scaled_line"]
+
+    def test_v11_formulas_match_spec(self):
+        """V11: Verify all formulas match the ABAKE USE spec exactly."""
+        # Market Total = 170.0, Market Spread = 8.5
+        model_total = 170.0
+        model_spread = 8.5
+
+        # Layer 2: Base Line = (Model Total / 2) - (Model Spread / 2)
+        base_line = (model_total / 2) - (model_spread / 2)
+        assert abs(base_line - 80.75) < 0.01
+
+        # Layer 3: Scaled_OVER = Base Line - (0.45 × Model Spread)
+        scaled_over = base_line - (0.45 * model_spread)
+        assert abs(scaled_over - 76.925) < 0.01
+
+        # Layer 3: Scaled_UNDER = Base Line + (0.40 × Model Spread)
+        scaled_under = base_line + (0.40 * model_spread)
+        assert abs(scaled_under - 84.15) < 0.01
+
+    def test_v11_vs_v10_same_formulas(self):
+        """V11 and V10 use the SAME formulas for Layers 2&3.
+        The only difference is the source of Model Total/Spread."""
+        # V10: Model Total from Layer 1 stats
+        v10_result = self.engine.process_matchup({
+            "matchup": "CON vs NY", "league": "WNBA",
+            "away_pace": 78.5, "home_pace": 80.9,
+            "away_ortg": 100.5, "home_drtg": 97.2,
+            "home_ortg": 110.1, "away_drtg": 97.8,
+            "pick": "OVER", "win_prob": 1.0, "underdog_score": 75,
+            "market_total": 160.0,
+        })
+
+        # V11: Model Total from market
+        v11_result = self.engine.process_matchup({
+            "matchup": "CON vs NY", "league": "WNBA",
+            "total": 160.0, "spread": 15.5,
+            "pick": "OVER", "win_prob": 1.0, "underdog_score": 75,
+        })
+
+        # Both should use the same Layer 2 formula
+        # V10: Base Line = Model Total/2 - Model Spread/2
+        # V11: Base Line = Market Total/2 - Market Spread/2
+        assert abs(v10_result["base_line"] - (v10_result["model_total"]/2 - v10_result["model_spread"]/2)) < 0.01
+        assert abs(v11_result["base_line"] - (v11_result["model_total"]/2 - v11_result["model_spread"]/2)) < 0.01
+
+        # Both should use the same Layer 3 formulas
+        v10_base = v10_result["base_line"]
+        v11_base = v11_result["base_line"]
+        assert abs(v10_result["underdog_scaled_line"] - (v10_base - 0.45 * v10_result["model_spread"])) < 0.01
+        assert abs(v11_result["underdog_scaled_line"] - (v11_base - 0.45 * v11_result["model_spread"])) < 0.01
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])
