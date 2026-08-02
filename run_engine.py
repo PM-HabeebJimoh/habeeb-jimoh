@@ -1,0 +1,291 @@
+#!/usr/bin/env python3
+"""
+ABAKE USE Engine — CLI Runner
+Runs the complete 40-game ABAKE USE pipeline with all underdog scaled line scores.
+"""
+
+import sys
+import os
+import logging
+from datetime import datetime
+
+sys.path.insert(0, os.path.dirname(__file__))
+
+from abake_use_engine.core.engine import AbakeUseEngine
+from abake_use_engine.data.games_dataset import ALL_40_GAMES
+from abake_use_engine.data.services import BasketballDataService
+from abake_use_engine.data.analytics import AnalyticsService
+import pandas as pd
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(name)s] %(levelname)s: %(message)s",
+)
+logger = logging.getLogger("abake_use_runner")
+
+
+def print_header(title: str):
+    print("\n" + "=" * 80)
+    print(f"  ⚡ {title}")
+    print("=" * 80 + "\n")
+
+
+def run_verification(engine: AbakeUseEngine) -> bool:
+    """Run the 3 verification profiles from the specification."""
+    print_header("ENGINE VERIFICATION — 3 Calibration Profiles")
+
+    profiles = [
+        {
+            "name": "Profile 1: CHI vs LV (Aug 1) — OVER",
+            "data": ALL_40_GAMES[0],  # Game 1
+            "expected": "HIT",
+            "expected_scaled": 73.21,
+            "steps": [
+                "Step 1 (Raw Inputs): Away Pace: 79.8, Home Pace: 81.6 | Away ORtg: 101.2, Home DRtg: 99.8 | Home ORtg: 111.4, Away DRtg: 104.5",
+                "Step 2 (Pacing): P = 79.8 + 81.6 - 80.2 = 81.2 Possessions",
+                "Step 3 (Score Projections): S_A = (101.2×99.8/102.5)×(81.2/100) = 80.00 | S_H = (111.4×104.5/102.5)×(81.2/100)+2.5 = 94.71",
+                "Step 4 (Core Baselines): Model Total = 162.0, Model Spread = 8.2",
+                "Step 5 (Baseline Split): Base Line = 162.0/2 - 8.2/2 = 81.0 - 4.1 = 76.90",
+                "Step 6 (Filter Check): Pick is OVER. Rule 1 does not apply. CLEARED.",
+                "Step 7 (Dynamic Scaling): Scaled_OVER = 76.90 - (0.45×8.2) = 76.90 - 3.69 = 73.21",
+                "Step 8 (Verification): Underdog CHI scored 84. (84 > 73.21) → HIT ✓",
+            ],
+        },
+        {
+            "name": "Profile 2: IND vs CON (Jul 23) — UNDER",
+            "data": ALL_40_GAMES[15],  # Game 16
+            "expected": "HIT",
+            "expected_scaled": 88.20,
+            "steps": [
+                "Step 1 (Raw Inputs): Model Total = 178.5, Model Spread = 10.5 | Pick: UNDER | Win Prob: 3.3% | Underdog: CON",
+                "Step 2 (Baseline Split): Base Line = 178.5/2 - 10.5/2 = 89.25 - 5.25 = 84.00",
+                "Step 3 (Filter Check): Win prob 3.3% ≤ 15.0%. CLEARED.",
+                "Step 4 (Dynamic Scaling): Scaled_UNDER = 84.00 + (0.40×10.5) = 84.00 + 4.20 = 88.20",
+                "Step 5 (Verification): Underdog CON scored 88. (88 < 88.20) → HIT ✓",
+            ],
+        },
+        {
+            "name": "Profile 3: ATL vs SEA (Jul 31) — UPSET CLAUSE",
+            "data": ALL_40_GAMES[14],  # Game 15
+            "expected": "SYSTEM SKIP",
+            "expected_scaled": None,
+            "steps": [
+                "Step 1 (Raw Inputs): Model Total = 178.5, Model Spread = 12.5 | Pick: UNDER | Win Prob: 24.3% | Underdog: ATL",
+                "Step 2 (Filter Check): Win prob 24.3% > 15.0% → Rule 1 Upset Clause TRIGGERED",
+                "Step 3 (Verification): Position voided. SYSTEM SKIP ✓",
+            ],
+        },
+    ]
+
+    all_pass = True
+    for profile in profiles:
+        print(f"▶ {profile['name']}")
+        print("-" * 70)
+        for step in profile["steps"]:
+            print(f"  {step}")
+
+        result = engine.process_matchup(profile["data"])
+        actual_status = result["status"]
+        expected_status = profile["expected"]
+        passed = actual_status == expected_status
+
+        # Verify scaled line
+        scaled_match = True
+        if profile["expected_scaled"] is not None:
+            actual_scaled = result.get("underdog_scaled_line", 0)
+            scaled_match = abs(actual_scaled - profile["expected_scaled"]) < 0.01
+
+        if passed and scaled_match:
+            print(f"\n  ✅ RESULT: {actual_status} — VERIFIED")
+            if "underdog_scaled_line" in result:
+                print(f"     Underdog Scaled Line: {result['underdog_scaled_line']:.2f}")
+                print(f"     Underdog Actual Score: {result.get('underdog_score', 'N/A')}")
+        else:
+            print(f"\n  ❌ RESULT: {actual_status} — EXPECTED {expected_status} — FAILED")
+            if not scaled_match:
+                print(f"     Scaled line mismatch: expected {profile['expected_scaled']}, got {result.get('underdog_scaled_line', 'N/A')}")
+            all_pass = False
+
+    print(f"\n{'='*80}")
+    if all_pass:
+        print("  ✅ ALL 3 VERIFICATION PROFILES PASSED — ENGINE IS CALIBRATED")
+    else:
+        print("  ❌ VERIFICATION FAILED")
+    print(f"{'='*80}")
+    return all_pass
+
+
+def run_full_40_game_matrix(engine: AbakeUseEngine) -> pd.DataFrame:
+    """Run the complete 40-game ABAKE USE matrix with all underdog scaled lines."""
+    print_header("COMPLETE 40-GAME ABAKE USE MATRIX — ALL UNDERDOG SCALED LINES")
+
+    # Process all 40 games
+    results = []
+    for i, game in enumerate(ALL_40_GAMES, 1):
+        result = engine.process_matchup(game)
+        results.append(result)
+
+        # Print with clear underdog scaled line
+        status_emoji = {
+            "HIT": "✅", "MISS": "❌", "SYSTEM SKIP": "⚠️", "PENDING": "⏳"
+        }.get(result["status"], "❓")
+
+        print(f"  {i:2d}. {result['matchup']:<16} [{game['date']}]")
+
+        if result["status"] == "SYSTEM SKIP":
+            print(f"      {status_emoji} {result['status']} — {result['rule_triggered']}")
+            print(f"      Reason: {result['details']}")
+        else:
+            # THE KEY OUTPUT — Underdog Scaled Line
+            print(f"      {status_emoji} {result['status']} | {result['category']}")
+            print(f"      Model Total: {result['model_total']} | Model Spread: {result['model_spread']}")
+            print(f"      Base Line (Layer 2): {result['base_line']:.2f}")
+            print(f"      🎯 UNDERDOG SCALED LINE (Layer 3): {result['underdog_scaled_line']:.2f}")
+            print(f"      Underdog: {result['underdog']} | Actual Score: {result['underdog_score']}")
+            if result['underdog_score'] is not None:
+                print(f"      {result['details']}")
+        print()
+
+    # Compute summary
+    results_df = pd.DataFrame(results)
+    summary = engine.compute_summary(results_df)
+
+    print_header("ABAKE USE MATRIX SUMMARY — 40-GAME PERFORMANCE")
+    print(f"  📊 Total Data Grid Rows:        {summary['total_matchups']} Matchups")
+    print(f"  🎯 ABAKE USE Active Bets:       {summary['active_bets']} Positions")
+    print(f"  ✅ System Validated Wins:        {summary['validated_wins']} Wins")
+    print(f"  ❌ Systemic Failures / Losses:   {summary['losses']} Losses")
+    print(f"  ⚠️  Strategic Skips:             {summary['system_skips']} Matchups")
+    print(f"  🏆 Net Matrix Accuracy:          {summary['win_rate_pct']}%")
+    print()
+
+    # Print the UNDERDOG SCALED LINE TABLE
+    print_header("UNDERDOG SCALED LINE SCORE TABLE — ALL 38 ACTIVE POSITIONS")
+    print(f"  {'#':>2} {'Matchup':<16} {'Pick':<6} {'Total':>7} {'Spread':>7} {'Base':>7} {'Scaled':>8} {'Underdog':<10} {'Score':>6} {'Result':<6}")
+    print(f"  {'':->2} {'':->16} {'':->6} {'':->7} {'':->7} {'':->7} {'':->8} {'':->10} {'':->6} {'':->6}")
+
+    active = [r for r in results if r["status"] != "SYSTEM SKIP"]
+    for i, r in enumerate(active, 1):
+        scaled = r.get("underdog_scaled_line", 0)
+        score = r.get("underdog_score", "—")
+        result_str = r["status"]
+        print(f"  {i:2d} {r['matchup']:<16} {r.get('category','?'):<6} {r['model_total']:>7.1f} {r['model_spread']:>7.1f} {r['base_line']:>7.2f} {scaled:>8.2f} {r.get('underdog','?'):<10} {str(score):>6} {result_str:<6}")
+
+    return results_df
+
+
+def process_todays_games(engine: AbakeUseEngine, data_service: BasketballDataService,
+                         analytics: AnalyticsService) -> pd.DataFrame:
+    """Process today's live games through the ABAKE USE engine."""
+    print_header("TODAY'S BASKETBALL GAMES — ABAKE USE ANALYSIS (August 2, 2026)")
+
+    print("  📡 Loading game data for today...")
+    all_games = data_service.get_all_todays_games()
+
+    if not all_games:
+        print("  ⚠️  No games found for today.")
+        return pd.DataFrame()
+
+    completed = [g for g in all_games if g.get("is_final")]
+    scheduled = [g for g in all_games if g.get("is_scheduled")]
+
+    print(f"  📊 Found {len(all_games)} total games: {len(completed)} Final, {len(scheduled)} Scheduled\n")
+
+    results = []
+    for i, game in enumerate(all_games, 1):
+        game = analytics.enrich_game_with_stats(game)
+        row = _game_to_engine_row(game, engine, analytics)
+        result = engine.process_matchup(row)
+        results.append(result)
+
+        status_emoji = {"HIT": "✅", "MISS": "❌", "SYSTEM SKIP": "⚠️", "PENDING": "⏳"}.get(result["status"], "❓")
+        game_status = "FINAL" if game.get("is_final") else "SCHEDULED"
+
+        print(f"  {i}. {result['matchup']} [{game_status}]")
+        print(f"     {status_emoji} {result['status']}")
+        if result["status"] != "SYSTEM SKIP":
+            print(f"     Model Total: {result['model_total']} | Model Spread: {result['model_spread']}")
+            print(f"     🎯 UNDERDOG SCALED LINE: {result['underdog_scaled_line']:.2f}")
+            print(f"     Underdog: {result.get('underdog','?')} | Score: {result.get('underdog_score','—')}")
+        print(f"     {result.get('details', '')}")
+        print()
+
+    results_df = pd.DataFrame(results)
+    summary = engine.compute_summary(results_df)
+    print_header("TODAY'S SUMMARY")
+    print(f"  Active: {summary['active_bets']} | Wins: {summary['validated_wins']} | Losses: {summary['losses']} | Skips: {summary['system_skips']} | Pending: {summary['pending']}")
+    return results_df
+
+
+def _game_to_engine_row(game, engine, analytics):
+    """Convert a live game dict to an engine-ready row."""
+    row = {"matchup": game.get("matchup", ""), "league": game.get("league", "WNBA")}
+
+    for key in ("away_pace", "away_ortg", "away_drtg", "home_pace", "home_ortg", "home_drtg"):
+        if game.get(key):
+            row[key] = float(game[key])
+
+    spread = game.get("spread", 0) or 0
+    total = game.get("total", 0) or 0
+
+    if game.get("is_final") or game.get("is_live"):
+        row["underdog_score"] = game.get("away_score", 0) or 0
+    else:
+        row["underdog_score"] = None
+
+    row["total"] = float(total) if total else None
+    row["spread"] = float(abs(spread)) if spread else None
+    row["underdog"] = game.get("away_team", "")
+
+    if all(k in row for k in ("away_pace", "home_pace", "away_ortg", "home_drtg", "home_ortg", "away_drtg")):
+        model_total, model_spread, _, _, _ = engine.calculate_independent_baselines(row)
+        market_total = row.get("total", model_total)
+        row["pick"] = "OVER" if model_total > market_total else "UNDER"
+    else:
+        row["pick"] = "OVER" if (row.get("spread", 5) or 5) > 5 else "UNDER"
+
+    row["win_prob"] = game.get("win_prob", analytics.estimate_win_probability(row.get("spread", 5.0) or 5.0))
+    return row
+
+
+def main():
+    print_header("ABAKE USE ENGINE — 100% Underdog Scoring Engine")
+    print(f"  Version: 1.0.0 | Timestamp: {datetime.utcnow().isoformat()}")
+    print(f"  Framework: Dynamic Pacing & Possession Scaling Engine")
+    print()
+    print("  League Constants:")
+    print(f"    WNBA:         Pace=80.2, Eff=102.5")
+    print(f"    Summer League: Pace=84.5, Eff=98.2")
+    print(f"  HCA: 2.5 points")
+    print(f"  Over Cushion Multiplier: 0.45")
+    print(f"  Under Ceiling Multiplier: 0.40")
+    print(f"  Upset Probability Threshold: 15.0%")
+
+    engine = AbakeUseEngine()
+    data_service = BasketballDataService()
+    analytics_svc = AnalyticsService()
+
+    # Step 1: Verify engine
+    verified = run_verification(engine)
+    if not verified:
+        print("\n❌ ENGINE VERIFICATION FAILED")
+        sys.exit(1)
+
+    # Step 2: Run the COMPLETE 40-game matrix
+    results_df = run_full_40_game_matrix(engine)
+
+    # Step 3: Process today's live games
+    process_todays_games(engine, data_service, analytics_svc)
+
+    # Final status
+    print_header("ENGINE STATUS")
+    print("  ✅ Engine: OPERATIONAL")
+    print("  ✅ Verification: ALL PROFILES PASSED")
+    print("  ✅ 40-Game Matrix: ALL PROCESSED")
+    print("  ✅ Today's Games: PROCESSED")
+    print()
+    print("  🎯 The ABAKE USE Engine is LIVE and WORKING.")
+
+
+if __name__ == "__main__":
+    main()
