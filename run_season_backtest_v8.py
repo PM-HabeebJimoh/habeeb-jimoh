@@ -219,6 +219,15 @@ WNBA_2026_COVERS_REAL = [
     # ── Jun 25, 2026 ──
     ("DAL", 84, "LV", 99, "Jun 25", 179.5, 0.5, "LV"),        # LV PK (use 0.5)
     ("NY", 88, "SEA", 99, "Jun 25", 167.0, 0.5, "SEA"),       # SEA PK (use 0.5)
+    # ── Jun 26, 2026 ── (NEW from Covers.com)
+    ("WAS", 57, "CON", 68, "Jun 26", 164.5, 4.5, "CON"),      # CON +4.5, CON fav
+    ("PDX", 94, "CHI", 124, "Jun 26", 173.5, 6.5, "CHI"),     # CHI -6.5
+    ("ATL", 75, "GS", 78, "Jun 26", 163.5, 2.5, "GS"),        # GS +2.5, GS fav
+    # ── Jun 27, 2026 ── (NEW from Covers.com)
+    ("LA", 87, "IND", 111, "Jun 27", 182.5, 0.5, "IND"),      # IND PK (use 0.5)
+    ("ATL", 90, "SEA", 105, "Jun 27", 169.5, 9.5, "SEA"),     # SEA +9.5, SEA fav
+    # ── Jun 30, 2026 ── (NEW from Covers.com)
+    ("LV", 85, "NY", 93, "Jun 30", 174.5, 6.5, "NY"),         # NY -6.5
     # ── Jul 2, 2026 ──
     ("ATL", 76, "WAS", 81, "Jul 2", 167.0, 8.5, "ATL"),       # WAS +8.5, ATL fav
     ("DAL", 86, "CON", 83, "Jul 2", 172.0, 6.5, "DAL"),       # CON +6.5, DAL fav
