@@ -13,6 +13,9 @@ import json
 import sys
 from datetime import datetime
 
+from .backtest import (
+    format_report, format_sources, format_sweep, run_backtest, threshold_sweep, to_json,
+)
 from .core import UTC, AssetClass, Observation
 from .convergence import rank, score_entity
 from .fixtures import ALL_FIXTURES, FIXTURE_HISTORIES
@@ -100,6 +103,21 @@ def cmd_run(args) -> int:
     return 0
 
 
+def cmd_backtest(args) -> int:
+    bt = run_backtest(threshold=args.threshold)
+    if args.json:
+        print(to_json(bt))
+        return 0
+    print(format_report(bt, not args.no_color))
+    if args.sweep:
+        print()
+        print(format_sweep(threshold_sweep()))
+    if args.sources:
+        print()
+        print(format_sources())
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="cssx", description="CSS-X crypto distress convergence")
     p.add_argument("--no-color", action="store_true")
@@ -124,6 +142,13 @@ def main(argv: list[str] | None = None) -> int:
     run.add_argument("--demo", action="store_true", help="use built-in fixtures")
     run.add_argument("--alert-threshold", type=float, default=0.75)
     run.set_defaults(func=cmd_run)
+
+    b = sub.add_parser("backtest", help="walk-forward backtest on the July 2026 panel")
+    b.add_argument("--threshold", type=float, default=0.75)
+    b.add_argument("--sweep", action="store_true", help="also run a threshold sweep")
+    b.add_argument("--sources", action="store_true", help="print the evidence basis")
+    b.add_argument("--json", action="store_true")
+    b.set_defaults(func=cmd_backtest)
 
     args = p.parse_args(argv)
     return args.func(args)

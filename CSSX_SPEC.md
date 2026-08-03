@@ -194,7 +194,14 @@ Withdrawal-failure reports weighted by account age **and corroborated on-chain**
 PATH A — MECHANICAL   t1 ≥ 0.30 ∧ t2 ≥ 0.20 ∧ max(t3,t4) ≥ 0.20   → ceiling 0.97
 PATH B — SHADOW       ≥3 independent Tier-4 absences               → ceiling 0.94
 PATH C — HYBRID       1 hard mechanical ≥0.30 ∧ ≥2 absences        → ceiling 0.93
+PATH D — CORPORATE    legal event ≥0.30 ∧ t3 ≥ 0.45 ∧ max(t1,t4) ≥ 0.25 → ceiling 0.88
 otherwise             SUB_CONVERGENCE, capped at 0.54 (WATCH)
+
+Path D was added after the July 2026 backtest missed a Chapter 11 filing whose
+chain kept producing blocks normally. Paths A–C all assume distress reaches the
+*market*; a company can die in a courtroom while its protocol runs fine. Ceiling
+is 0.88, not 0.97: legally dead, but assets may be recoverable via the estate,
+so this is CRITICAL, never TERMINAL. See BACKTEST_2026_07.md §4.
 ```
 
 ### Combination is noisy-OR, not addition
@@ -243,6 +250,11 @@ Every marginal signal stays informative; the score approaches but never reaches 
 Separation between the worst distress case and the best control is **0.65**.
 
 `rescued-protocol` is the important row: it has real deterioration (−42% TVL, thin book) and would trip a naive screener, but a verified raise and an honoured large withdrawal cap it at NOMINAL. A system that cannot be argued out of an alert is not a detector, it is a fear generator.
+
+See **[BACKTEST_2026_07.md](BACKTEST_2026_07.md)** for the walk-forward backtest
+over 2026-06-01 → 2026-07-31 (671 entity-days, real July 2026 events): precision
+1.000, recall 1.000, mean lead 12.8 days at threshold 0.65 — plus the two engine
+bugs that backtest exposed.
 
 **Honest limitation:** these fixtures encode what the collectors would plausibly have observed on the given dates, reconstructed from the public record. They validate the *scoring topology* — that each path fires where it should and stays silent where it should — not retroactive prediction. Genuine out-of-sample validation requires running the daily cron forward.
 

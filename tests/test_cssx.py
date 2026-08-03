@@ -145,3 +145,69 @@ class TestStore(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestBacktestJuly2026(unittest.TestCase):
+    """Regressions locked in by the July 2026 walk-forward backtest."""
+
+    @classmethod
+    def setUpClass(cls):
+        from cssx.backtest import run_backtest
+        cls.bt75 = run_backtest(threshold=0.75)
+        cls.bt65 = run_backtest(threshold=0.65)
+
+    def test_no_false_positives_on_solvent_winddowns(self):
+        """BitMEX/BitMart: real exits, withdrawals honoured. Must never alert.
+
+        This is the discriminator that matters — their deposit flow collapses
+        exactly like AscendEX's. Only the contradiction rail separates them.
+        """
+        for bt in (self.bt75, self.bt65):
+            for eid in ("bitmex", "bitmart", "odos"):
+                self.assertFalse(bt["results"][eid].alerted,
+                                 f"{eid} is a solvent wind-down and must not alert")
+
+    def test_survivors_never_alert(self):
+        for bt in (self.bt75, self.bt65):
+            for eid in ("major-l1", "major-cex", "major-lending", "mid-l2"):
+                self.assertFalse(bt["results"][eid].alerted, f"{eid} must not alert")
+
+    def test_acknowledged_l2_incident_does_not_alert(self):
+        """mid-l2's announced, resolved 8 Jul outage must stay below CRITICAL."""
+        r = self.bt75["results"]["mid-l2"]
+        self.assertLess(r.peak_score, 0.75)
+
+    def test_full_recall_at_operating_threshold(self):
+        self.assertEqual(self.bt65["recall"], 1.0)
+        self.assertEqual(self.bt65["precision"], 1.0)
+
+    def test_persistence_anchoring_regression(self):
+        """Replay must anchor persistence to the observation date, not now().
+
+        The wall-clock bug pinned persistence_ok False for every historical
+        verdict, capping them at 0.74 and turning AscendEX's 16-day lead into a
+        3-day-late alert. Guard: AscendEX must alert well before its 6 Jul event.
+        """
+        r = self.bt75["results"]["ascendex"]
+        self.assertTrue(r.alerted)
+        self.assertGreaterEqual(r.lead_days, 10,
+                                "AscendEX lead time regressed — check persistence anchoring")
+
+    def test_path_d_catches_corporate_death(self):
+        """MVMT: Ch.11 while the chain kept producing blocks normally."""
+        r = self.bt65["results"]["mvmt-labs"]
+        self.assertTrue(r.alerted, "Chapter 11 with a healthy chain must be reachable")
+        paths = {p for _, _, _, p in r.trajectory}
+        self.assertIn("PATH_D_CORPORATE", paths)
+
+    def test_alert_burden_is_actionable(self):
+        self.assertLess(self.bt65["alert_burden"]["rate"], 0.25,
+                        "alert rate too high to be actionable")
+
+    def test_no_lookahead_leakage(self):
+        """Scores before an entity's first adverse fact must stay low."""
+        from datetime import date
+        r = self.bt75["results"]["ascendex"]
+        for d, s, _, _ in r.trajectory:
+            if d < date(2026, 6, 20):     # reserves collapsed on 20 Jun
+                self.assertLess(s, 0.55, f"ascendex scored {s} on {d} before any event")

@@ -14,8 +14,11 @@ python -m cssx.cli layers                 # list all 23 signal layers
 python -m cssx.cli score examples/observation.example.json \
     --history '{"302":30,"403":30,"404":30,"401":12}'
 python -m cssx.cli run --demo --db cssx.db --alert-threshold 0.75
+python -m cssx.cli backtest --threshold 0.65 --sweep --sources
 python -m unittest discover -s tests -v
 ```
+
+Backtest results and methodology: [`../BACKTEST_2026_07.md`](../BACKTEST_2026_07.md)
 
 ## Library use
 
@@ -44,7 +47,9 @@ print(v.score, v.band, v.path, v.narrative)
 | `collectors.py` | Free-tier collectors: RPC, DefiLlama, CoinGecko, GitHub, Chainlink, explorers |
 | `store.py` | SQLite persistence and consecutive-day streak computation |
 | `fixtures.py` | Distress archetypes + healthy controls for replay |
-| `cli.py` | `replay` / `score` / `layers` / `run` |
+| `panel_2026_07.py` | July 2026 backtest panel with per-entity sourcing |
+| `backtest.py` | Walk-forward harness: confusion matrix, lead time, alert burden, sweep |
+| `cli.py` | `replay` / `score` / `layers` / `run` / `backtest` |
 
 ## Design rules enforced in code and tests
 

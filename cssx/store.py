@@ -81,13 +81,23 @@ class Store:
         self.conn.commit()
 
     # ------------------------------------------------------------------- read
-    def persistence(self, entity_id: str, max_days: int = 30) -> dict[int, int]:
-        """Consecutive days (distinct dates) each layer has been active."""
-        since = (datetime.now(UTC) - timedelta(days=max_days)).isoformat()
+    def persistence(self, entity_id: str, max_days: int = 30,
+                    as_of: datetime | None = None) -> dict[int, int]:
+        """Consecutive days (distinct dates) each layer has been active.
+
+        `as_of` anchors the lookback window. It MUST be supplied when replaying
+        history: anchoring to wall-clock `now()` silently truncates every streak
+        older than `max_days`, which permanently pins `persistence_ok` to False
+        and caps every historical verdict at 0.74. That bug was found by the
+        July 2026 backtest, where it suppressed a 12-day-lead AscendEX alert
+        down to a 3-day-late one.
+        """
+        anchor = as_of or datetime.now(UTC)
+        since = (anchor - timedelta(days=max_days)).isoformat()
         rows = self.conn.execute(
             "SELECT layer, ts, score FROM signal_history "
-            "WHERE entity_id=? AND ts>=? ORDER BY layer, ts DESC",
-            (entity_id, since),
+            "WHERE entity_id=? AND ts>=? AND ts<=? ORDER BY layer, ts DESC",
+            (entity_id, since, anchor.isoformat()),
         ).fetchall()
 
         by_layer: dict[int, list[tuple[str, float]]] = {}

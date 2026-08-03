@@ -173,6 +173,26 @@ def _path_c(hard: float, absence_scores: list[float]) -> float:
     return 0.0
 
 
+def _path_d(t1: float, t3: float, t4: float, legal_event: float) -> float:
+    """Corporate/operational death while the protocol keeps running.
+
+    Added after the July 2026 backtest missed a Chapter 11 filing entirely. The
+    original three paths all assumed distress reaches the *market* — Path A
+    requires a liquidity signal, Paths B and C require absences. But a company
+    can die in a Delaware courtroom while its chain produces blocks on schedule
+    and its order book looks normal. That is precisely the case CSS v10.0 was
+    built for, and CSS-X had no route to it.
+
+    Requires a hard legal/regulatory event (Ch.11, enforcement suit, OFAC) plus
+    corroborating organisational collapse, plus structural control risk or an
+    absence. Ceiling is lower than the mechanical paths: the entity is legally
+    dead but assets may still be recoverable, so this is CRITICAL, not TERMINAL.
+    """
+    if legal_event >= 0.30 and t3 >= 0.45 and max(t1, t4) >= 0.25:
+        return _noisy_or([t3, 0.8 * max(t1, t4), 0.5 * min(t1, t4)], ceiling=0.88)
+    return 0.0
+
+
 def _band(score: float) -> tuple[str, str]:
     for threshold, band, action in ALERT_BANDS:
         if score >= threshold:
@@ -221,8 +241,15 @@ def score_entity(
         eff.get(lid, 0.0) for lid in (101, 102, 103, 201, 203, 204, 205, 304)
     )
 
-    a, b, c = _path_a(t1, t2, t3, t4), _path_b(absence_scores), _path_c(hard, absence_scores)
-    raw, path = max(((a, "PATH_A_MECHANICAL"), (b, "PATH_B_SHADOW"), (c, "PATH_C_HYBRID")),
+    # Hard legal/regulatory event: enforcement suit, OFAC, or bankruptcy filing.
+    legal_event = eff.get(304, 0.0)
+
+    a = _path_a(t1, t2, t3, t4)
+    b = _path_b(absence_scores)
+    c = _path_c(hard, absence_scores)
+    dd = _path_d(t1, t3, t4, legal_event)
+    raw, path = max(((a, "PATH_A_MECHANICAL"), (b, "PATH_B_SHADOW"),
+                     (c, "PATH_C_HYBRID"), (dd, "PATH_D_CORPORATE")),
                     key=lambda kv: kv[0])
     if raw == 0.0:
         # Below convergence: report the damped evidence mass, capped in WATCH.
