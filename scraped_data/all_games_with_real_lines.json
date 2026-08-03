@@ -3579,6 +3579,206 @@
       "market_total": 237.5,
       "market_spread": 11.0,
       "favorite": "CLE"
+    },
+    {
+      "date": "2026-01-01",
+      "away": "HOU",
+      "away_score": 120,
+      "home": "BKN",
+      "home_score": 96,
+      "market_total": 217.5,
+      "market_spread": 17.0,
+      "favorite": "HOU"
+    },
+    {
+      "date": "2026-01-01",
+      "away": "MIA",
+      "away_score": 118,
+      "home": "DET",
+      "home_score": 112,
+      "market_total": 238.5,
+      "market_spread": 2.5,
+      "favorite": "DET"
+    },
+    {
+      "date": "2026-01-01",
+      "away": "PHI",
+      "away_score": 123,
+      "home": "DAL",
+      "home_score": 108,
+      "market_total": 234.0,
+      "market_spread": 1.0,
+      "favorite": "DAL"
+    },
+    {
+      "date": "2026-01-01",
+      "away": "BOS",
+      "away_score": 120,
+      "home": "SAC",
+      "home_score": 106,
+      "market_total": 234.5,
+      "market_spread": 8.0,
+      "favorite": "BOS"
+    },
+    {
+      "date": "2026-01-02",
+      "away": "BKN",
+      "away_score": 99,
+      "home": "WAS",
+      "home_score": 119,
+      "market_total": 230.0,
+      "market_spread": 5.0,
+      "favorite": "WAS"
+    },
+    {
+      "date": "2026-01-02",
+      "away": "SAS",
+      "away_score": 123,
+      "home": "IND",
+      "home_score": 113,
+      "market_total": 243.0,
+      "market_spread": 1.0,
+      "favorite": "SAS"
+    },
+    {
+      "date": "2026-01-02",
+      "away": "ATL",
+      "away_score": 111,
+      "home": "NYK",
+      "home_score": 99,
+      "market_total": 247.5,
+      "market_spread": 6.0,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2026-01-02",
+      "away": "DEN",
+      "away_score": 108,
+      "home": "CLE",
+      "home_score": 113,
+      "market_total": 237.0,
+      "market_spread": 14.0,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2026-01-03",
+      "away": "MIN",
+      "away_score": 125,
+      "home": "MIA",
+      "home_score": 115,
+      "market_total": 234.0,
+      "market_spread": 6.5,
+      "favorite": "MIN"
+    },
+    {
+      "date": "2026-01-03",
+      "away": "PHI",
+      "away_score": 130,
+      "home": "NYK",
+      "home_score": 119,
+      "market_total": 227.5,
+      "market_spread": 4.0,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2026-01-03",
+      "away": "ATL",
+      "away_score": 117,
+      "home": "TOR",
+      "home_score": 134,
+      "market_total": 226.5,
+      "market_spread": 4.0,
+      "favorite": "TOR"
+    },
+    {
+      "date": "2026-01-03",
+      "away": "CHA",
+      "away_score": 112,
+      "home": "CHI",
+      "home_score": 99,
+      "market_total": 244.0,
+      "market_spread": 2.5,
+      "favorite": "CHI"
+    },
+    {
+      "date": "2026-01-04",
+      "away": "DET",
+      "away_score": 114,
+      "home": "CLE",
+      "home_score": 110,
+      "market_total": 240.5,
+      "market_spread": 3.5,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2026-01-04",
+      "away": "IND",
+      "away_score": 127,
+      "home": "ORL",
+      "home_score": 135,
+      "market_total": 234.0,
+      "market_spread": 5.5,
+      "favorite": "ORL"
+    },
+    {
+      "date": "2026-01-04",
+      "away": "DEN",
+      "away_score": 115,
+      "home": "BKN",
+      "home_score": 127,
+      "market_total": 223.5,
+      "market_spread": 1.5,
+      "favorite": "BKN"
+    },
+    {
+      "date": "2026-01-04",
+      "away": "NOP",
+      "away_score": 106,
+      "home": "MIA",
+      "home_score": 125,
+      "market_total": 258.0,
+      "market_spread": 7.0,
+      "favorite": "MIA"
+    },
+    {
+      "date": "2026-01-06",
+      "away": "CLE",
+      "away_score": 120,
+      "home": "IND",
+      "home_score": 116,
+      "market_total": 236.5,
+      "market_spread": 6.5,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2026-01-06",
+      "away": "ORL",
+      "away_score": 112,
+      "home": "WAS",
+      "home_score": 120,
+      "market_total": 235.5,
+      "market_spread": 7.5,
+      "favorite": "ORL"
+    },
+    {
+      "date": "2026-01-06",
+      "away": "MIA",
+      "away_score": 94,
+      "home": "MIN",
+      "home_score": 122,
+      "market_total": 238.0,
+      "market_spread": 5.5,
+      "favorite": "MIN"
+    },
+    {
+      "date": "2026-01-06",
+      "away": "LAL",
+      "away_score": 111,
+      "home": "NOP",
+      "home_score": 103,
+      "market_total": 246.0,
+      "market_spread": 5.5,
+      "favorite": "LAL"
     }
   ],
   "wnba": [
@@ -5754,15 +5954,15 @@
     }
   ],
   "metadata": {
-    "nba_count": 358,
+    "nba_count": 378,
     "wnba_count": 217,
-    "total_count": 575,
+    "total_count": 595,
     "nba_target": 1230,
     "wnba_target": 217,
-    "nba_coverage_pct": 29.1,
+    "nba_coverage_pct": 30.7,
     "wnba_coverage_pct": 100.0,
     "data_source": "Covers.com + Script",
     "last_updated": "2026-08-03",
-    "total_coverage_pct": 39.7
+    "total_coverage_pct": 41.1
   }
 }
