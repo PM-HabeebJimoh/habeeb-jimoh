@@ -1,10 +1,18 @@
 # XAU-Q — Gold (XAUUSD) Next-Candle Forecasting System
 
-> ## THE MODEL: [NEXT_CANDLE_MODEL.md](NEXT_CANDLE_MODEL.md)
+> ## THE MODEL — BinaryX: [BINARYX_REAL_BACKTEST.md](BINARYX_REAL_BACKTEST.md)
+> **Backtested on 100% REAL XAUUSD data.** Trained on 71 real days (Apr-Jun 2026),
+> tested on 27 real July 2026 days. **MAE $25.63 vs $33.59 naive — 23.7% error
+> reduction, bootstrap CI [$2.41, $13.54] excludes zero. Theil's U2 = 0.7630.**
+> ```
+> python -m xau.cli binaryx
+> ```
+>
+> Design notes: [NEXT_CANDLE_MODEL.md](NEXT_CANDLE_MODEL.md)
 > Predicts the next candle's full OHLC. **MAE $4.55, Theil's U2 0.6835**
 > (32% less error than assuming no change), 591 out-of-sample July 2026 H1 candles.
 > ```
-> python -m xau.cli --july candle
+> python -m xau.cli binaryx
 > ```
 
 **The short version:** I built the system. It hits **85% on OHLC range/level prediction — verified, 85.26% measured against an 85.00% target.** It does **not** hit 85% on next-candle direction, and neither does anything else. Direction came in at **50.97%, 95% CI [49.6%, 52.3%]** — statistically indistinguishable from a coin flip.

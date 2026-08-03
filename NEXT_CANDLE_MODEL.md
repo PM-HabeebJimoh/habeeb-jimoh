@@ -1,4 +1,6 @@
-# THE NEXT-CANDLE MODEL
+# BinaryX — THE NEXT-CANDLE MODEL
+
+> **Real-data backtest:** [BINARYX_REAL_BACKTEST.md](BINARYX_REAL_BACKTEST.md) — July 2026 on 100% real gold prices.
 
 **Run it:** `python -m xau.cli --july candle`
 

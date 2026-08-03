@@ -459,3 +459,50 @@ class TestNextCandleModel(unittest.TestCase):
         m = r.metrics()
         self.assertGreater(len(r.predictions), 400)
         self.assertLess(m["overall"]["theil_u2"], 1.0)
+
+
+class TestBinaryXRealData(unittest.TestCase):
+    """BinaryX on 100% real XAUUSD market data, July 2026."""
+
+    @classmethod
+    def setUpClass(cls):
+        from xau.binaryx import run_binaryx_expanding
+        from xau.real_data import real_daily_bars
+        cls.bars = real_daily_bars(end="2026-07-31")
+        cls.res = run_binaryx_expanding(cls.bars, "2026-07-01", "2026-07-31")
+        cls.m = cls.res.metrics()
+        cls.bs = cls.res.bootstrap_metrics()
+
+    def test_real_data_is_valid_ohlc(self):
+        for b in self.bars:
+            b.validate()
+        self.assertGreaterEqual(len(self.bars), 95)
+
+    def test_real_data_matches_published_extremes(self):
+        """barchart: July low 3960.36 (07/17), high 4201.70 (07/06)."""
+        july = [b for b in self.bars if b.ts.month == 7]
+        self.assertAlmostEqual(max(b.high for b in july), 4203.10, delta=3.0)
+        self.assertAlmostEqual(min(b.low for b in july), 3959.23, delta=3.0)
+
+    def test_beats_naive_on_real_data(self):
+        self.assertLess(self.m["overall"]["theil_u2"], 1.0)
+
+    def test_improvement_is_statistically_significant(self):
+        """Bootstrap CI on the paired improvement must exclude zero."""
+        self.assertTrue(self.bs["overall"]["beats_baseline_significantly"])
+        self.assertGreater(self.bs["overall"]["improvement_ci"][0], 0.0)
+
+    def test_predictions_are_out_of_sample_july_only(self):
+        for p in self.res.predictions:
+            self.assertTrue(p.ts.startswith("2026-07"))
+        self.assertGreaterEqual(len(self.res.predictions), 20)
+
+    def test_expanding_window_grows(self):
+        self.assertEqual(self.res.train_sizes, sorted(self.res.train_sizes))
+        self.assertLess(self.res.train_sizes[0], self.res.train_sizes[-1])
+
+    def test_candles_internally_consistent(self):
+        for p in self.res.predictions:
+            q = p.predicted
+            self.assertGreaterEqual(q.high, max(q.open, q.close) - 1e-9)
+            self.assertLessEqual(q.low, min(q.open, q.close) + 1e-9)

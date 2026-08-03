@@ -17,7 +17,9 @@ from .core import dedupe_and_check, load_csv
 from .features import FeatureBuilder
 from .backtest_july import format_july_report, run_july_h1
 from .miner import TARGETS, build_rule_universe, evaluate_rules, reality_check
+from .binaryx import MODEL_NAME, MODEL_VERSION, format_binaryx_report, run_binaryx_expanding
 from .predictor import format_candle_report, run_candle_walkforward
+from .real_data import real_daily_bars, split_info
 from .synth import generate, stylised_facts
 from .walkforward import run_walkforward
 
@@ -284,6 +286,14 @@ def cmd_candle(args) -> int:
     return 0
 
 
+def cmd_binaryx(args) -> int:
+    """BinaryX backtest on 100% REAL XAUUSD data."""
+    bars = real_daily_bars(end="2026-07-31")
+    res = run_binaryx_expanding(bars, "2026-07-01", "2026-07-31")
+    print(format_binaryx_report(res, split_info(), not args.no_color))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="xau", description="XAU-Q gold forecasting")
     p.add_argument("--csv", help="XAUUSD OHLCV csv (else synthetic)")
@@ -310,7 +320,8 @@ def main(argv: list[str] | None = None) -> int:
         ("predict", cmd_predict, "next-bar forecast card"),
         ("july", cmd_july, "backtest July 2026 on H1 (real daily anchors)"),
         ("mine", cmd_mine, "exhaustive rule search, multiple-testing corrected"),
-        ("candle", cmd_candle, "THE MODEL: predict next candle OHLC, scored in $"),
+        ("candle", cmd_candle, "predict next candle OHLC, scored in $"),
+        ("binaryx", cmd_binaryx, "BinaryX: July 2026 backtest on REAL market data"),
     ):
         sp = sub.add_parser(name, help=helptext)
         sp.set_defaults(func=fn)
