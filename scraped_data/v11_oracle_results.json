@@ -1,0 +1,43 @@
+{
+  "wnba": {
+    "total_games": 217,
+    "active_bets": 182,
+    "hits": 161,
+    "misses": 21,
+    "skips": 35,
+    "win_rate": 88.5,
+    "over_hits": 108,
+    "over_misses": 14,
+    "under_hits": 53,
+    "under_misses": 7
+  },
+  "nba": {
+    "total_games": 170,
+    "active_bets": 136,
+    "hits": 125,
+    "misses": 11,
+    "skips": 34,
+    "win_rate": 91.9,
+    "over_hits": 75,
+    "over_misses": 8,
+    "under_hits": 50,
+    "under_misses": 3
+  },
+  "combined": {
+    "total_games": 387,
+    "active_bets": 318,
+    "hits": 286,
+    "misses": 32,
+    "skips": 69,
+    "win_rate": 89.9
+  },
+  "data_coverage": {
+    "wnba_games": 217,
+    "nba_games": 170,
+    "total_games": 387,
+    "nba_target": 1230,
+    "wnba_target": 217,
+    "nba_coverage_pct": 13.8,
+    "wnba_coverage_pct": 100.0
+  }
+}
