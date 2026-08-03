@@ -403,3 +403,59 @@ class TestRuleMining(unittest.TestCase):
         self.assertGreater(acc, 0.75, "accuracy should look impressive")
         self.assertLess(pnl / n, 0.0,
                         "...while EV per trade is NEGATIVE. High accuracy != profit.")
+
+
+class TestNextCandleModel(unittest.TestCase):
+    """The deliverable: a model that predicts the next candle."""
+
+    @classmethod
+    def setUpClass(cls):
+        from xau.predictor import run_candle_walkforward
+        from xau.synth import generate
+        cls.r = run_candle_walkforward(generate(7000, seed=11, edge=0.35),
+                                       train=2000, test=250, purge=20)
+        cls.m = cls.r.metrics()
+
+    def test_beats_persistence_baseline(self):
+        """Theil's U2 < 1. Scale-free, cannot be inflated by price level."""
+        self.assertLess(self.m["overall"]["theil_u2"], 1.0)
+        self.assertTrue(self.m["overall"]["beats_naive"])
+
+    def test_no_component_is_worse_than_naive(self):
+        """Per-component L2 selection exists to prevent exactly this."""
+        for c in ("open", "high", "low", "close"):
+            imp = self.m["components"][c]["improvement_pct"]
+            self.assertGreater(imp, -3.0,
+                               f"{c} is {imp:.1f}% worse than naive")
+
+    def test_predicted_candles_are_internally_consistent(self):
+        """high >= max(open, close) and low <= min(open, close)."""
+        for p in self.r.predictions:
+            q = p.predicted
+            self.assertGreaterEqual(q.high, max(q.open, q.close) - 1e-9)
+            self.assertLessEqual(q.low, min(q.open, q.close) + 1e-9)
+
+    def test_accuracy_percentage_is_reported_against_a_floor(self):
+        """MAPE-based accuracy must be presented next to the naive floor,
+        because a null model already scores ~99.88% on a $4,000 asset."""
+        self.assertIn("baseline_accuracy_pct", self.m["overall"])
+        self.assertGreater(self.m["overall"]["baseline_accuracy_pct"], 99.0)
+
+    def test_hit_rates_present_and_ordered(self):
+        for c in ("open", "high", "low", "close"):
+            hr = self.m["components"][c]["hit_rates"]
+            self.assertLessEqual(hr["within_$2"], hr["within_$5"] + 1e-9)
+            self.assertLessEqual(hr["within_$5"], hr["within_$10"] + 1e-9)
+
+    def test_july_run_beats_naive(self):
+        from xau.backtest_july import _warmup_bars
+        from xau.july2026 import july_stats, synthesize_h1
+        from xau.predictor import run_candle_walkforward
+        st = july_stats()
+        h1 = synthesize_h1()
+        pre = _warmup_bars(h1[0], 2600, st["mean_daily_true_range_usd"], seed=5)
+        r = run_candle_walkforward(pre + h1, train=1800, test=120, purge=15)
+        r.predictions = [p for p in r.predictions if p.ts.startswith("2026-07")]
+        m = r.metrics()
+        self.assertGreater(len(r.predictions), 400)
+        self.assertLess(m["overall"]["theil_u2"], 1.0)

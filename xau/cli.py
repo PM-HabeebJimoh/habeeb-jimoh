@@ -17,6 +17,7 @@ from .core import dedupe_and_check, load_csv
 from .features import FeatureBuilder
 from .backtest_july import format_july_report, run_july_h1
 from .miner import TARGETS, build_rule_universe, evaluate_rules, reality_check
+from .predictor import format_candle_report, run_candle_walkforward
 from .synth import generate, stylised_facts
 from .walkforward import run_walkforward
 
@@ -247,6 +248,42 @@ def cmd_mine(args) -> int:
     return 0
 
 
+def cmd_candle(args) -> int:
+    """THE MODEL: predict the next candle's full OHLC, scored in dollars."""
+    if args.july:
+        from .backtest_july import _warmup_bars
+        from .july2026 import july_stats, synthesize_h1
+        st = july_stats()
+        h1 = synthesize_h1()
+        pre = _warmup_bars(h1[0], 2600, st["mean_daily_true_range_usd"], seed=5)
+        bars = pre + h1
+        tr, te, pg = 1800, 120, 15
+    else:
+        bars = _load(args)
+        tr, te, pg = args.train, args.test, args.purge
+    r = run_candle_walkforward(bars, train=tr, test=te, purge=pg)
+    if args.july:
+        r.predictions = [p for p in r.predictions if p.ts.startswith("2026-07")]
+    print(format_candle_report(r.metrics(), not args.no_color))
+    print()
+    print(f"  {DIM}ridge L2 selected per component: {r.chosen_l2}{RST}")
+
+    # Show the last few predicted-vs-actual candles concretely.
+    print()
+    print(f"  {BOLD}LAST 5 PREDICTED vs ACTUAL CANDLES{RST}")
+    print(f"  {'timestamp':<21}{'':<4}{'open':>9}{'high':>9}{'low':>9}{'close':>9}")
+    for p in r.predictions[-5:]:
+        a, q = p.actual, p.predicted
+        print(f"  {p.ts[:16]:<21}{'pred':<4}{q.open:>9.2f}{q.high:>9.2f}"
+              f"{q.low:>9.2f}{q.close:>9.2f}")
+        print(f"  {'':<21}{'act':<4}{a.open:>9.2f}{a.high:>9.2f}"
+              f"{a.low:>9.2f}{a.close:>9.2f}")
+        e = p.errors()
+        print(f"  {'':<21}{'err':<4}{e['open']:>9.2f}{e['high']:>9.2f}"
+              f"{e['low']:>9.2f}{e['close']:>9.2f}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="xau", description="XAU-Q gold forecasting")
     p.add_argument("--csv", help="XAUUSD OHLCV csv (else synthetic)")
@@ -263,6 +300,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--no-color", action="store_true")
     p.add_argument("--json", action="store_true")
     p.add_argument("--warmup", type=int, default=1400)
+    p.add_argument("--july", action="store_true", help="run on July 2026 data")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     for name, fn, helptext in (
@@ -272,6 +310,7 @@ def main(argv: list[str] | None = None) -> int:
         ("predict", cmd_predict, "next-bar forecast card"),
         ("july", cmd_july, "backtest July 2026 on H1 (real daily anchors)"),
         ("mine", cmd_mine, "exhaustive rule search, multiple-testing corrected"),
+        ("candle", cmd_candle, "THE MODEL: predict next candle OHLC, scored in $"),
     ):
         sp = sub.add_parser(name, help=helptext)
         sp.set_defaults(func=fn)
