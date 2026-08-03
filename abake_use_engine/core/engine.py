@@ -229,15 +229,16 @@ class AbakeUseEngine:
         (win_prob > 15%), the V12 system assigns a confidence tier and adjusts
         the buffer accordingly.
         
-        TIER A (HIGH):   spread ≥ 5.5  → standard execution
-        TIER B (MEDIUM): 3.5 ≤ spread < 5.5 → buffer boost +0.05
-        TIER C (LOW):    spread < 3.5  → buffer boost +0.10
+        TIER A (HIGH):   |spread| ≥ 5.5  → standard execution
+        TIER B (MEDIUM): 3.5 ≤ |spread| < 5.5 → buffer boost +0.05
+        TIER C (LOW):    |spread| < 3.5  → buffer boost +0.10
         
         Returns: {"tier": "A"/"B"/"C", "label": str, "buffer_boost": float}
         """
-        if spread >= self.TIER_A_THRESHOLD:
+        abs_spread = abs(spread)
+        if abs_spread >= self.TIER_A_THRESHOLD:
             return {"tier": "A", "label": "HIGH", "buffer_boost": 0.0}
-        elif spread >= self.TIER_B_THRESHOLD:
+        elif abs_spread >= self.TIER_B_THRESHOLD:
             return {"tier": "B", "label": "MEDIUM", "buffer_boost": 0.05}
         else:
             return {"tier": "C", "label": "LOW", "buffer_boost": 0.10}
@@ -259,8 +260,9 @@ class AbakeUseEngine:
         if not self.use_spread_tiers:
             return self.v12_oc, self.v12_uc
 
+        abs_spread = abs(spread)
         for tier_name, tier in self.V12_SPREAD_TIERS.items():
-            if tier["min"] <= spread < tier["max"]:
+            if tier["min"] <= abs_spread < tier["max"]:
                 return tier["oc"], tier["uc"]
 
         # Fallback: wide tier
@@ -452,8 +454,12 @@ class AbakeUseEngine:
             # Rule 3: The Over Execution
             scaled_line = self.calculate_scaled_over(base_line, spread, oc)
             if underdog_score is not None:
-                is_hit = underdog_score > scaled_line
-                status = "HIT" if is_hit else "MISS"
+                if abs(underdog_score - scaled_line) < 0.001:
+                    is_hit = None
+                    status = "PUSH"
+                else:
+                    is_hit = underdog_score > scaled_line
+                    status = "HIT" if is_hit else "MISS"
             else:
                 is_hit = None
                 status = "PENDING"
@@ -503,8 +509,12 @@ class AbakeUseEngine:
             # Rule 4: The Under Execution
             scaled_line = self.calculate_scaled_under(base_line, spread, uc)
             if underdog_score is not None:
-                is_hit = underdog_score < scaled_line
-                status = "HIT" if is_hit else "MISS"
+                if abs(underdog_score - scaled_line) < 0.001:
+                    is_hit = None
+                    status = "PUSH"
+                else:
+                    is_hit = underdog_score < scaled_line
+                    status = "HIT" if is_hit else "MISS"
             else:
                 is_hit = None
                 status = "PENDING"

@@ -143,7 +143,7 @@ def build_game_v12_oracle(game, league):
 
 def run_oracle_backtest(engine, games):
     """Run ABAKE USE V12 Oracle backtest."""
-    hits = misses = skips = 0
+    hits = misses = skips = pushes = 0
     over_hits = over_misses = under_hits = under_misses = 0
     upset_skips = chaos_skips = 0
     tier_a_hits = tier_a_misses = 0
@@ -188,6 +188,8 @@ def run_oracle_backtest(engine, games):
                 tier_b_misses += 1
             elif tier == "C":
                 tier_c_misses += 1
+        elif status == "PUSH":
+            pushes += 1
         elif status == "SYSTEM SKIP":
             skips += 1
             if "Upset" in result.get("rule_triggered", ""):
@@ -205,6 +207,7 @@ def run_oracle_backtest(engine, games):
         "active_bets": active,
         "hits": hits,
         "misses": misses,
+        "pushes": pushes,
         "skips": skips,
         "win_rate": round(win_rate, 1),
         "over_hits": over_hits,
@@ -423,10 +426,8 @@ def main():
         tier = r.get("confidence_tier", "?")
         actual_oc = r.get("actual_oc", 0)
         actual_uc = r.get("actual_uc", 0)
-        emoji = "✅" if r["status"] == "HIT" else "❌"
+        emoji = "✅" if r["status"] == "HIT" else ("❌" if r["status"] == "MISS" else "➖")
         print(f"  {count:3d} {date_str:<12} {r['matchup']:<18} {cat:<7} {mkt_total:>9.1f} {mkt_spread:>9.1f} {underdog:>6} {tier:<5} {scaled:>13.3f} {actual_oc:>5.2f} {actual_uc:>5.2f} {str(score):>6} {emoji} {r['status']}")
-
-    # ── Step 7: Show ALL WNBA games ──
     print(f"\n  📊 ALL WNBA 2026 GAMES — V12 Oracle — Underdog Scaled Lines:")
     print(f"  {'#':>3} {'Date':<8} {'Matchup':<18} {'Pick':<7} {'MktTotal':>9} {'MktSprd':>9} {'UDOG':>6} {'Tier':<5} {'🎯 ScaledLine':>13} {'OC':>5} {'UC':>5} {'Score':>6} {'Result':<7}")
     print(f"  {'─'*3} {'─'*8} {'─'*18} {'─'*7} {'─'*9} {'─'*9} {'─'*6} {'─'*5} {'─'*13} {'─'*5} {'─'*5} {'─'*6} {'─'*7}")
@@ -445,7 +446,7 @@ def main():
         tier = r.get("confidence_tier", "?")
         actual_oc = r.get("actual_oc", 0)
         actual_uc = r.get("actual_uc", 0)
-        emoji = "✅" if r["status"] == "HIT" else "❌"
+        emoji = "✅" if r["status"] == "HIT" else ("❌" if r["status"] == "MISS" else "➖")
         print(f"  {count:3d} {date_str:<8} {r['matchup']:<18} {cat:<7} {mkt_total:>9.1f} {mkt_spread:>9.1f} {underdog:>6} {tier:<5} {scaled:>13.3f} {actual_oc:>5.2f} {actual_uc:>5.2f} {str(score):>6} {emoji} {r['status']}")
 
     # ── Step 8: V11 vs V12 Comparison ──

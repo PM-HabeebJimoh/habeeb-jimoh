@@ -34,28 +34,14 @@ import time
 from datetime import datetime
 from collections import defaultdict
 
-# Add parent of this script's directory so we can find the v12 oracle module
-_script_dir = os.path.dirname(os.path.abspath(__file__))
-_v12_root = os.path.dirname(_script_dir)  # abake_use_v12_oracle/
-_repo_root = os.path.dirname(_v12_root)   # habeeb-jimoh/
+sys.path.insert(0, os.path.dirname(__file__))
 
-# Try the standalone V12 Oracle module first, fall back to repo-level engine
-if os.path.exists(os.path.join(_v12_root, "core", "engine.py")):
-    sys.path.insert(0, _v12_root)
-    from core.engine import AbakeUseEngine
-    from data.games_dataset import ALL_40_GAMES
-    from data.season_data import (
-        NBA_2025_26_STATS, WNBA_2026_STATS,
-        NBA_BASELINE_PACE, NBA_BASELINE_EFF, WNBA_BASELINE_PACE, WNBA_BASELINE_EFF,
-    )
-else:
-    sys.path.insert(0, _repo_root)
-    from abake_use_engine.core.engine import AbakeUseEngine
-    from abake_use_engine.data.games_dataset import ALL_40_GAMES
-    from abake_use_engine.data.season_data import (
-        NBA_2025_26_STATS, WNBA_2026_STATS,
-        NBA_BASELINE_PACE, NBA_BASELINE_EFF, WNBA_BASELINE_PACE, WNBA_BASELINE_EFF,
-    )
+from abake_use_engine.core.engine import AbakeUseEngine
+from abake_use_engine.data.games_dataset import ALL_40_GAMES
+from abake_use_engine.data.season_data import (
+    NBA_2025_26_STATS, WNBA_2026_STATS,
+    NBA_BASELINE_PACE, NBA_BASELINE_EFF, WNBA_BASELINE_PACE, WNBA_BASELINE_EFF,
+)
 
 # ============================================================
 # Abbreviation mappings
@@ -157,7 +143,7 @@ def build_game_v12_oracle(game, league):
 
 def run_oracle_backtest(engine, games):
     """Run ABAKE USE V12 Oracle backtest."""
-    hits = misses = skips = 0
+    hits = misses = skips = pushes = 0
     over_hits = over_misses = under_hits = under_misses = 0
     upset_skips = chaos_skips = 0
     tier_a_hits = tier_a_misses = 0
@@ -202,6 +188,8 @@ def run_oracle_backtest(engine, games):
                 tier_b_misses += 1
             elif tier == "C":
                 tier_c_misses += 1
+        elif status == "PUSH":
+            pushes += 1
         elif status == "SYSTEM SKIP":
             skips += 1
             if "Upset" in result.get("rule_triggered", ""):
@@ -219,6 +207,7 @@ def run_oracle_backtest(engine, games):
         "active_bets": active,
         "hits": hits,
         "misses": misses,
+        "pushes": pushes,
         "skips": skips,
         "win_rate": round(win_rate, 1),
         "over_hits": over_hits,
@@ -314,25 +303,13 @@ def main():
     print("  📊 LOADING GAME DATA")
     print("─" * 120)
 
-    # Look for data file in multiple locations (standalone V12 folder or repo root)
-    data_file_candidates = [
-        os.path.join(_v12_root, "data", "all_games_with_real_lines.json"),
-        os.path.join(_repo_root, "scraped_data", "all_games_with_real_lines.json"),
-        "scraped_data/all_games_with_real_lines.json",
-    ]
-    data_file = None
-    for candidate in data_file_candidates:
-        if os.path.exists(candidate):
-            data_file = candidate
-            break
-
-    if data_file:
+    data_file = "scraped_data/all_games_with_real_lines.json"
+    if os.path.exists(data_file):
         combined_data = json.load(open(data_file))
         nba_games_data = combined_data["nba"]
         wnba_games_data = combined_data["wnba"]
     else:
-        nba_fallback = os.path.join(_repo_root, "scraped_data", "nba_2025_26_all_games.json")
-        nba_games_data = json.load(open(nba_fallback)) if os.path.exists(nba_fallback) else []
+        nba_games_data = json.load(open("scraped_data/nba_2025_26_all_games.json"))
         wnba_games_data = []
 
     print(f"  📊 NBA games with real closing lines: {len(nba_games_data)}")
@@ -449,10 +426,8 @@ def main():
         tier = r.get("confidence_tier", "?")
         actual_oc = r.get("actual_oc", 0)
         actual_uc = r.get("actual_uc", 0)
-        emoji = "✅" if r["status"] == "HIT" else "❌"
+        emoji = "✅" if r["status"] == "HIT" else ("❌" if r["status"] == "MISS" else "➖")
         print(f"  {count:3d} {date_str:<12} {r['matchup']:<18} {cat:<7} {mkt_total:>9.1f} {mkt_spread:>9.1f} {underdog:>6} {tier:<5} {scaled:>13.3f} {actual_oc:>5.2f} {actual_uc:>5.2f} {str(score):>6} {emoji} {r['status']}")
-
-    # ── Step 7: Show ALL WNBA games ──
     print(f"\n  📊 ALL WNBA 2026 GAMES — V12 Oracle — Underdog Scaled Lines:")
     print(f"  {'#':>3} {'Date':<8} {'Matchup':<18} {'Pick':<7} {'MktTotal':>9} {'MktSprd':>9} {'UDOG':>6} {'Tier':<5} {'🎯 ScaledLine':>13} {'OC':>5} {'UC':>5} {'Score':>6} {'Result':<7}")
     print(f"  {'─'*3} {'─'*8} {'─'*18} {'─'*7} {'─'*9} {'─'*9} {'─'*6} {'─'*5} {'─'*13} {'─'*5} {'─'*5} {'─'*6} {'─'*7}")
@@ -471,7 +446,7 @@ def main():
         tier = r.get("confidence_tier", "?")
         actual_oc = r.get("actual_oc", 0)
         actual_uc = r.get("actual_uc", 0)
-        emoji = "✅" if r["status"] == "HIT" else "❌"
+        emoji = "✅" if r["status"] == "HIT" else ("❌" if r["status"] == "MISS" else "➖")
         print(f"  {count:3d} {date_str:<8} {r['matchup']:<18} {cat:<7} {mkt_total:>9.1f} {mkt_spread:>9.1f} {underdog:>6} {tier:<5} {scaled:>13.3f} {actual_oc:>5.2f} {actual_uc:>5.2f} {str(score):>6} {emoji} {r['status']}")
 
     # ── Step 8: V11 vs V12 Comparison ──
