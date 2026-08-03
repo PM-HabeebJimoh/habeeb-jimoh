@@ -506,3 +506,82 @@ class TestBinaryXRealData(unittest.TestCase):
             q = p.predicted
             self.assertGreaterEqual(q.high, max(q.open, q.close) - 1e-9)
             self.assertLessEqual(q.low, min(q.open, q.close) + 1e-9)
+
+
+class TestBinaryXDirection(unittest.TestCase):
+    """BinaryX-D: bullish/bearish next-candle classifier on REAL data."""
+
+    @classmethod
+    def setUpClass(cls):
+        from xau.direction import run_direction_backtest
+        from xau.real_data import real_daily_bars
+        cls.bars = real_daily_bars(end="2026-08-03")
+        cls.july = run_direction_backtest(
+            real_daily_bars(end="2026-07-31"), "2026-07-01", "2026-07-31")
+        cls.pooled = run_direction_backtest(cls.bars, "2026-06-01", "2026-08-03")
+
+    def test_no_lookahead_in_compact_features(self):
+        """Altering the target bar and all future bars must not move features."""
+        from xau.core import Bar
+        from xau.direction import compact_features
+        i = 80
+        base = compact_features(self.bars, i)
+        poisoned = list(self.bars)
+        for j in range(i, len(poisoned)):
+            b = poisoned[j]
+            poisoned[j] = Bar(b.ts, b.open * 3, b.high * 3, b.low * 3, b.close * 3)
+            
+        after = compact_features(poisoned, i)
+        for k in base:
+            self.assertAlmostEqual(base[k], after[k], places=9,
+                                   msg=f"{k} leaked future data")
+
+    def test_shuffled_labels_give_chance(self):
+        """Destroy the feature/label link -> accuracy must collapse to ~50%."""
+        import random
+        import statistics as st
+        from xau.direction import BinaryXD, compact_features
+        rows = []
+        for i in range(21, len(self.bars)):
+            f = compact_features(self.bars, i)
+            if f:
+                rows.append((f, 1 if self.bars[i].close > self.bars[i].open else 0))
+        accs = []
+        for seed in range(10):
+            rng = random.Random(seed)
+            ys = [y for _, y in rows]
+            rng.shuffle(ys)
+            sh = [(f, y) for (f, _), y in zip(rows, ys)]
+            tr, te = sh[:-27], sh[-27:]
+            m = BinaryXD().fit(tr)
+            h = sum(1 for f, y in te
+                    if (1 if m.predict_proba(f)[0] >= 0.5 else 0) == y)
+            accs.append(h / len(te))
+        self.assertLess(st.mean(accs), 0.60,
+                        "shuffled labels should not be predictable")
+
+    def test_july_scorecard_counts_are_consistent(self):
+        sc = self.july.scorecard()
+        self.assertEqual(sc["hits"] + sc["misses"], sc["acted"])
+        self.assertEqual(sc["buy"]["n"] + sc["sell"]["n"], sc["acted"])
+        self.assertGreaterEqual(sc["acted"], 20)
+
+    def test_pooled_result_is_the_honest_headline(self):
+        """July alone is 70.4% but June is 45%. Pooled must be reported and
+        must NOT be significant at n=49 -- this guards against quoting the
+        best month as if it were the model's accuracy."""
+        sc = self.pooled.scorecard()
+        self.assertGreaterEqual(sc["acted"], 45)
+        self.assertGreater(sc["p_value_vs_coinflip"], 0.05,
+                           "pooled result should not clear significance; if it "
+                           "does, re-examine before claiming an edge")
+        self.assertLess(sc["ci95"][0], 0.5,
+                        "pooled CI must still include chance at this sample size")
+
+    def test_month_instability_is_real(self):
+        """June and July disagree sharply. Locked in so it cannot be forgotten."""
+        from xau.direction import run_direction_backtest
+        june = run_direction_backtest(self.bars, "2026-06-01", "2026-06-30")
+        jsc, msc = self.july.scorecard(), june.scorecard()
+        self.assertGreater(jsc["win_rate"] - msc["win_rate"], 0.15,
+                           "the documented month-to-month swing has changed")

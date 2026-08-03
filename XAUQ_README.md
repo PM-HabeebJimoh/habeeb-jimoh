@@ -1,6 +1,14 @@
 # XAU-Q — Gold (XAUUSD) Next-Candle Forecasting System
 
-> ## THE MODEL — BinaryX: [BINARYX_REAL_BACKTEST.md](BINARYX_REAL_BACKTEST.md)
+> ## BUY/SELL SIGNAL — BinaryX-D: [BINARYX_D_SIGNAL.md](BINARYX_D_SIGNAL.md)
+> Bullish/bearish next-candle calls. **July 2026: 19 hits / 8 misses = 70.4%.**
+> **Pooled across all out-of-sample months: 30 hits / 19 misses = 61.2%, p=0.076
+> (not significant).** July was the best month; June was 45%.
+> ```
+> python -m xau.cli signal --pooled
+> ```
+>
+> ## OHLC MODEL — BinaryX: [BINARYX_REAL_BACKTEST.md](BINARYX_REAL_BACKTEST.md)
 > **Backtested on 100% REAL XAUUSD data.** Trained on 71 real days (Apr-Jun 2026),
 > tested on 27 real July 2026 days. **MAE $25.63 vs $33.59 naive — 23.7% error
 > reduction, bootstrap CI [$2.41, $13.54] excludes zero. Theil's U2 = 0.7630.**

@@ -19,6 +19,7 @@ from .backtest_july import format_july_report, run_july_h1
 from .miner import TARGETS, build_rule_universe, evaluate_rules, reality_check
 from .binaryx import MODEL_NAME, MODEL_VERSION, format_binaryx_report, run_binaryx_expanding
 from .predictor import format_candle_report, run_candle_walkforward
+from .direction import format_direction_report, run_direction_backtest
 from .real_data import real_daily_bars, split_info
 from .synth import generate, stylised_facts
 from .walkforward import run_walkforward
@@ -294,6 +295,21 @@ def cmd_binaryx(args) -> int:
     return 0
 
 
+def cmd_signal(args) -> int:
+    """BinaryX-D: BUY / SELL call for the next candle, on REAL data."""
+    bars = real_daily_bars(end="2026-08-03" if args.pooled else "2026-07-31")
+    if args.pooled:
+        res = run_direction_backtest(bars, "2026-06-01", "2026-08-03",
+                                     band=args.band)
+        title = "June 1 - Aug 3 2026 (all available out-of-sample) — REAL XAUUSD"
+    else:
+        res = run_direction_backtest(bars, "2026-07-01", "2026-07-31",
+                                     band=args.band)
+        title = "July 2026 — REAL XAUUSD daily"
+    print(format_direction_report(res, title, not args.no_color))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="xau", description="XAU-Q gold forecasting")
     p.add_argument("--csv", help="XAUUSD OHLCV csv (else synthetic)")
@@ -311,6 +327,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--json", action="store_true")
     p.add_argument("--warmup", type=int, default=1400)
     p.add_argument("--july", action="store_true", help="run on July 2026 data")
+    p.add_argument("--pooled", action="store_true", help="all out-of-sample months")
+    p.add_argument("--band", type=float, default=0.0, help="abstain band")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     for name, fn, helptext in (
@@ -321,7 +339,8 @@ def main(argv: list[str] | None = None) -> int:
         ("july", cmd_july, "backtest July 2026 on H1 (real daily anchors)"),
         ("mine", cmd_mine, "exhaustive rule search, multiple-testing corrected"),
         ("candle", cmd_candle, "predict next candle OHLC, scored in $"),
-        ("binaryx", cmd_binaryx, "BinaryX: July 2026 backtest on REAL market data"),
+        ("binaryx", cmd_binaryx, "BinaryX: July 2026 OHLC backtest on REAL data"),
+        ("signal", cmd_signal, "BinaryX-D: BUY/SELL next-candle calls on REAL data"),
     ):
         sp = sub.add_parser(name, help=helptext)
         sp.set_defaults(func=fn)
