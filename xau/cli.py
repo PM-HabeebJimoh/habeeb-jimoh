@@ -15,6 +15,7 @@ import sys
 
 from .core import dedupe_and_check, load_csv
 from .features import FeatureBuilder
+from .backtest_july import format_july_report, run_july_h1
 from .synth import generate, stylised_facts
 from .walkforward import run_walkforward
 
@@ -195,6 +196,26 @@ def cmd_predict(args) -> int:
     return 0
 
 
+def cmd_july(args) -> int:
+    # July has only 690 H1 bars, so it uses its own smaller folds unless the
+    # user explicitly overrides them.
+    res = run_july_h1(
+        warmup=args.warmup,
+        train=args.train if args.train != 2500 else 600,
+        calib=args.calib if args.calib != 700 else 250,
+        test=args.test if args.test != 250 else 60,
+        purge=args.purge if args.purge != 30 else 12,
+        target=args.target,
+    )
+    if args.json:
+        import json
+        res = {k: v for k, v in res.items() if k != "by_session"}
+        print(json.dumps(res, indent=2, default=str))
+        return 0
+    print(format_july_report(res, not args.no_color))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="xau", description="XAU-Q gold forecasting")
     p.add_argument("--csv", help="XAUUSD OHLCV csv (else synthetic)")
@@ -208,6 +229,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--purge", type=int, default=30)
     p.add_argument("--target", type=float, default=0.85)
     p.add_argument("--verbose", action="store_true")
+    p.add_argument("--no-color", action="store_true")
+    p.add_argument("--json", action="store_true")
+    p.add_argument("--warmup", type=int, default=1400)
     sub = p.add_subparsers(dest="cmd", required=True)
 
     for name, fn, helptext in (
@@ -215,6 +239,7 @@ def main(argv: list[str] | None = None) -> int:
         ("evaluate", cmd_evaluate, "full walk-forward evaluation"),
         ("falsify", cmd_falsify, "prove the harness can fail"),
         ("predict", cmd_predict, "next-bar forecast card"),
+        ("july", cmd_july, "backtest July 2026 on H1 (real daily anchors)"),
     ):
         sp = sub.add_parser(name, help=helptext)
         sp.set_defaults(func=fn)

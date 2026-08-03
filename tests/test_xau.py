@@ -252,3 +252,59 @@ class TestHonestyGuards(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestJuly2026Backtest(unittest.TestCase):
+    """Regressions from the July 2026 H1 run."""
+
+    @classmethod
+    def setUpClass(cls):
+        from xau.backtest_july import run_july_h1
+        from xau.july2026 import synthesize_h1, verify_reconstruction
+        cls.h1 = synthesize_h1()
+        cls.recon = verify_reconstruction(cls.h1)
+        cls.res = run_july_h1()
+
+    def test_h1_reproduces_real_daily_ohlc_exactly(self):
+        """The whole run's validity rests on this: reconstruction must be exact."""
+        for field, err in self.recon["max_abs_error_usd"].items():
+            self.assertLess(err, 1e-6,
+                            f"H1 series does not reproduce real daily {field}")
+        self.assertEqual(self.recon["days_checked"], 30)
+
+    def test_july_facts_match_published_market_data(self):
+        from xau.july2026 import july_stats
+        s = july_stats()
+        # Barchart: July low 3960.36 on 07/17, high 4201.70 on 07/06.
+        self.assertAlmostEqual(s["month_high"], 4203.10, delta=3.0)
+        self.assertAlmostEqual(s["month_low"], 3959.23, delta=3.0)
+        self.assertEqual(s["trading_days"], 27)
+
+    def test_all_h1_bars_valid(self):
+        for b in self.h1:
+            b.validate()
+
+    def test_coverage_shortfall_is_documented_not_hidden(self):
+        """July H1 coverage lands below target; assert it is in the known band."""
+        cov = self.res["range"]["empirical_coverage"]
+        self.assertGreater(cov, 0.75, "coverage collapsed below documented range")
+        self.assertLess(cov, 0.88)
+
+    def test_daily_rollup_uses_real_prices(self):
+        from xau.july2026 import DAILY_RAW
+        real = {d: (h, l) for d, _, h, l, _ in DAILY_RAW}
+        for row in self.res["daily_rollup"]["rows"]:
+            rh, rl = real[row["date"]]
+            self.assertEqual(row["real_high"], rh)
+            self.assertEqual(row["real_low"], rl)
+
+    def test_main_evaluation_not_regressed_by_scale_fix(self):
+        """The conformal scale fix must not break the n=5250 synthetic run."""
+        from xau.synth import generate
+        from xau.walkforward import run_walkforward
+        bars = generate(9000, seed=11, edge=0.35)
+        r = run_walkforward(bars, train=2500, calib=700, test=250, purge=30)
+        rm = r.range_metrics()
+        self.assertGreater(rm["empirical_coverage"], 0.82)
+        self.assertLess(rm["empirical_coverage"], 0.89)
+        self.assertGreater(rm["skill_vs_naive"], 0.05)

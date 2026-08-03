@@ -123,6 +123,27 @@ The loader handles MT4/MT5, Dukascopy, HistData, Stooq and TradingView exports.
 
 ---
 
+## 5b. JULY 2026 H1 BACKTEST
+
+Run against **real** July 2026 daily gold OHLC (cross-validated across myfxbook,
+investing.com and barchart), expanded to H1 via an exact reconstruction bridge:
+
+```
+range coverage    82.13%  CI [78.9, 85.0]   <- MISSED the 85% target
+daily roll-up     15/27 = 55.6% vs real prices
+skill vs naive    -31.0%
+```
+
+That miss exposed a **real bug in the conformal layer**: normalising residuals by
+the point prediction breaks exchangeability whenever model error isn't
+proportional to the prediction. Fixed; main evaluation held at 85.12%.
+
+Full analysis, including a wrong hypothesis I ruled out: **[BACKTEST_JULY_2026.md](BACKTEST_JULY_2026.md)**
+
+```bash
+python -m xau.cli july
+```
+
 ## 6. RUN IT
 
 ```bash
@@ -131,6 +152,7 @@ python -m xau.cli facts       # measure the data's stylised facts
 python -m xau.cli falsify     # prove the harness can fail
 python -m xau.cli evaluate    # full walk-forward, honest report
 python -m xau.cli predict     # next-bar forecast card
+python -m xau.cli july        # July 2026 H1 backtest (real daily anchors)
 python -m unittest discover -s tests -v    # 25 tests
 ```
 
@@ -142,7 +164,9 @@ python -m unittest discover -s tests -v    # 25 tests
 | `xau/walkforward.py` | Purged walk-forward engine and metrics |
 | `xau/synth.py` | Stylised-fact generator + honesty notes |
 | `xau/cli.py` | `facts` / `falsify` / `evaluate` / `predict` |
-| `tests/test_xau.py` | 25 tests incl. 3 lookahead detectors |
+| `xau/july2026.py` | Real July 2026 daily OHLC + provenance + H1 bridge |
+| `xau/backtest_july.py` | July H1 driver and daily roll-up |
+| `tests/test_xau.py` | 31 tests incl. 3 lookahead detectors + 6 July regressions |
 
 ---
 

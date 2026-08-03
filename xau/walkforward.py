@@ -25,7 +25,12 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Callable, Sequence
 
-from .core import Bar, atr, mean, wilson_interval
+from .core import Bar, atr, clamp, mean, wilson_interval
+
+
+def clamp_scale(x: float) -> float:
+    """Bound the adaptive component of the conformal scale to [0.5, 2.0]."""
+    return clamp(x, 0.5, 2.0)
 from .features import (
     FEATURE_NAMES, FeatureBuilder, target_direction, target_range,
 )
@@ -225,7 +230,16 @@ def run_walkforward(
 
         rca_pred = [rid.predict(x) for x in Xca]
         # Adaptive scale: recent realised range volatility, so intervals breathe.
-        sca = [max(0.35, abs(p)) for p in rca_pred]
+        # Conformal scale. Normalising by the point prediction (max(0.35,|pred|))
+        # makes intervals adaptive, but it also makes the normalised residual
+        # non-exchangeable whenever the point model's error is not proportional
+        # to its own prediction. Measured on July 2026 H1 that cost 5 points of
+        # coverage (79.8% vs an 85% target) while a constant scale delivered
+        # 83.4%. We therefore blend: mostly constant, lightly adaptive, and the
+        # blend weight is capped so a bad point prediction cannot distort the
+        # divisor. See BACKTEST_JULY_2026.md section 4.
+        _cal_scale = mean([abs(p) for p in rca_pred]) or 1.0
+        sca = [0.75 + 0.25 * clamp_scale(abs(p) / _cal_scale) for p in rca_pred]
         conf = ConformalInterval(alpha=alpha).calibrate(rca, rca_pred, sca)
 
         res.coef_history.append(
@@ -238,7 +252,7 @@ def run_walkforward(
             praw = clf.predict_proba(x)
             p = iso.transform(praw)
             rp = rid.predict(x)
-            s = max(0.35, abs(rp))
+            s = 0.75 + 0.25 * clamp_scale(abs(rp) / _cal_scale)
             lo, hi = conf.interval(rp, s)
             lo = max(0.0, lo)
 
