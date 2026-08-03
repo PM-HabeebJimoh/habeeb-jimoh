@@ -16,6 +16,7 @@ import sys
 from .core import dedupe_and_check, load_csv
 from .features import FeatureBuilder
 from .backtest_july import format_july_report, run_july_h1
+from .miner import TARGETS, build_rule_universe, evaluate_rules, reality_check
 from .synth import generate, stylised_facts
 from .walkforward import run_walkforward
 
@@ -216,6 +217,36 @@ def cmd_july(args) -> int:
     return 0
 
 
+def cmd_mine(args) -> int:
+    """Exhaustive rule search with multiple-testing correction."""
+    bars = _load(args)
+    rules = build_rule_universe()
+    n_tests = len(rules) * len(TARGETS)
+    print(f"{BOLD}EXHAUSTIVE RULE SEARCH{RST}")
+    print(f"  {len(rules)} rules x {len(TARGETS)} target formulations "
+          f"= {n_tests} hypothesis tests")
+    print(f"  {DIM}Bonferroni, Benjamini-Hochberg FDR, and White's Reality "
+          f"Check applied{RST}\n")
+    print(f"  {'target':<28}{'base':>7}{'best':>8}{'n':>7}{'CIlo':>7}"
+          f"{'BH':>4}{'RCp':>7}  tradeable")
+    for t in TARGETS:
+        res = evaluate_rules(bars, t, rules)
+        if not res:
+            print(f"  {t.name:<28}  (insufficient samples)")
+            continue
+        rc = reality_check(res)
+        b = res[0]
+        nbh = sum(1 for r in res if r.survives_bh)
+        flag = "" if t.tradeable else f" {YEL}<- not tradeable{RST}"
+        print(f"  {t.name:<28}{b.base_rate:>7.3f}{b.acc_test:>8.4f}"
+              f"{b.n_test:>7}{b.ci_test[0]:>7.3f}{nbh:>4}"
+              f"{rc['reality_check_p']:>7.3f}{flag}")
+    print()
+    print(f"  {DIM}Run with --edge 0 to repeat the identical search on data with{RST}")
+    print(f"  {DIM}PROVABLY ZERO edge. Compare the best accuracies.{RST}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="xau", description="XAU-Q gold forecasting")
     p.add_argument("--csv", help="XAUUSD OHLCV csv (else synthetic)")
@@ -240,6 +271,7 @@ def main(argv: list[str] | None = None) -> int:
         ("falsify", cmd_falsify, "prove the harness can fail"),
         ("predict", cmd_predict, "next-bar forecast card"),
         ("july", cmd_july, "backtest July 2026 on H1 (real daily anchors)"),
+        ("mine", cmd_mine, "exhaustive rule search, multiple-testing corrected"),
     ):
         sp = sub.add_parser(name, help=helptext)
         sp.set_defaults(func=fn)

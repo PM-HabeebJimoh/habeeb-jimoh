@@ -308,3 +308,98 @@ class TestJuly2026Backtest(unittest.TestCase):
         self.assertGreater(rm["empirical_coverage"], 0.82)
         self.assertLess(rm["empirical_coverage"], 0.89)
         self.assertGreater(rm["skill_vs_naive"], 0.05)
+
+
+class TestRuleMining(unittest.TestCase):
+    """Regressions from the 3,232-test exhaustive rule search."""
+
+    @classmethod
+    def setUpClass(cls):
+        from xau.miner import build_rule_universe
+        cls.rules = build_rule_universe()
+
+    def test_universe_is_large(self):
+        self.assertGreaterEqual(len(self.rules), 400)
+
+    def test_best_of_search_on_noise_is_high(self):
+        """The core finding: searching 404 rules on PURE NOISE yields ~58-64%.
+
+        Any 'discovered' direction rule below this band is a search artifact.
+        This test exists so nobody -- including me -- can later present a 60%+
+        mined direction rule as an edge.
+        """
+        from xau.miner import TARGETS, evaluate_rules
+        from xau.synth import generate
+        t = next(x for x in TARGETS if x.name == "dir_open_close")
+        res = evaluate_rules(generate(9000, seed=52, edge=0.0), t, self.rules)
+        self.assertTrue(res)
+        self.assertGreater(res[0].acc_test, 0.53,
+                           "noise search should still produce an inflated maximum")
+
+    def test_reality_check_flags_noise(self):
+        from xau.miner import TARGETS, evaluate_rules, reality_check
+        from xau.synth import generate
+        t = next(x for x in TARGETS if x.name == "dir_open_close")
+        res = evaluate_rules(generate(9000, seed=50, edge=0.0), t, self.rules)
+        rc = reality_check(res)
+        self.assertIn("reality_check_p", rc)
+        self.assertGreaterEqual(rc["null_best_mean"], 0.5)
+
+    def test_symmetric_barrier_is_a_coin_flip(self):
+        """The fair-odds control: +1/-1 ATR must sit near 50%."""
+        from xau.miner import _make_barrier
+        from xau.synth import generate
+        fn = _make_barrier(1.0, 1.0, 6)
+        b = generate(9000, seed=31, edge=0.0)
+        ys = [fn(b, i) for i in range(300, len(b) - 6)]
+        ys = [y for y in ys if y is not None]
+        rate = sum(ys) / len(ys)
+        self.assertAlmostEqual(rate, 0.5, delta=0.06)
+
+    def test_asymmetric_barrier_accuracy_is_base_rate_not_skill(self):
+        """>85% on an asymmetric barrier comes from geometry, not prediction."""
+        from xau.miner import _make_barrier
+        from xau.synth import generate
+        fn = _make_barrier(0.25, 4.0, 16)
+        b = generate(9000, seed=31, edge=0.0)   # ZERO edge
+        ys = [fn(b, i) for i in range(300, len(b) - 16)]
+        ys = [y for y in ys if y is not None]
+        rate = sum(ys) / len(ys)
+        self.assertGreater(rate, 0.90,
+                           "asymmetric barrier should exceed 90% on pure noise")
+
+    def test_close_only_barrier_has_negative_ev(self):
+        """Barrier accuracy does not survive contact with honest accounting."""
+        from xau.core import atr
+        from xau.synth import generate
+        b = generate(6000, seed=91, edge=0.0)
+        up, dn, h = 0.25, 2.0, 8
+        w = l = to = 0
+        pnl = 0.0
+        for i in range(300, len(b) - h):
+            a = atr(b[:i], 14)
+            if a <= 0:
+                continue
+            c = b[i - 1].close
+            out = None
+            for j in range(i, i + h):
+                if b[j].close >= c + up * a:
+                    out = "w"
+                    break
+                if b[j].close <= c - dn * a:
+                    out = "l"
+                    break
+            if out == "w":
+                w += 1
+                pnl += up
+            elif out == "l":
+                l += 1
+                pnl -= dn
+            else:
+                to += 1
+                pnl += (b[i + h - 1].close - c) / a
+        n = w + l + to
+        acc = w / (w + l) if (w + l) else 0
+        self.assertGreater(acc, 0.75, "accuracy should look impressive")
+        self.assertLess(pnl / n, 0.0,
+                        "...while EV per trade is NEGATIVE. High accuracy != profit.")

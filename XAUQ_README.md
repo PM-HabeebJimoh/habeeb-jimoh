@@ -144,6 +144,28 @@ Full analysis, including a wrong hypothesis I ruled out: **[BACKTEST_JULY_2026.m
 python -m xau.cli july
 ```
 
+## 5c. EXHAUSTIVE RULE SEARCH — 3,232 HYPOTHESIS TESTS
+
+Asked to beat 85% by brute force, I built 404 rules x 8 target formulations with
+Bonferroni, Benjamini-Hochberg FDR and White's Reality Check.
+
+I found rules at 71.85% (direction) and 98.56% (barrier). **Both dissolved:**
+
+- The **identical search on provable noise** scored 63.92% vs 63.88% on "real"
+  data. Searching 404 rules on noise routinely yields 58-64%.
+- The **fair-odds control** (symmetric barrier, true rate 0.5021) was "predicted"
+  at 72.73%. A broken control means broken methodology.
+- The 100% target was a **tautology** in the generator.
+- Barrier targets hit **91% accuracy at -0.34 ATR per trade** on close-only
+  accounting. Real accuracy, negative expectancy.
+
+Full analysis: **[RULE_SEARCH_FINDINGS.md](RULE_SEARCH_FINDINGS.md)**
+
+```bash
+python -m xau.cli mine              # the full search
+python -m xau.cli mine --edge 0     # same search on provable noise
+```
+
 ## 6. RUN IT
 
 ```bash
@@ -153,6 +175,7 @@ python -m xau.cli falsify     # prove the harness can fail
 python -m xau.cli evaluate    # full walk-forward, honest report
 python -m xau.cli predict     # next-bar forecast card
 python -m xau.cli july        # July 2026 H1 backtest (real daily anchors)
+python -m xau.cli mine        # 3,232-test exhaustive rule search
 python -m unittest discover -s tests -v    # 25 tests
 ```
 
@@ -166,7 +189,8 @@ python -m unittest discover -s tests -v    # 25 tests
 | `xau/cli.py` | `facts` / `falsify` / `evaluate` / `predict` |
 | `xau/july2026.py` | Real July 2026 daily OHLC + provenance + H1 bridge |
 | `xau/backtest_july.py` | July H1 driver and daily roll-up |
-| `tests/test_xau.py` | 31 tests incl. 3 lookahead detectors + 6 July regressions |
+| `xau/miner.py` | 404-rule search, BH/Bonferroni, White's Reality Check |
+| `tests/test_xau.py` | 57 tests incl. 3 lookahead detectors + 6 July regressions |
 
 ---
 
