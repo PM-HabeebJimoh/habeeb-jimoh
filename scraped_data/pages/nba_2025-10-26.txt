@@ -1,0 +1,44 @@
+BK **107**
+**107****Final** **118**
+SA **118**
+San Antonio covered the spread of **-10.5**. The total score of 225 was **under 227.5**.
+
+BOS **113**
+**113****Final** **119**
+DET **119**
+Detroit covered the spread of **-2.5**. The total score of 232 was **over 227**.
+
+CHA **139**
+**139****Final** **113**
+WAS **113**
+Charlotte covered the spread of **+1.5**. The total score of 252 was **over 240**.
+
+NY **107**
+**107****Final** **115**
+MIA **115**
+Miami covered the spread of **+3**. The total score of 222 was **under 230.5**.
+
+MIL **113**
+**113****Final** **118**
+CLE **118**
+Milwaukee covered the spread of **+6.5**. The total score of 231 was **under 234**.
+
+IND **110**
+**110****Final** **114**
+MIN **114**
+Indiana covered the spread of **+12**. The total score of 224 was **under 228.5**.
+
+TOR **129**
+**129****Final** **139**
+DAL **139**
+Dallas covered the spread of **+1**. The total score of 268 was **over 231.5**.
+
+LAL **127**
+**127****Final** **120**
+SAC **120**
+L.A. Lakers covered the spread of **+3.5**. The total score of 247 was **over 225**.
+
+POR **107**
+**107****Final** **114**
+LAC **114**
+Portland covered the spread of **+8**. The total score of 221 was **under 224**.
