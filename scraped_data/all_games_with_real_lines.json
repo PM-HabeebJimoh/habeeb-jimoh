@@ -1699,6 +1699,256 @@
       "market_total": 220.0,
       "market_spread": 5.5,
       "favorite": "LAC"
+    },
+    {
+      "date": "2025-11-24",
+      "away": "CLE",
+      "away_score": 99,
+      "home": "TOR",
+      "home_score": 110,
+      "market_total": 231.5,
+      "market_spread": 1.5,
+      "favorite": "TOR"
+    },
+    {
+      "date": "2025-11-24",
+      "away": "DET",
+      "away_score": 122,
+      "home": "IND",
+      "home_score": 117,
+      "market_total": 237.0,
+      "market_spread": 10.0,
+      "favorite": "DET"
+    },
+    {
+      "date": "2025-11-24",
+      "away": "NYK",
+      "away_score": 113,
+      "home": "BKN",
+      "home_score": 100,
+      "market_total": 228.5,
+      "market_spread": 12.5,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-11-24",
+      "away": "DAL",
+      "away_score": 102,
+      "home": "MIA",
+      "home_score": 106,
+      "market_total": 240.0,
+      "market_spread": 7.5,
+      "favorite": "MIA"
+    },
+    {
+      "date": "2025-11-25",
+      "away": "ATL",
+      "away_score": 113,
+      "home": "WAS",
+      "home_score": 132,
+      "market_total": 240.5,
+      "market_spread": 11.0,
+      "favorite": "WAS"
+    },
+    {
+      "date": "2025-11-25",
+      "away": "ORL",
+      "away_score": 144,
+      "home": "PHI",
+      "home_score": 103,
+      "market_total": 229.5,
+      "market_spread": 4.5,
+      "favorite": "ORL"
+    },
+    {
+      "date": "2025-11-25",
+      "away": "LAC",
+      "away_score": 118,
+      "home": "LAL",
+      "home_score": 135,
+      "market_total": 228.0,
+      "market_spread": 5.5,
+      "favorite": "LAL"
+    },
+    {
+      "date": "2025-11-26",
+      "away": "DET",
+      "away_score": 114,
+      "home": "BOS",
+      "home_score": 117,
+      "market_total": 233.0,
+      "market_spread": 2.0,
+      "favorite": "DET"
+    },
+    {
+      "date": "2025-11-26",
+      "away": "NYK",
+      "away_score": 129,
+      "home": "CHA",
+      "home_score": 101,
+      "market_total": 242.0,
+      "market_spread": 6.5,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-11-26",
+      "away": "MIL",
+      "away_score": 103,
+      "home": "MIA",
+      "home_score": 106,
+      "market_total": 237.0,
+      "market_spread": 10.0,
+      "favorite": "MIA"
+    },
+    {
+      "date": "2025-11-26",
+      "away": "IND",
+      "away_score": 95,
+      "home": "TOR",
+      "home_score": 97,
+      "market_total": 234.0,
+      "market_spread": 10.5,
+      "favorite": "TOR"
+    },
+    {
+      "date": "2025-11-27",
+      "away": "WAS",
+      "away_score": 86,
+      "home": "IND",
+      "home_score": 119,
+      "market_total": 240.5,
+      "market_spread": 6.5,
+      "favorite": "IND"
+    },
+    {
+      "date": "2025-11-27",
+      "away": "CLE",
+      "away_score": 123,
+      "home": "ATL",
+      "home_score": 130,
+      "market_total": 236.0,
+      "market_spread": 6.5,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2025-11-27",
+      "away": "MIL",
+      "away_score": 109,
+      "home": "NYK",
+      "home_score": 118,
+      "market_total": 232.0,
+      "market_spread": 7.5,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-11-27",
+      "away": "PHI",
+      "away_score": 115,
+      "home": "BKN",
+      "home_score": 103,
+      "market_total": 221.5,
+      "market_spread": 7.0,
+      "favorite": "PHI"
+    },
+    {
+      "date": "2025-11-29",
+      "away": "BOS",
+      "away_score": 115,
+      "home": "MIN",
+      "home_score": 119,
+      "market_total": 229.5,
+      "market_spread": 6.0,
+      "favorite": "MIN"
+    },
+    {
+      "date": "2025-11-29",
+      "away": "TOR",
+      "away_score": 111,
+      "home": "CHA",
+      "home_score": 118,
+      "market_total": 234.5,
+      "market_spread": 7.0,
+      "favorite": "CHA"
+    },
+    {
+      "date": "2025-11-29",
+      "away": "CHI",
+      "away_score": 101,
+      "home": "IND",
+      "home_score": 103,
+      "market_total": 240.0,
+      "market_spread": 2.5,
+      "favorite": "CHI"
+    },
+    {
+      "date": "2025-11-29",
+      "away": "DET",
+      "away_score": 138,
+      "home": "MIA",
+      "home_score": 135,
+      "market_total": 240.0,
+      "market_spread": 4.0,
+      "favorite": "MIA"
+    },
+    {
+      "date": "2025-11-29",
+      "away": "BKN",
+      "away_score": 99,
+      "home": "MIL",
+      "home_score": 116,
+      "market_total": 218.5,
+      "market_spread": 11.5,
+      "favorite": "MIL"
+    },
+    {
+      "date": "2025-11-29",
+      "away": "NOP",
+      "away_score": 96,
+      "home": "GSW",
+      "home_score": 104,
+      "market_total": 228.0,
+      "market_spread": 10.0,
+      "favorite": "GSW"
+    },
+    {
+      "date": "2025-11-30",
+      "away": "HOU",
+      "away_score": 129,
+      "home": "UTA",
+      "home_score": 101,
+      "market_total": 232.5,
+      "market_spread": 11.5,
+      "favorite": "HOU"
+    },
+    {
+      "date": "2025-11-30",
+      "away": "TOR",
+      "away_score": 94,
+      "home": "NYK",
+      "home_score": 116,
+      "market_total": 229.5,
+      "market_spread": 8.5,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-11-30",
+      "away": "OKC",
+      "away_score": 123,
+      "home": "POR",
+      "home_score": 115,
+      "market_total": 233.5,
+      "market_spread": 11.5,
+      "favorite": "OKC"
+    },
+    {
+      "date": "2025-11-30",
+      "away": "ATL",
+      "away_score": 142,
+      "home": "PHI",
+      "home_score": 134,
+      "market_total": 232.5,
+      "market_spread": 3.0,
+      "favorite": "PHI"
     }
   ],
   "wnba": [
@@ -3874,12 +4124,12 @@
     }
   ],
   "metadata": {
-    "nba_count": 170,
+    "nba_count": 195,
     "wnba_count": 217,
-    "total_count": 387,
+    "total_count": 412,
     "nba_target": 1230,
     "wnba_target": 217,
-    "nba_coverage_pct": 13.8,
+    "nba_coverage_pct": 15.9,
     "wnba_coverage_pct": 100.0,
     "data_source": "Covers.com + Script",
     "last_updated": "2026-08-03"

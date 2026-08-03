@@ -1,254 +1,233 @@
 #!/usr/bin/env python3
 """
-Parse Covers.com NBA matchup pages to extract game data.
-Extracts: away team, away score, home team, home score, closing total, closing spread, favorite.
+Covers.com NBA scraper — parses game data from Covers.com matchup pages.
+V4: Uses the actual page structure to extract games correctly.
 """
 
 import re
 import json
 import os
 
-# Covers.com abbreviation mapping
 COVERS_NBA = {
-    "ATL": "ATL", "BOS": "BOS", "BK": "BKN", "BKN": "BKN", "CHA": "CHA", "CHI": "CHI",
-    "CLE": "CLE", "DAL": "DAL", "DEN": "DEN", "DET": "DET", "GS": "GSW", "GSW": "GSW",
-    "HOU": "HOU", "IND": "IND", "LAC": "LAC", "LAL": "LAL", "LA": "LAL", "MEM": "MEM",
-    "MIA": "MIA", "MIL": "MIL", "MIN": "MIN", "NOP": "NOP", "NO": "NOP", "NY": "NYK",
-    "NYK": "NYK", "OKC": "OKC", "ORL": "ORL", "PHI": "PHI", "PHO": "PHX", "PHX": "PHX",
-    "POR": "POR", "SAC": "SAC", "SA": "SAS", "SAS": "SAS", "TOR": "TOR", "UTA": "UTA",
-    "WAS": "WAS", "WSH": "WAS",
+    "ATL": "ATL", "BOS": "BOS", "BK": "BKN", "BKN": "BKN", "CHA": "CHA",
+    "CHI": "CHI", "CLE": "CLE", "DAL": "DAL", "DEN": "DEN", "DET": "DET",
+    "GS": "GSW", "GSW": "GSW", "HOU": "HOU", "IND": "IND", "LAC": "LAC",
+    "LAL": "LAL", "LA": "LAL", "MEM": "MEM", "MIA": "MIA", "MIL": "MIL",
+    "MIN": "MIN", "NOP": "NOP", "NO": "NOP", "NY": "NYK", "NYK": "NYK",
+    "OKC": "OKC", "ORL": "ORL", "PHI": "PHI", "PHO": "PHX", "PHX": "PHX",
+    "POR": "POR", "SAC": "SAC", "SA": "SAS", "SAS": "SAS", "TOR": "TOR",
+    "UTA": "UTA", "WAS": "WAS", "WSH": "WAS",
 }
 
-# Team name mapping for "covered the spread of" lines
-TEAM_NAME_MAP = {
-    "Atlanta": "ATL", "Boston": "BOS", "Brooklyn": "BKN", "Charlotte": "CHA",
-    "Chicago": "CHI", "Cleveland": "CLE", "Dallas": "DAL", "Denver": "DEN",
-    "Detroit": "DET", "Golden State": "GSW", "Houston": "HOU", "Indiana": "IND",
-    "LA Clippers": "LAC", "L.A. Clippers": "LAC", "L.A. Lakers": "LAL",
-    "Los Angeles": "LAL", "Memphis": "MEM", "Miami": "MIA", "Milwaukee": "MIL",
-    "Minnesota": "MIN", "New Orleans": "NOP", "New York": "NYK",
-    "Oklahoma City": "OKC", "Orlando": "ORL", "Philadelphia": "PHI",
-    "Phoenix": "PHX", "Portland": "POR", "Sacramento": "SAC",
-    "San Antonio": "SAS", "Toronto": "TOR", "Utah": "UTA", "Washington": "WAS",
-}
+# All valid Covers.com NBA abbreviations
+VALID_ABBRS = set(COVERS_NBA.keys())
 
 
 def parse_covers_page(text, date_str):
-    """Parse a Covers.com matchup page and extract game data."""
+    """
+    Parse a Covers.com matchup page to extract game data.
+    
+    Page structure per game:
+    1. "AwayTeam @ HomeTeam"
+    2. "AWAY_ABBR **away_score**"
+    3. "**away_score****Final** **home_score**"
+    4. "HOME_ABBR **home_score**"
+    5. "Cover By +X.X" or similar
+    6. "ABBR -X.X" or "ABBR +X.X" (spread line)
+    7. "o/u Margin"
+    8. "uX.X" or "oX.X" (over/under margin)
+    9. "under XXX.X" or "over XXX.X" (total line)
+    """
     games = []
     
-    # Pattern 1: Match game blocks
-    # Each game has: "TEAM **SCORE**" pattern for away and home
-    # Then: "TeamName covered the spread of **SPREAD**" 
-    # Then: "The total score of TOTAL was **over/under TOTAL_LINE**"
+    # Split by "Boxscore" to separate games (each game has a "Boxscore" link)
+    # Or use "Cover By" as a game separator
+    # Actually, let's use the "o/u Margin" pattern as a game separator
+    # because each game has exactly one
     
-    # Split into game blocks by looking for team score patterns
-    # Pattern: "CLE **99**" or "TOR **110**"
-    score_pattern = r'\b([A-Z]{2,3})\s+\*\*(\d+)\*\*'
+    # Better: find all game blocks using the "Final" pattern
+    # Each game section starts with "Team @ Team" and ends before the next one
     
-    # Find all team-score pairs
-    score_matches = list(re.finditer(score_pattern, text))
+    # Strategy: Find all pairs of (away_abbr, away_score, home_abbr, home_score)
+    # Then find the spread and total for each pair
     
-    # Group them into pairs (away, home)
-    # Each game has 2 score entries
-    i = 0
-    while i < len(score_matches) - 1:
-        away_abbr = score_matches[i].group(1)
-        away_score = int(score_matches[i].group(2))
-        home_abbr = score_matches[i + 1].group(1)
-        home_score = int(score_matches[i + 1].group(2))
+    # Step 1: Find all score pairs
+    # Pattern: "ABBR1 **score1**\n**score1****Final** **score2**\nABBR2 **score2**"
+    
+    # Find all "Final" markers
+    final_positions = [(m.start(), m.end()) for m in re.finditer(r'\*\*Final\*\*', text)]
+    
+    for i, (final_start, final_end) in enumerate(final_positions):
+        # Get text before and after "Final"
+        # Look backwards for away team score
+        before = text[max(0, final_start - 200):final_start]
+        # Look forwards for home team score, spread, and total
+        # The end of this game section is the start of the next game
+        if i + 1 < len(final_positions):
+            after_end = final_positions[i + 1][0]
+        else:
+            after_end = min(len(text), final_end + 800)
+        after = text[final_end:after_end]
         
-        # Skip if this looks like a non-game score (e.g., odds numbers)
-        if away_score > 300 or home_score > 300:
-            i += 1
+        # Extract away team score from before "Final"
+        # Pattern: "ABBR **score**"
+        away_matches = re.findall(r'([A-Z]{2,3})\s+\*\*(\d+)\*\*', before)
+        if not away_matches:
             continue
         
-        # Look for spread and total in the text between this pair and the next
-        start_pos = score_matches[i].start()
-        end_pos = score_matches[i + 2].start() if i + 2 < len(score_matches) else len(text)
+        # Take the last match (closest to "Final")
+        away_abbr, away_score = away_matches[-1]
         
-        # If no next pair, use the end of the text
-        game_text = text[start_pos:end_pos]
+        # Extract home team score from after "Final"
+        # Pattern: "ABBR **score**"
+        home_matches = re.findall(r'([A-Z]{2,3})\s+\*\*(\d+)\*\*', after[:200])
+        if not home_matches:
+            continue
         
-        # Extract spread: "TeamName covered the spread of **SPREAD**"
-        spread_match = re.search(r'(\w[\w\s.]+?)\s+covered the spread of\s+\*\*([+-]?\d+\.?\d*)\*\*', game_text)
-        spread = None
-        covered_team = None
-        if spread_match:
-            covered_team_name = spread_match.group(1).strip()
-            spread = float(spread_match.group(2))
-            # Try to map the covered team name
-            for name, abbr in TEAM_NAME_MAP.items():
-                if name in covered_team_name:
-                    covered_team = abbr
-                    break
+        # Take the first match (closest to "Final")
+        home_abbr, home_score = home_matches[0]
         
-        # Extract total: "The total score of TOTAL was **over/under TOTAL_LINE**"
-        total_match = re.search(r'total score of (\d+) was \*\*(over|under)\s+(\d+\.?\d*)\*\*', game_text)
-        total = None
-        over_under = None
-        if total_match:
-            total = float(total_match.group(3))
-            over_under = total_match.group(2)
+        # Find the spread in the "after" section
+        # Pattern: "ABBR -X.X" or "ABBR +X.X"
+        # The spread appears after "Cover By" line
+        spread_matches = re.findall(r'([A-Z]{2,3})\s+([+-]?\d+\.?\d*)', after[:400])
         
-        # Map abbreviations
-        away_mapped = COVERS_NBA.get(away_abbr, away_abbr)
-        home_mapped = COVERS_NBA.get(home_abbr, home_abbr)
+        # Find the total in the "after" section
+        # Pattern: "under XXX.X" or "over XXX.X"
+        total_match = re.search(r'(?:under|over)\s+(\d+\.?\d*)', after[:500], re.IGNORECASE)
         
-        # Determine favorite
+        if not total_match or not spread_matches:
+            continue
+        
+        total_value = float(total_match.group(1))
+        
+        # Find the correct spread (first one that's a valid spread value)
+        market_spread = None
         favorite = None
-        if spread is not None:
-            if spread < 0:
-                # Negative spread = covered team is the favorite
-                favorite = covered_team
-            elif spread > 0:
-                # Positive spread = covered team is the underdog, so the other team is the favorite
-                if covered_team == away_mapped:
-                    favorite = home_mapped
-                else:
-                    favorite = away_mapped
-            # spread = 0 means pick'em, no favorite
         
-        # Skip if no spread or total (game might have "Off" lines)
-        if total is not None and spread is not None:
-            games.append({
-                "date": date_str,
-                "away": away_mapped,
-                "away_score": away_score,
-                "home": home_mapped,
-                "home_score": home_score,
-                "market_total": total,
-                "market_spread": abs(spread),
-                "favorite": favorite,
-            })
-        
-        i += 2
-    
-    return games
-
-
-def parse_covers_page_v2(text, date_str):
-    """More robust parser for Covers.com matchup pages."""
-    games = []
-    
-    # Find all game blocks using the "covered the spread of" anchor
-    # Each game block starts with team scores and ends with the total line
-    
-    # Pattern: "TEAM_ABBR **SCORE**" 
-    score_pattern = r'([A-Z]{2,3})\s+\*\*(\d+)\*\*'
-    
-    # Pattern: "TeamName covered the spread of **SPREAD**"
-    spread_pattern = r'([\w.\s]+?)covered the spread of\s+\*\*([+-]?\d+\.?\d*)\*\*'
-    
-    # Pattern: "The total score of TOTAL was **over/under TOTAL_LINE**"
-    total_pattern = r'total score of (\d+) was \*\*(?:over|under)\s+(\d+\.?\d*)\*\*'
-    
-    # Find all spread matches first (these anchor each game)
-    spread_matches = list(re.finditer(spread_pattern, text))
-    total_matches = list(re.finditer(total_pattern, text))
-    
-    if len(spread_matches) != len(total_matches):
-        # Try to match them up
-        pass
-    
-    for idx, spread_match in enumerate(spread_matches):
-        covered_team_name = spread_match.group(1).strip()
-        spread = float(spread_match.group(2))
-        
-        # Map covered team name
-        covered_team = None
-        for name, abbr in TEAM_NAME_MAP.items():
-            if name in covered_team_name:
-                covered_team = abbr
-                break
-        
-        # Find the corresponding total
-        total = None
-        if idx < len(total_matches):
-            total = float(total_matches[idx].group(2))
-        
-        # Find the team scores before this spread match
-        # Look backwards from the spread match position
-        pre_text = text[max(0, spread_match.start() - 1500):spread_match.start()]
-        score_matches = list(re.finditer(score_pattern, pre_text))
-        
-        if len(score_matches) >= 2:
-            # Last two score matches are the home and away scores
-            away_match = score_matches[-2]
-            home_match = score_matches[-1]
-            
-            away_abbr = away_match.group(1)
-            away_score = int(away_match.group(2))
-            home_abbr = home_match.group(1)
-            home_score = int(home_match.group(2))
-            
-            # Validate scores
-            if away_score > 300 or home_score > 300:
+        for team_abbr, spread_val in spread_matches:
+            sv = float(spread_val)
+            if abs(sv) < 0.5 or abs(sv) > 25:
                 continue
             
-            # Map abbreviations
-            away_mapped = COVERS_NBA.get(away_abbr, away_abbr)
-            home_mapped = COVERS_NBA.get(home_abbr, home_abbr)
-            
-            # Determine favorite
-            favorite = None
-            if spread < 0:
-                favorite = covered_team
-            elif spread > 0:
-                if covered_team == away_mapped:
-                    favorite = home_mapped
+            if sv < 0:
+                # Negative spread = this team is the favorite
+                favorite = team_abbr
+                market_spread = abs(sv)
+            elif sv > 0:
+                # Positive spread = this team is the underdog
+                if team_abbr == away_abbr:
+                    favorite = home_abbr
                 else:
-                    favorite = away_mapped
-            
-            if total is not None and spread is not None:
-                games.append({
-                    "date": date_str,
-                    "away": away_mapped,
-                    "away_score": away_score,
-                    "home": home_mapped,
-                    "home_score": home_score,
-                    "market_total": total,
-                    "market_spread": abs(spread),
-                    "favorite": favorite,
-                })
-    
-    return games
-
-
-def parse_all_pages(directory):
-    """Parse all saved Covers.com pages and return a combined game list."""
-    all_games = []
-    
-    for filename in sorted(os.listdir(directory)):
-        if not filename.endswith('.txt'):
+                    favorite = away_abbr
+                market_spread = abs(sv)
+            break
+        
+        if market_spread is None or favorite is None:
             continue
         
-        # Extract date from filename (e.g., "nba_2025-10-21.txt")
-        parts = filename.replace('.txt', '').split('_')
-        date_str = parts[-1] if len(parts) > 1 else filename
+        # Normalize abbreviations
+        away = COVERS_NBA.get(away_abbr, away_abbr)
+        home = COVERS_NBA.get(home_abbr, home_abbr)
+        fav = COVERS_NBA.get(favorite, favorite)
         
-        filepath = os.path.join(directory, filename)
-        with open(filepath, 'r') as f:
-            text = f.read()
-        
-        games = parse_covers_page_v2(text, date_str)
-        all_games.extend(games)
-        print(f"  {filename}: {len(games)} games")
+        games.append({
+            "date": date_str,
+            "away": away,
+            "away_score": int(away_score),
+            "home": home,
+            "home_score": int(home_score),
+            "market_total": total_value,
+            "market_spread": market_spread,
+            "favorite": fav,
+        })
     
-    return all_games
+    return games
 
 
 if __name__ == "__main__":
-    # Test with the existing pages
-    games = parse_all_pages("scraped_data/pages")
-    print(f"\nTotal games parsed: {len(games)}")
+    # Test with the actual Nov 24 data from Covers.com
+    test_data = """Cleveland @ Toronto
+
+CLE **99**
+
+**99****Final** **110**
+
+TOR **110**
+
+Cover By +9.5
+
+TOR -1.5
+
+o/u Margin
+
+u22.5
+
+under 231.5
+
+Boxscore
+
+Detroit @ Indiana
+
+DET **122**
+
+**122****Final** **117**
+
+IND **117**
+
+Cover By +5
+
+IND +10
+
+o/u Margin
+
+o2
+
+over 237
+
+Boxscore
+
+New York @ Brooklyn
+
+NY **113**
+
+**113****Final** **100**
+
+BK **100**
+
+Cover By +0.5
+
+NY -12.5
+
+o/u Margin
+
+u15.5
+
+under 228.5
+
+Boxscore
+
+Dallas @ Miami
+
+DAL **102**
+
+**102****Final** **106**
+
+MIA **106**
+
+Cover By +3.5
+
+DAL +7.5
+
+o/u Margin
+
+u32
+
+under 240
+
+Boxscore"""
     
-    # Save to JSON
-    with open("scraped_data/nba_2025_26_covers_games_v2.json", "w") as f:
-        json.dump(games, f, indent=2)
-    
-    # Compare with existing data
-    with open("scraped_data/nba_2025_26_covers_games.json") as f:
-        old_games = json.load(f)
-    print(f"Old data: {len(old_games)} games")
-    print(f"New data: {len(games)} games")
+    print("Testing v4 parser:")
+    games = parse_covers_page(test_data, "2025-11-24")
+    for g in games:
+        print(f"  {g['away']} {g['away_score']} @ {g['home']} {g['home_score']} | Fav: {g['favorite']} -{g['market_spread']} | Total: {g['market_total']}")
