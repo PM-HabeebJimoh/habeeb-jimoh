@@ -1,0 +1,8 @@
+V11 Oracle Backtest Results (Partial Data)
+Date: 2026-08-03 05:39
+
+WNBA 2026: 217 active, 195 HIT, 22 MISS, 0 SKIP = 89.9%
+NBA 2025-26: 339 active, 305 HIT, 34 MISS, 0 SKIP = 90.0%
+Combined: 556 active, 500 HIT, 56 MISS, 0 SKIP = 89.9%
+
+Data Coverage: NBA 339/1,230 (27.6%) | WNBA 217/217 (100%)
