@@ -1365,7 +1365,7 @@
       "away_score": 90,
       "home": "DET",
       "home_score": 121,
-      "date": "Jan 5",
+      "date": "2026-01-05",
       "market_total": 233.0,
       "market_spread": 1.0,
       "favorite": "NYK"
@@ -1375,7 +1375,7 @@
       "away_score": 100,
       "home": "TOR",
       "home_score": 118,
-      "date": "Jan 5",
+      "date": "2026-01-05",
       "market_total": 237.0,
       "market_spread": 2.5,
       "favorite": "TOR"
@@ -1385,7 +1385,7 @@
       "away_score": 101,
       "home": "BOS",
       "home_score": 115,
-      "date": "Jan 5",
+      "date": "2026-01-05",
       "market_total": 236.0,
       "market_spread": 10.5,
       "favorite": "BOS"
@@ -1395,7 +1395,7 @@
       "away_score": 124,
       "home": "OKC",
       "home_score": 97,
-      "date": "Jan 5",
+      "date": "2026-01-05",
       "market_total": 235.0,
       "market_spread": 16.0,
       "favorite": "OKC"
@@ -1405,7 +1405,7 @@
       "away_score": 134,
       "home": "CLE",
       "home_score": 146,
-      "date": "Jan 10",
+      "date": "2026-01-10",
       "market_total": 240.0,
       "market_spread": 3.0,
       "favorite": "CLE"
@@ -1415,7 +1415,7 @@
       "away_score": 99,
       "home": "IND",
       "home_score": 123,
-      "date": "Jan 10",
+      "date": "2026-01-10",
       "market_total": 237.0,
       "market_spread": 6.5,
       "favorite": "IND"
@@ -1425,7 +1425,7 @@
       "away_score": 98,
       "home": "DET",
       "home_score": 92,
-      "date": "Jan 10",
+      "date": "2026-01-10",
       "market_total": 214.5,
       "market_spread": 1.5,
       "favorite": "DET"
@@ -1435,7 +1435,7 @@
       "away_score": 100,
       "home": "BOS",
       "home_score": 95,
-      "date": "Jan 10",
+      "date": "2026-01-10",
       "market_total": 230.5,
       "market_spread": 1.5,
       "favorite": "SAS"
@@ -1445,7 +1445,7 @@
       "away_score": 116,
       "home": "PHI",
       "home_score": 110,
-      "date": "Jan 20",
+      "date": "2026-01-20",
       "market_total": 223.5,
       "market_spread": 2.5,
       "favorite": "PHX"
@@ -1455,7 +1455,7 @@
       "away_score": 106,
       "home": "HOU",
       "home_score": 111,
-      "date": "Jan 20",
+      "date": "2026-01-20",
       "market_total": 220.5,
       "market_spread": 4.5,
       "favorite": "HOU"
@@ -1465,7 +1465,7 @@
       "away_score": 110,
       "home": "CHI",
       "home_score": 138,
-      "date": "Jan 20",
+      "date": "2026-01-20",
       "market_total": 224.0,
       "market_spread": 2.5,
       "favorite": "CHI"
@@ -1475,7 +1475,7 @@
       "away_score": 122,
       "home": "UTA",
       "home_score": 127,
-      "date": "Jan 20",
+      "date": "2026-01-20",
       "market_total": 239.0,
       "market_spread": 12.5,
       "favorite": "MIN"
@@ -1485,7 +1485,7 @@
       "away_score": 79,
       "home": "BOS",
       "home_score": 107,
-      "date": "Feb 1",
+      "date": "2026-02-01",
       "market_total": 217.5,
       "market_spread": 13.0,
       "favorite": "BOS"
@@ -1495,7 +1495,7 @@
       "away_score": 112,
       "home": "WAS",
       "home_score": 116,
-      "date": "Feb 1",
+      "date": "2026-02-01",
       "market_total": 227.0,
       "market_spread": 1.5,
       "favorite": "SAC"
@@ -1505,7 +1505,7 @@
       "away_score": 77,
       "home": "DET",
       "home_score": 130,
-      "date": "Feb 1",
+      "date": "2026-02-01",
       "market_total": 214.0,
       "market_spread": 14.0,
       "favorite": "DET"
@@ -1515,7 +1515,7 @@
       "away_score": 91,
       "home": "MIA",
       "home_score": 134,
-      "date": "Feb 1",
+      "date": "2026-02-01",
       "market_total": 233.5,
       "market_spread": 5.5,
       "favorite": "MIA"
@@ -1525,7 +1525,7 @@
       "away_score": 84,
       "home": "CLE",
       "home_score": 112,
-      "date": "Feb 15",
+      "date": "2026-02-15",
       "market_total": 229.5,
       "market_spread": 16.0,
       "favorite": "CLE"
@@ -1535,7 +1535,7 @@
       "away_score": 117,
       "home": "PHI",
       "home_score": 107,
-      "date": "Feb 15",
+      "date": "2026-02-15",
       "market_total": 241.5,
       "market_spread": 1.0,
       "favorite": "PHI"
@@ -1545,7 +1545,7 @@
       "away_score": 105,
       "home": "CHA",
       "home_score": 101,
-      "date": "Feb 15",
+      "date": "2026-02-15",
       "market_total": 218.0,
       "market_spread": 5.0,
       "favorite": "HOU"
@@ -1555,7 +1555,7 @@
       "away_score": 105,
       "home": "WAS",
       "home_score": 112,
-      "date": "Feb 15",
+      "date": "2026-02-15",
       "market_total": 233.5,
       "market_spread": 2.0,
       "favorite": "IND"
@@ -1565,7 +1565,7 @@
       "away_score": 89,
       "home": "NY",
       "home_score": 114,
-      "date": "Mar 1",
+      "date": "2026-03-01",
       "market_total": 227.5,
       "market_spread": 1.0,
       "favorite": "SAS"
@@ -1575,7 +1575,7 @@
       "away_score": 106,
       "home": "BK",
       "home_score": 102,
-      "date": "Mar 1",
+      "date": "2026-03-01",
       "market_total": 224.5,
       "market_spread": 11.5,
       "favorite": "CLE"
@@ -1585,7 +1585,7 @@
       "away_score": 117,
       "home": "DEN",
       "home_score": 108,
-      "date": "Mar 1",
+      "date": "2026-03-01",
       "market_total": 241.0,
       "market_spread": 3.0,
       "favorite": "DEN"
@@ -1595,7 +1595,7 @@
       "away_score": 97,
       "home": "CHI",
       "home_score": 120,
-      "date": "Mar 1",
+      "date": "2026-03-01",
       "market_total": 231.5,
       "market_spread": 2.5,
       "favorite": "MIL"
@@ -1605,7 +1605,7 @@
       "away_score": 103,
       "home": "OKC",
       "home_score": 116,
-      "date": "Mar 15",
+      "date": "2026-03-15",
       "market_total": 228.0,
       "market_spread": 9.0,
       "favorite": "OKC"
@@ -1615,7 +1615,7 @@
       "away_score": 123,
       "home": "MIL",
       "home_score": 134,
-      "date": "Mar 15",
+      "date": "2026-03-15",
       "market_total": 228.0,
       "market_spread": 7.5,
       "favorite": "MIL"
@@ -1625,7 +1625,7 @@
       "away_score": 130,
       "home": "CLE",
       "home_score": 120,
-      "date": "Mar 15",
+      "date": "2026-03-15",
       "market_total": 234.0,
       "market_spread": 15.0,
       "favorite": "CLE"
@@ -1635,7 +1635,7 @@
       "away_score": 108,
       "home": "TOR",
       "home_score": 119,
-      "date": "Mar 15",
+      "date": "2026-03-15",
       "market_total": 224.5,
       "market_spread": 3.0,
       "favorite": "DET"
@@ -1645,7 +1645,7 @@
       "away_score": 153,
       "home": "WAS",
       "home_score": 131,
-      "date": "Apr 1",
+      "date": "2026-04-01",
       "market_total": 238.5,
       "market_spread": 14.5,
       "favorite": "PHI"
@@ -1655,7 +1655,7 @@
       "away_score": 130,
       "home": "ORL",
       "home_score": 101,
-      "date": "Apr 1",
+      "date": "2026-04-01",
       "market_total": 235.5,
       "market_spread": 2.5,
       "favorite": "ATL"
@@ -1665,7 +1665,7 @@
       "away_score": 147,
       "home": "MIA",
       "home_score": 129,
-      "date": "Apr 1",
+      "date": "2026-04-01",
       "market_total": 230.0,
       "market_spread": 4.5,
       "favorite": "BOS"
@@ -1675,7 +1675,7 @@
       "away_score": 123,
       "home": "TOR",
       "home_score": 115,
-      "date": "Apr 1",
+      "date": "2026-04-01",
       "market_total": 228.5,
       "market_spread": 12.5,
       "favorite": "TOR"
@@ -1685,7 +1685,7 @@
       "away_score": 97,
       "home": "PHI",
       "home_score": 109,
-      "date": "Apr 15",
+      "date": "2026-04-15",
       "market_total": 224.0,
       "market_spread": 1.0,
       "favorite": "PHI"
@@ -1695,7 +1695,7 @@
       "away_score": 126,
       "home": "LAC",
       "home_score": 121,
-      "date": "Apr 15",
+      "date": "2026-04-15",
       "market_total": 220.0,
       "market_spread": 5.5,
       "favorite": "LAC"
@@ -2319,6 +2319,926 @@
       "market_total": 227.5,
       "market_spread": 6.0,
       "favorite": "NYK"
+    },
+    {
+      "date": "2026-03-01",
+      "away": "SAS",
+      "away_score": 89,
+      "home": "NYK",
+      "home_score": 114,
+      "market_total": 227.5,
+      "market_spread": 1.0,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2026-03-01",
+      "away": "CLE",
+      "away_score": 106,
+      "home": "BKN",
+      "home_score": 102,
+      "market_total": 224.5,
+      "market_spread": 11.5,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2026-03-01",
+      "away": "MIN",
+      "away_score": 117,
+      "home": "DEN",
+      "home_score": 108,
+      "market_total": 241.0,
+      "market_spread": 3.0,
+      "favorite": "DEN"
+    },
+    {
+      "date": "2026-03-01",
+      "away": "MIL",
+      "away_score": 97,
+      "home": "CHI",
+      "home_score": 120,
+      "market_total": 231.5,
+      "market_spread": 2.5,
+      "favorite": "MIL"
+    },
+    {
+      "date": "2026-03-15",
+      "away": "MIN",
+      "away_score": 103,
+      "home": "OKC",
+      "home_score": 116,
+      "market_total": 228.0,
+      "market_spread": 9.0,
+      "favorite": "OKC"
+    },
+    {
+      "date": "2026-03-15",
+      "away": "IND",
+      "away_score": 123,
+      "home": "MIL",
+      "home_score": 134,
+      "market_total": 228.0,
+      "market_spread": 7.5,
+      "favorite": "MIL"
+    },
+    {
+      "date": "2026-03-15",
+      "away": "DAL",
+      "away_score": 130,
+      "home": "CLE",
+      "home_score": 120,
+      "market_total": 234.0,
+      "market_spread": 15.0,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2026-03-15",
+      "away": "DET",
+      "away_score": 108,
+      "home": "TOR",
+      "home_score": 119,
+      "market_total": 224.5,
+      "market_spread": 3.0,
+      "favorite": "DET"
+    },
+    {
+      "date": "2026-04-01",
+      "away": "PHI",
+      "away_score": 153,
+      "home": "WAS",
+      "home_score": 131,
+      "market_total": 238.5,
+      "market_spread": 14.5,
+      "favorite": "PHI"
+    },
+    {
+      "date": "2026-04-01",
+      "away": "ATL",
+      "away_score": 130,
+      "home": "ORL",
+      "home_score": 101,
+      "market_total": 235.5,
+      "market_spread": 2.5,
+      "favorite": "ATL"
+    },
+    {
+      "date": "2026-04-01",
+      "away": "BOS",
+      "away_score": 147,
+      "home": "MIA",
+      "home_score": 129,
+      "market_total": 230.0,
+      "market_spread": 4.5,
+      "favorite": "BOS"
+    },
+    {
+      "date": "2026-04-01",
+      "away": "SAC",
+      "away_score": 123,
+      "home": "TOR",
+      "home_score": 115,
+      "market_total": 228.5,
+      "market_spread": 12.5,
+      "favorite": "TOR"
+    },
+    {
+      "date": "2026-04-01",
+      "away": "NYK",
+      "away_score": 130,
+      "home": "MEM",
+      "home_score": 119,
+      "market_total": 225.5,
+      "market_spread": 13.5,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2026-04-01",
+      "away": "IND",
+      "away_score": 145,
+      "home": "CHI",
+      "home_score": 126,
+      "market_total": 246.5,
+      "market_spread": 4.0,
+      "favorite": "IND"
+    },
+    {
+      "date": "2025-12-02",
+      "away": "WAS",
+      "away_score": 102,
+      "home": "PHI",
+      "home_score": 121,
+      "market_total": 235.5,
+      "market_spread": 13.0,
+      "favorite": "PHI"
+    },
+    {
+      "date": "2025-12-02",
+      "away": "POR",
+      "away_score": 118,
+      "home": "TOR",
+      "home_score": 121,
+      "market_total": 231.5,
+      "market_spread": 5.0,
+      "favorite": "TOR"
+    },
+    {
+      "date": "2025-12-02",
+      "away": "MIN",
+      "away_score": 149,
+      "home": "NOP",
+      "home_score": 142,
+      "market_total": 229.5,
+      "market_spread": 12.5,
+      "favorite": "MIN"
+    },
+    {
+      "date": "2025-12-02",
+      "away": "NYK",
+      "away_score": 117,
+      "home": "BOS",
+      "home_score": 123,
+      "market_total": 231.0,
+      "market_spread": 1.0,
+      "favorite": "BOS"
+    },
+    {
+      "date": "2025-12-02",
+      "away": "MEM",
+      "away_score": 119,
+      "home": "SAS",
+      "home_score": 126,
+      "market_total": 232.5,
+      "market_spread": 5.0,
+      "favorite": "SAS"
+    },
+    {
+      "date": "2025-12-02",
+      "away": "OKC",
+      "away_score": 124,
+      "home": "GSW",
+      "home_score": 112,
+      "market_total": 223.5,
+      "market_spread": 11.0,
+      "favorite": "OKC"
+    },
+    {
+      "date": "2025-12-03",
+      "away": "DEN",
+      "away_score": 135,
+      "home": "IND",
+      "home_score": 120,
+      "market_total": 237.5,
+      "market_spread": 8.0,
+      "favorite": "DEN"
+    },
+    {
+      "date": "2025-12-03",
+      "away": "POR",
+      "away_score": 122,
+      "home": "CLE",
+      "home_score": 110,
+      "market_total": 245.0,
+      "market_spread": 10.0,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2025-12-03",
+      "away": "SAS",
+      "away_score": 114,
+      "home": "ORL",
+      "home_score": 112,
+      "market_total": 236.0,
+      "market_spread": 8.0,
+      "favorite": "ORL"
+    },
+    {
+      "date": "2025-12-03",
+      "away": "CHA",
+      "away_score": 104,
+      "home": "NYK",
+      "home_score": 119,
+      "market_total": 235.5,
+      "market_spread": 9.0,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-12-03",
+      "away": "LAC",
+      "away_score": 115,
+      "home": "ATL",
+      "home_score": 92,
+      "market_total": 225.5,
+      "market_spread": 2.0,
+      "favorite": "ATL"
+    },
+    {
+      "date": "2025-12-03",
+      "away": "SAC",
+      "away_score": 95,
+      "home": "HOU",
+      "home_score": 121,
+      "market_total": 231.0,
+      "market_spread": 15.5,
+      "favorite": "HOU"
+    },
+    {
+      "date": "2025-12-03",
+      "away": "BKN",
+      "away_score": 113,
+      "home": "CHI",
+      "home_score": 103,
+      "market_total": 231.0,
+      "market_spread": 8.0,
+      "favorite": "CHI"
+    },
+    {
+      "date": "2025-12-03",
+      "away": "DET",
+      "away_score": 109,
+      "home": "MIL",
+      "home_score": 113,
+      "market_total": 228.0,
+      "market_spread": 4.5,
+      "favorite": "MIL"
+    },
+    {
+      "date": "2025-12-03",
+      "away": "MIA",
+      "away_score": 108,
+      "home": "DAL",
+      "home_score": 118,
+      "market_total": 239.0,
+      "market_spread": 4.5,
+      "favorite": "DAL"
+    },
+    {
+      "date": "2025-12-04",
+      "away": "BOS",
+      "away_score": 146,
+      "home": "WAS",
+      "home_score": 101,
+      "market_total": 232.0,
+      "market_spread": 11.0,
+      "favorite": "BOS"
+    },
+    {
+      "date": "2025-12-04",
+      "away": "GSW",
+      "away_score": 98,
+      "home": "PHI",
+      "home_score": 99,
+      "market_total": 223.5,
+      "market_spread": 4.0,
+      "favorite": "PHI"
+    },
+    {
+      "date": "2025-12-04",
+      "away": "LAL",
+      "away_score": 123,
+      "home": "TOR",
+      "home_score": 120,
+      "market_total": 228.5,
+      "market_spread": 2.0,
+      "favorite": "TOR"
+    },
+    {
+      "date": "2025-12-04",
+      "away": "UTA",
+      "away_score": 123,
+      "home": "BKN",
+      "home_score": 110,
+      "market_total": 231.0,
+      "market_spread": 5.0,
+      "favorite": "UTA"
+    },
+    {
+      "date": "2025-12-06",
+      "away": "NOP",
+      "away_score": 101,
+      "home": "BKN",
+      "home_score": 119,
+      "market_total": 227.5,
+      "market_spread": 4.0,
+      "favorite": "BKN"
+    },
+    {
+      "date": "2025-12-06",
+      "away": "ATL",
+      "away_score": 131,
+      "home": "WAS",
+      "home_score": 116,
+      "market_total": 237.5,
+      "market_spread": 9.5,
+      "favorite": "ATL"
+    },
+    {
+      "date": "2025-12-06",
+      "away": "MIL",
+      "away_score": 112,
+      "home": "DET",
+      "home_score": 124,
+      "market_total": 223.5,
+      "market_spread": 12.5,
+      "favorite": "DET"
+    },
+    {
+      "date": "2025-12-06",
+      "away": "GSW",
+      "away_score": 99,
+      "home": "CLE",
+      "home_score": 94,
+      "market_total": 230.5,
+      "market_spread": 9.5,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2025-12-06",
+      "away": "SAC",
+      "away_score": 127,
+      "home": "MIA",
+      "home_score": 111,
+      "market_total": 241.5,
+      "market_spread": 8.5,
+      "favorite": "MIA"
+    },
+    {
+      "date": "2025-12-06",
+      "away": "LAC",
+      "away_score": 106,
+      "home": "MIN",
+      "home_score": 109,
+      "market_total": 228.0,
+      "market_spread": 8.0,
+      "favorite": "MIN"
+    },
+    {
+      "date": "2025-12-06",
+      "away": "HOU",
+      "away_score": 109,
+      "home": "DAL",
+      "home_score": 122,
+      "market_total": 221.5,
+      "market_spread": 6.5,
+      "favorite": "DAL"
+    },
+    {
+      "date": "2025-12-07",
+      "away": "ORL",
+      "away_score": 100,
+      "home": "NYK",
+      "home_score": 106,
+      "market_total": 229.5,
+      "market_spread": 1.0,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-12-07",
+      "away": "BOS",
+      "away_score": 121,
+      "home": "TOR",
+      "home_score": 113,
+      "market_total": 224.5,
+      "market_spread": 3.5,
+      "favorite": "BOS"
+    },
+    {
+      "date": "2025-12-07",
+      "away": "DEN",
+      "away_score": 115,
+      "home": "CHA",
+      "home_score": 106,
+      "market_total": 235.5,
+      "market_spread": 10.5,
+      "favorite": "DEN"
+    },
+    {
+      "date": "2025-12-07",
+      "away": "POR",
+      "away_score": 96,
+      "home": "MEM",
+      "home_score": 119,
+      "market_total": 232.5,
+      "market_spread": 2.0,
+      "favorite": "MEM"
+    },
+    {
+      "date": "2025-12-07",
+      "away": "GSW",
+      "away_score": 123,
+      "home": "CHI",
+      "home_score": 91,
+      "market_total": 229.5,
+      "market_spread": 1.0,
+      "favorite": "GSW"
+    },
+    {
+      "date": "2025-12-07",
+      "away": "LAL",
+      "away_score": 112,
+      "home": "PHI",
+      "home_score": 108,
+      "market_total": 234.0,
+      "market_spread": 2.5,
+      "favorite": "LAL"
+    },
+    {
+      "date": "2025-12-07",
+      "away": "OKC",
+      "away_score": 131,
+      "home": "UTA",
+      "home_score": 101,
+      "market_total": 234.0,
+      "market_spread": 11.5,
+      "favorite": "OKC"
+    },
+    {
+      "date": "2025-12-08",
+      "away": "SAC",
+      "away_score": 105,
+      "home": "IND",
+      "home_score": 116,
+      "market_total": 232.0,
+      "market_spread": 4.0,
+      "favorite": "IND"
+    },
+    {
+      "date": "2025-12-08",
+      "away": "PHX",
+      "away_score": 108,
+      "home": "MIN",
+      "home_score": 105,
+      "market_total": 225.5,
+      "market_spread": 8.0,
+      "favorite": "MIN"
+    },
+    {
+      "date": "2025-12-08",
+      "away": "SAS",
+      "away_score": 135,
+      "home": "NOP",
+      "home_score": 132,
+      "market_total": 238.5,
+      "market_spread": 8.0,
+      "favorite": "SAS"
+    },
+    {
+      "date": "2025-12-09",
+      "away": "MIA",
+      "away_score": 108,
+      "home": "ORL",
+      "home_score": 117,
+      "market_total": 235.0,
+      "market_spread": 1.5,
+      "favorite": "ORL"
+    },
+    {
+      "date": "2025-12-09",
+      "away": "NYK",
+      "away_score": 117,
+      "home": "TOR",
+      "home_score": 101,
+      "market_total": 226.5,
+      "market_spread": 6.0,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-12-11",
+      "away": "POR",
+      "away_score": 120,
+      "home": "NOP",
+      "home_score": 143,
+      "market_total": 242.5,
+      "market_spread": 4.0,
+      "favorite": "NOP"
+    },
+    {
+      "date": "2025-12-11",
+      "away": "BOS",
+      "away_score": 101,
+      "home": "MIL",
+      "home_score": 116,
+      "market_total": 222.5,
+      "market_spread": 9.5,
+      "favorite": "BOS"
+    },
+    {
+      "date": "2025-12-11",
+      "away": "LAC",
+      "away_score": 113,
+      "home": "HOU",
+      "home_score": 115,
+      "market_total": 221.5,
+      "market_spread": 9.0,
+      "favorite": "HOU"
+    },
+    {
+      "date": "2025-12-11",
+      "away": "DEN",
+      "away_score": 136,
+      "home": "SAC",
+      "home_score": 105,
+      "market_total": 240.0,
+      "market_spread": 10.5,
+      "favorite": "DEN"
+    },
+    {
+      "date": "2025-12-12",
+      "away": "IND",
+      "away_score": 105,
+      "home": "PHI",
+      "home_score": 115,
+      "market_total": 221.0,
+      "market_spread": 5.0,
+      "favorite": "PHI"
+    },
+    {
+      "date": "2025-12-12",
+      "away": "CHI",
+      "away_score": 129,
+      "home": "CHA",
+      "home_score": 126,
+      "market_total": 229.5,
+      "market_spread": 2.5,
+      "favorite": "CHI"
+    },
+    {
+      "date": "2025-12-12",
+      "away": "ATL",
+      "away_score": 115,
+      "home": "DET",
+      "home_score": 142,
+      "market_total": 233.0,
+      "market_spread": 7.0,
+      "favorite": "DET"
+    },
+    {
+      "date": "2025-12-12",
+      "away": "CLE",
+      "away_score": 130,
+      "home": "WAS",
+      "home_score": 126,
+      "market_total": 246.0,
+      "market_spread": 17.0,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2025-12-12",
+      "away": "UTA",
+      "away_score": 130,
+      "home": "MEM",
+      "home_score": 126,
+      "market_total": 244.0,
+      "market_spread": 7.5,
+      "favorite": "MEM"
+    },
+    {
+      "date": "2025-12-12",
+      "away": "BKN",
+      "away_score": 111,
+      "home": "DAL",
+      "home_score": 119,
+      "market_total": 219.0,
+      "market_spread": 7.5,
+      "favorite": "DAL"
+    },
+    {
+      "date": "2025-12-12",
+      "away": "MIN",
+      "away_score": 127,
+      "home": "GSW",
+      "home_score": 120,
+      "market_total": 229.0,
+      "market_spread": 5.0,
+      "favorite": "GSW"
+    },
+    {
+      "date": "2025-12-13",
+      "away": "NYK",
+      "away_score": 132,
+      "home": "ORL",
+      "home_score": 120,
+      "market_total": 225.0,
+      "market_spread": 4.0,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-12-13",
+      "away": "SAS",
+      "away_score": 111,
+      "home": "OKC",
+      "home_score": 109,
+      "market_total": 234.0,
+      "market_spread": 10.0,
+      "favorite": "OKC"
+    },
+    {
+      "date": "2025-12-14",
+      "away": "WAS",
+      "away_score": 108,
+      "home": "IND",
+      "home_score": 89,
+      "market_total": 233.5,
+      "market_spread": 10.0,
+      "favorite": "IND"
+    },
+    {
+      "date": "2025-12-14",
+      "away": "CHA",
+      "away_score": 119,
+      "home": "CLE",
+      "home_score": 111,
+      "market_total": 233.0,
+      "market_spread": 12.5,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2025-12-14",
+      "away": "PHI",
+      "away_score": 117,
+      "home": "ATL",
+      "home_score": 120,
+      "market_total": 226.0,
+      "market_spread": 4.5,
+      "favorite": "ATL"
+    },
+    {
+      "date": "2025-12-14",
+      "away": "MIL",
+      "away_score": 82,
+      "home": "BKN",
+      "home_score": 127,
+      "market_total": 216.0,
+      "market_spread": 1.0,
+      "favorite": "MIL"
+    },
+    {
+      "date": "2025-12-14",
+      "away": "NOP",
+      "away_score": 114,
+      "home": "CHI",
+      "home_score": 104,
+      "market_total": 247.5,
+      "market_spread": 4.5,
+      "favorite": "CHI"
+    },
+    {
+      "date": "2025-12-14",
+      "away": "SAC",
+      "away_score": 103,
+      "home": "MIN",
+      "home_score": 117,
+      "market_total": 235.5,
+      "market_spread": 10.0,
+      "favorite": "MIN"
+    },
+    {
+      "date": "2025-12-14",
+      "away": "LAL",
+      "away_score": 116,
+      "home": "PHX",
+      "home_score": 114,
+      "market_total": 232.0,
+      "market_spread": 1.5,
+      "favorite": "PHX"
+    },
+    {
+      "date": "2025-12-14",
+      "away": "GSW",
+      "away_score": 131,
+      "home": "POR",
+      "home_score": 136,
+      "market_total": 238.0,
+      "market_spread": 5.0,
+      "favorite": "POR"
+    },
+    {
+      "date": "2025-12-16",
+      "away": "SAS",
+      "away_score": 113,
+      "home": "NYK",
+      "home_score": 124,
+      "market_total": 233.0,
+      "market_spread": 2.5,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-12-17",
+      "away": "MEM",
+      "away_score": 116,
+      "home": "MIN",
+      "home_score": 110,
+      "market_total": 227.0,
+      "market_spread": 6.5,
+      "favorite": "MIN"
+    },
+    {
+      "date": "2025-12-17",
+      "away": "CLE",
+      "away_score": 111,
+      "home": "CHI",
+      "home_score": 127,
+      "market_total": 243.5,
+      "market_spread": 5.5,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "NYK",
+      "away_score": 114,
+      "home": "IND",
+      "home_score": 113,
+      "market_total": 225.0,
+      "market_spread": 2.5,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "ATL",
+      "away_score": 126,
+      "home": "CHA",
+      "home_score": 133,
+      "market_total": 246.0,
+      "market_spread": 2.5,
+      "favorite": "CHA"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "MIA",
+      "away_score": 106,
+      "home": "BKN",
+      "home_score": 95,
+      "market_total": 236.0,
+      "market_spread": 11.5,
+      "favorite": "MIA"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "HOU",
+      "away_score": 128,
+      "home": "NOP",
+      "home_score": 133,
+      "market_total": 236.0,
+      "market_spread": 9.5,
+      "favorite": "HOU"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "TOR",
+      "away_score": 111,
+      "home": "MIL",
+      "home_score": 105,
+      "market_total": 218.0,
+      "market_spread": 4.5,
+      "favorite": "TOR"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "WAS",
+      "away_score": 94,
+      "home": "SAS",
+      "home_score": 119,
+      "market_total": 241.0,
+      "market_spread": 16.0,
+      "favorite": "SAS"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "LAC",
+      "away_score": 101,
+      "home": "OKC",
+      "home_score": 122,
+      "market_total": 222.5,
+      "market_spread": 17.0,
+      "favorite": "OKC"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "DET",
+      "away_score": 114,
+      "home": "DAL",
+      "home_score": 116,
+      "market_total": 233.0,
+      "market_spread": 1.5,
+      "favorite": "DAL"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "ORL",
+      "away_score": 115,
+      "home": "DEN",
+      "home_score": 126,
+      "market_total": 238.0,
+      "market_spread": 4.5,
+      "favorite": "DEN"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "LAL",
+      "away_score": 143,
+      "home": "UTA",
+      "home_score": 135,
+      "market_total": 249.5,
+      "market_spread": 7.0,
+      "favorite": "LAL"
+    },
+    {
+      "date": "2025-12-18",
+      "away": "GSW",
+      "away_score": 98,
+      "home": "PHX",
+      "home_score": 99,
+      "market_total": 231.0,
+      "market_spread": 2.0,
+      "favorite": "PHX"
+    },
+    {
+      "date": "2025-12-19",
+      "away": "MIA",
+      "away_score": 116,
+      "home": "BOS",
+      "home_score": 129,
+      "market_total": 234.0,
+      "market_spread": 8.0,
+      "favorite": "BOS"
+    },
+    {
+      "date": "2025-12-19",
+      "away": "PHI",
+      "away_score": 116,
+      "home": "NYK",
+      "home_score": 107,
+      "market_total": 233.5,
+      "market_spread": 3.5,
+      "favorite": "NYK"
+    },
+    {
+      "date": "2025-12-19",
+      "away": "CHI",
+      "away_score": 136,
+      "home": "CLE",
+      "home_score": 125,
+      "market_total": 240.0,
+      "market_spread": 8.0,
+      "favorite": "CLE"
+    },
+    {
+      "date": "2025-12-19",
+      "away": "SAS",
+      "away_score": 126,
+      "home": "ATL",
+      "home_score": 98,
+      "market_total": 238.5,
+      "market_spread": 6.0,
+      "favorite": "SAS"
+    },
+    {
+      "date": "2025-12-19",
+      "away": "OKC",
+      "away_score": 107,
+      "home": "MIN",
+      "home_score": 112,
+      "market_total": 231.0,
+      "market_spread": 7.0,
+      "favorite": "OKC"
     }
   ],
   "wnba": [
@@ -2327,7 +3247,7 @@
       "away_score": 68,
       "home": "TOR",
       "home_score": 65,
-      "date": "May 8",
+      "date": "2026-05-08",
       "market_total": 160.5,
       "market_spread": 1.5,
       "favorite": "TOR"
@@ -2337,7 +3257,7 @@
       "away_score": 75,
       "home": "NY",
       "home_score": 106,
-      "date": "May 8",
+      "date": "2026-05-08",
       "market_total": 160.0,
       "market_spread": 15.5,
       "favorite": "NY"
@@ -2347,7 +3267,7 @@
       "away_score": 91,
       "home": "SEA",
       "home_score": 80,
-      "date": "May 8",
+      "date": "2026-05-08",
       "market_total": 156.5,
       "market_spread": 5.5,
       "favorite": "GS"
@@ -2357,7 +3277,7 @@
       "away_score": 107,
       "home": "IND",
       "home_score": 104,
-      "date": "May 9",
+      "date": "2026-05-09",
       "market_total": 179.0,
       "market_spread": 5.5,
       "favorite": "IND"
@@ -2367,7 +3287,7 @@
       "away_score": 99,
       "home": "LV",
       "home_score": 66,
-      "date": "May 9",
+      "date": "2026-05-09",
       "market_total": 168.5,
       "market_spread": 9.5,
       "favorite": "LV"
@@ -2377,7 +3297,7 @@
       "away_score": 91,
       "home": "MIN",
       "home_score": 90,
-      "date": "May 9",
+      "date": "2026-05-09",
       "market_total": 160.5,
       "market_spread": 5.5,
       "favorite": "MIN"
@@ -2387,7 +3307,7 @@
       "away_score": 98,
       "home": "PDX",
       "home_score": 83,
-      "date": "May 9",
+      "date": "2026-05-09",
       "market_total": 163.5,
       "market_spread": 5.5,
       "favorite": "CHI"
@@ -2397,7 +3317,7 @@
       "away_score": 89,
       "home": "CON",
       "home_score": 82,
-      "date": "May 10",
+      "date": "2026-05-10",
       "market_total": 163.0,
       "market_spread": 1.5,
       "favorite": "CON"
@@ -2407,7 +3327,7 @@
       "away_score": 98,
       "home": "WAS",
       "home_score": 93,
-      "date": "May 10",
+      "date": "2026-05-10",
       "market_total": 165.0,
       "market_spread": 5.5,
       "favorite": "NY"
@@ -2417,7 +3337,7 @@
       "away_score": 105,
       "home": "LA",
       "home_score": 78,
-      "date": "May 10",
+      "date": "2026-05-10",
       "market_total": 177.0,
       "market_spread": 1.5,
       "favorite": "LV"
@@ -2427,7 +3347,7 @@
       "away_score": 79,
       "home": "GS",
       "home_score": 95,
-      "date": "May 10",
+      "date": "2026-05-10",
       "market_total": 157.5,
       "market_spread": 2.5,
       "favorite": "GS"
@@ -2437,7 +3357,7 @@
       "away_score": 77,
       "home": "DAL",
       "home_score": 72,
-      "date": "May 12",
+      "date": "2026-05-12",
       "market_total": 181.0,
       "market_spread": 1.5,
       "favorite": "ATL"
@@ -2447,7 +3367,7 @@
       "away_score": 96,
       "home": "PDX",
       "home_score": 98,
-      "date": "May 12",
+      "date": "2026-05-12",
       "market_total": 173.5,
       "market_spread": 12.5,
       "favorite": "NY"
@@ -2457,7 +3377,7 @@
       "away_score": 88,
       "home": "PHO",
       "home_score": 84,
-      "date": "May 12",
+      "date": "2026-05-12",
       "market_total": 167.0,
       "market_spread": 4.5,
       "favorite": "MIN"
@@ -2467,7 +3387,7 @@
       "away_score": 73,
       "home": "TOR",
       "home_score": 86,
-      "date": "May 13",
+      "date": "2026-05-13",
       "market_total": 168.0,
       "market_spread": 3.5,
       "favorite": "TOR"
@@ -2477,7 +3397,7 @@
       "away_score": 98,
       "home": "CON",
       "home_score": 69,
-      "date": "May 13",
+      "date": "2026-05-13",
       "market_total": 172.0,
       "market_spread": 14.5,
       "favorite": "LV"
@@ -2487,7 +3407,7 @@
       "away_score": 69,
       "home": "GS",
       "home_score": 63,
-      "date": "May 13",
+      "date": "2026-05-13",
       "market_total": 166.5,
       "market_spread": 5.5,
       "favorite": "CHI"
@@ -2497,7 +3417,7 @@
       "away_score": 87,
       "home": "LA",
       "home_score": 78,
-      "date": "May 13",
+      "date": "2026-05-13",
       "market_total": 186.0,
       "market_spread": 1.5,
       "favorite": "IND"
@@ -2507,7 +3427,7 @@
       "away_score": 90,
       "home": "DAL",
       "home_score": 86,
-      "date": "May 14",
+      "date": "2026-05-14",
       "market_total": 178.5,
       "market_spread": 3.5,
       "favorite": "MIN"
@@ -2517,7 +3437,7 @@
       "away_score": 100,
       "home": "PDX",
       "home_score": 82,
-      "date": "May 14",
+      "date": "2026-05-14",
       "market_total": 175.0,
       "market_spread": 11.5,
       "favorite": "NY"
@@ -2527,7 +3447,7 @@
       "away_score": 104,
       "home": "IND",
       "home_score": 102,
-      "date": "May 15",
+      "date": "2026-05-15",
       "market_total": 170.0,
       "market_spread": 8.5,
       "favorite": "IND"
@@ -2537,7 +3457,7 @@
       "away_score": 101,
       "home": "CON",
       "home_score": 94,
-      "date": "May 15",
+      "date": "2026-05-15",
       "market_total": 172.5,
       "market_spread": 15.5,
       "favorite": "LV"
@@ -2547,7 +3467,7 @@
       "away_score": 83,
       "home": "PHO",
       "home_score": 91,
-      "date": "May 15",
+      "date": "2026-05-15",
       "market_total": 165.5,
       "market_spread": 4.0,
       "favorite": "PHX"
@@ -2557,7 +3477,7 @@
       "away_score": 95,
       "home": "LA",
       "home_score": 99,
-      "date": "May 15",
+      "date": "2026-05-15",
       "market_total": 170.0,
       "market_spread": 7.5,
       "favorite": "LA"
@@ -2567,7 +3487,7 @@
       "away_score": 85,
       "home": "ATL",
       "home_score": 84,
-      "date": "May 17",
+      "date": "2026-05-17",
       "market_total": 171.5,
       "market_spread": 3.5,
       "favorite": "ATL"
@@ -2577,7 +3497,7 @@
       "away_score": 78,
       "home": "IND",
       "home_score": 89,
-      "date": "May 17",
+      "date": "2026-05-17",
       "market_total": 176.5,
       "market_spread": 11.5,
       "favorite": "IND"
@@ -2587,7 +3507,7 @@
       "away_score": 86,
       "home": "MIN",
       "home_score": 79,
-      "date": "May 17",
+      "date": "2026-05-17",
       "market_total": 165.5,
       "market_spread": 5.5,
       "favorite": "CHI"
@@ -2597,7 +3517,7 @@
       "away_score": 106,
       "home": "LA",
       "home_score": 96,
-      "date": "May 17",
+      "date": "2026-05-17",
       "market_total": 174.5,
       "market_spread": 7.5,
       "favorite": "LA"
@@ -2607,7 +3527,7 @@
       "away_score": 69,
       "home": "DAL",
       "home_score": 92,
-      "date": "May 18",
+      "date": "2026-05-18",
       "market_total": 170.0,
       "market_spread": 3.5,
       "favorite": "DAL"
@@ -2617,7 +3537,7 @@
       "away_score": 82,
       "home": "PDX",
       "home_score": 83,
-      "date": "May 18",
+      "date": "2026-05-18",
       "market_total": 174.0,
       "market_spread": 3.5,
       "favorite": "POR"
@@ -2627,7 +3547,7 @@
       "away_score": 98,
       "home": "PHO",
       "home_score": 90,
-      "date": "May 19",
+      "date": "2026-05-19",
       "market_total": 169.5,
       "market_spread": 7.5,
       "favorite": "PHX"
@@ -2637,7 +3557,7 @@
       "away_score": 73,
       "home": "IND",
       "home_score": 90,
-      "date": "May 20",
+      "date": "2026-05-20",
       "market_total": 175.5,
       "market_spread": 10.5,
       "favorite": "IND"
@@ -2647,7 +3567,7 @@
       "away_score": 99,
       "home": "CHI",
       "home_score": 89,
-      "date": "May 20",
+      "date": "2026-05-20",
       "market_total": 170.0,
       "market_spread": 2.5,
       "favorite": "DAL"
@@ -2657,7 +3577,7 @@
       "away_score": 80,
       "home": "SEA",
       "home_score": 78,
-      "date": "May 20",
+      "date": "2026-05-20",
       "market_total": 169.0,
       "market_spread": 2.5,
       "favorite": "CON"
@@ -2667,7 +3587,7 @@
       "away_score": 87,
       "home": "NY",
       "home_score": 70,
-      "date": "May 21",
+      "date": "2026-05-21",
       "market_total": 169.0,
       "market_spread": 5.5,
       "favorite": "NY"
@@ -2677,7 +3597,7 @@
       "away_score": 72,
       "home": "MIN",
       "home_score": 100,
-      "date": "May 21",
+      "date": "2026-05-21",
       "market_total": 173.0,
       "market_spread": 5.5,
       "favorite": "MIN"
@@ -2687,7 +3607,7 @@
       "away_score": 97,
       "home": "PHO",
       "home_score": 88,
-      "date": "May 21",
+      "date": "2026-05-21",
       "market_total": 178.0,
       "market_spread": 2.5,
       "favorite": "PHX"
@@ -2697,7 +3617,7 @@
       "away_score": 82,
       "home": "IND",
       "home_score": 90,
-      "date": "May 22",
+      "date": "2026-05-22",
       "market_total": 167.5,
       "market_spread": 5.5,
       "favorite": "IND"
@@ -2707,7 +3627,7 @@
       "away_score": 69,
       "home": "ATL",
       "home_score": 86,
-      "date": "May 22",
+      "date": "2026-05-22",
       "market_total": 174.0,
       "market_spread": 5.5,
       "favorite": "ATL"
@@ -2717,7 +3637,7 @@
       "away_score": 59,
       "home": "SEA",
       "home_score": 77,
-      "date": "May 22",
+      "date": "2026-05-22",
       "market_total": 165.5,
       "market_spread": 1.5,
       "favorite": "SEA"
@@ -2727,7 +3647,7 @@
       "away_score": 85,
       "home": "CHI",
       "home_score": 75,
-      "date": "May 23",
+      "date": "2026-05-23",
       "market_total": 168.5,
       "market_spread": 1.5,
       "favorite": "MIN"
@@ -2737,7 +3657,7 @@
       "away_score": 99,
       "home": "TOR",
       "home_score": 80,
-      "date": "May 23",
+      "date": "2026-05-23",
       "market_total": 173.5,
       "market_spread": 4.5,
       "favorite": "TOR"
@@ -2747,7 +3667,7 @@
       "away_score": 101,
       "home": "LV",
       "home_score": 95,
-      "date": "May 23",
+      "date": "2026-05-23",
       "market_total": 180.5,
       "market_spread": 9.5,
       "favorite": "LV"
@@ -2757,7 +3677,7 @@
       "away_score": 81,
       "home": "NY",
       "home_score": 74,
-      "date": "May 25",
+      "date": "2026-05-25",
       "market_total": 172.5,
       "market_spread": 10.5,
       "favorite": "NY"
@@ -2767,7 +3687,7 @@
       "away_score": 70,
       "home": "GS",
       "home_score": 97,
-      "date": "May 25",
+      "date": "2026-05-25",
       "market_total": 158.0,
       "market_spread": 13.5,
       "favorite": "GS"
@@ -2777,7 +3697,7 @@
       "away_score": 74,
       "home": "NY",
       "home_score": 84,
-      "date": "May 27",
+      "date": "2026-05-27",
       "market_total": 169.0,
       "market_spread": 4.5,
       "favorite": "NY"
@@ -2787,7 +3707,7 @@
       "away_score": 111,
       "home": "CHI",
       "home_score": 104,
-      "date": "May 27",
+      "date": "2026-05-27",
       "market_total": 174.0,
       "market_spread": 4.5,
       "favorite": "CHI"
@@ -2797,7 +3717,7 @@
       "away_score": 81,
       "home": "MIN",
       "home_score": 96,
-      "date": "May 27",
+      "date": "2026-05-27",
       "market_total": 166.5,
       "market_spread": 3.5,
       "favorite": "MIN"
@@ -2807,7 +3727,7 @@
       "away_score": 61,
       "home": "PDX",
       "home_score": 71,
-      "date": "May 27",
+      "date": "2026-05-27",
       "market_total": 165.5,
       "market_spread": 7.5,
       "favorite": "POR"
@@ -2817,7 +3737,7 @@
       "away_score": 68,
       "home": "NY",
       "home_score": 75,
-      "date": "May 29",
+      "date": "2026-05-29",
       "market_total": 170.5,
       "market_spread": 5.5,
       "favorite": "NY"
@@ -2827,7 +3747,7 @@
       "away_score": 79,
       "home": "CHI",
       "home_score": 58,
-      "date": "May 29",
+      "date": "2026-05-29",
       "market_total": 172.5,
       "market_spread": 4.5,
       "favorite": "MIN"
@@ -2837,7 +3757,7 @@
       "away_score": 92,
       "home": "WAS",
       "home_score": 87,
-      "date": "May 29",
+      "date": "2026-05-29",
       "market_total": 165.0,
       "market_spread": 2.5,
       "favorite": "LA"
@@ -2847,7 +3767,7 @@
       "away_score": 86,
       "home": "PDX",
       "home_score": 66,
-      "date": "May 29",
+      "date": "2026-05-29",
       "market_total": 163.5,
       "market_spread": 9.5,
       "favorite": "ATL"
@@ -2857,7 +3777,7 @@
       "away_score": 72,
       "home": "TOR",
       "home_score": 93,
-      "date": "May 30",
+      "date": "2026-05-30",
       "market_total": 171.5,
       "market_spread": 0.5,
       "favorite": "TOR"
@@ -2867,7 +3787,7 @@
       "away_score": 81,
       "home": "CON",
       "home_score": 84,
-      "date": "May 30",
+      "date": "2026-05-30",
       "market_total": 168.5,
       "market_spread": 3.5,
       "favorite": "CON"
@@ -2877,7 +3797,7 @@
       "away_score": 84,
       "home": "PDX",
       "home_score": 100,
-      "date": "May 30",
+      "date": "2026-05-30",
       "market_total": 174.0,
       "market_spread": 10.5,
       "favorite": "POR"
@@ -2887,7 +3807,7 @@
       "away_score": 91,
       "home": "GS",
       "home_score": 81,
-      "date": "May 31",
+      "date": "2026-05-31",
       "market_total": 168.0,
       "market_spread": 1.5,
       "favorite": "LV"
@@ -2897,7 +3817,7 @@
       "away_score": 56,
       "home": "DAL",
       "home_score": 79,
-      "date": "Jun 1",
+      "date": "2026-06-01",
       "market_total": 166.5,
       "market_spread": 13.5,
       "favorite": "DAL"
@@ -2907,7 +3827,7 @@
       "away_score": 111,
       "home": "PHO",
       "home_score": 77,
-      "date": "Jun 1",
+      "date": "2026-06-01",
       "market_total": 166.5,
       "market_spread": 2.5,
       "favorite": "MIN"
@@ -2917,7 +3837,7 @@
       "away_score": 72,
       "home": "WAS",
       "home_score": 90,
-      "date": "Jun 2",
+      "date": "2026-06-02",
       "market_total": 161.0,
       "market_spread": 1.5,
       "favorite": "WSH"
@@ -2927,7 +3847,7 @@
       "away_score": 75,
       "home": "ATL",
       "home_score": 91,
-      "date": "Jun 2",
+      "date": "2026-06-02",
       "market_total": 161.0,
       "market_spread": 13.5,
       "favorite": "ATL"
@@ -2937,7 +3857,7 @@
       "away_score": 77,
       "home": "GS",
       "home_score": 95,
-      "date": "Jun 2",
+      "date": "2026-06-02",
       "market_total": 160.5,
       "market_spread": 9.5,
       "favorite": "GS"
@@ -2947,7 +3867,7 @@
       "away_score": 79,
       "home": "LA",
       "home_score": 69,
-      "date": "Jun 2",
+      "date": "2026-06-02",
       "market_total": 176.5,
       "market_spread": 7.5,
       "favorite": "LV"
@@ -2957,7 +3877,7 @@
       "away_score": 82,
       "home": "NY",
       "home_score": 97,
-      "date": "Jun 3",
+      "date": "2026-06-03",
       "market_total": 173.5,
       "market_spread": 0.5,
       "favorite": "NY"
@@ -2967,7 +3887,7 @@
       "away_score": 72,
       "home": "SEA",
       "home_score": 68,
-      "date": "Jun 3",
+      "date": "2026-06-03",
       "market_total": 160.0,
       "market_spread": 7.5,
       "favorite": "SEA"
@@ -2977,7 +3897,7 @@
       "away_score": 71,
       "home": "IND",
       "home_score": 83,
-      "date": "Jun 4",
+      "date": "2026-06-04",
       "market_total": 174.0,
       "market_spread": 1.5,
       "favorite": "IND"
@@ -2987,7 +3907,7 @@
       "away_score": 84,
       "home": "MIN",
       "home_score": 87,
-      "date": "Jun 4",
+      "date": "2026-06-04",
       "market_total": 168.5,
       "market_spread": 3.5,
       "favorite": "MIN"
@@ -2997,7 +3917,7 @@
       "away_score": 80,
       "home": "CHI",
       "home_score": 85,
-      "date": "Jun 5",
+      "date": "2026-06-05",
       "market_total": 164.0,
       "market_spread": 6.5,
       "favorite": "CHI"
@@ -3007,7 +3927,7 @@
       "away_score": 78,
       "home": "PDX",
       "home_score": 72,
-      "date": "Jun 5",
+      "date": "2026-06-05",
       "market_total": 160.0,
       "market_spread": 4.5,
       "favorite": "PHX"
@@ -3017,7 +3937,7 @@
       "away_score": 104,
       "home": "LA",
       "home_score": 96,
-      "date": "Jun 5",
+      "date": "2026-06-05",
       "market_total": 178.5,
       "market_spread": 2.5,
       "favorite": "DAL"
@@ -3027,7 +3947,7 @@
       "away_score": 68,
       "home": "MIN",
       "home_score": 88,
-      "date": "Jun 6",
+      "date": "2026-06-06",
       "market_total": 162.0,
       "market_spread": 13.5,
       "favorite": "MIN"
@@ -3037,7 +3957,7 @@
       "away_score": 79,
       "home": "LV",
       "home_score": 84,
-      "date": "Jun 6",
+      "date": "2026-06-06",
       "market_total": 166.5,
       "market_spread": 2.5,
       "favorite": "LV"
@@ -3047,7 +3967,7 @@
       "away_score": 77,
       "home": "ATL",
       "home_score": 109,
-      "date": "Jun 6",
+      "date": "2026-06-06",
       "market_total": 160.5,
       "market_spread": 8.5,
       "favorite": "ATL"
@@ -3057,7 +3977,7 @@
       "away_score": 75,
       "home": "NY",
       "home_score": 83,
-      "date": "Jun 6",
+      "date": "2026-06-06",
       "market_total": 174.5,
       "market_spread": 3.5,
       "favorite": "NY"
@@ -3067,7 +3987,7 @@
       "away_score": 68,
       "home": "TOR",
       "home_score": 85,
-      "date": "Jun 7",
+      "date": "2026-06-07",
       "market_total": 175.0,
       "market_spread": 0.5,
       "favorite": "TOR"
@@ -3077,7 +3997,7 @@
       "away_score": 72,
       "home": "LA",
       "home_score": 89,
-      "date": "Jun 7",
+      "date": "2026-06-07",
       "market_total": 173.5,
       "market_spread": 7.5,
       "favorite": "LA"
@@ -3087,7 +4007,7 @@
       "away_score": 89,
       "home": "CON",
       "home_score": 80,
-      "date": "Jun 8",
+      "date": "2026-06-08",
       "market_total": 163.0,
       "market_spread": 12.5,
       "favorite": "NY"
@@ -3097,7 +4017,7 @@
       "away_score": 78,
       "home": "WAS",
       "home_score": 76,
-      "date": "Jun 8",
+      "date": "2026-06-08",
       "market_total": 171.5,
       "market_spread": 5.5,
       "favorite": "IND"
@@ -3107,7 +4027,7 @@
       "away_score": 91,
       "home": "LV",
       "home_score": 101,
-      "date": "Jun 8",
+      "date": "2026-06-08",
       "market_total": 163.0,
       "market_spread": 15.5,
       "favorite": "LV"
@@ -3117,7 +4037,7 @@
       "away_score": 102,
       "home": "TOR",
       "home_score": 106,
-      "date": "Jun 10",
+      "date": "2026-06-10",
       "market_total": 166.5,
       "market_spread": 8.5,
       "favorite": "TOR"
@@ -3127,7 +4047,7 @@
       "away_score": 88,
       "home": "SEA",
       "home_score": 83,
-      "date": "Jun 10",
+      "date": "2026-06-10",
       "market_total": 170.0,
       "market_spread": 7.5,
       "favorite": "SEA"
@@ -3137,7 +4057,7 @@
       "away_score": 106,
       "home": "IND",
       "home_score": 114,
-      "date": "Jun 11",
+      "date": "2026-06-11",
       "market_total": 171.5,
       "market_spread": 9.5,
       "favorite": "IND"
@@ -3147,7 +4067,7 @@
       "away_score": 104,
       "home": "ATL",
       "home_score": 90,
-      "date": "Jun 11",
+      "date": "2026-06-11",
       "market_total": 165.0,
       "market_spread": 3.5,
       "favorite": "ATL"
@@ -3157,7 +4077,7 @@
       "away_score": 70,
       "home": "DAL",
       "home_score": 85,
-      "date": "Jun 11",
+      "date": "2026-06-11",
       "market_total": 168.5,
       "market_spread": 6.5,
       "favorite": "DAL"
@@ -3167,7 +4087,7 @@
       "away_score": 105,
       "home": "PDX",
       "home_score": 89,
-      "date": "Jun 11",
+      "date": "2026-06-11",
       "market_total": 170.0,
       "market_spread": 11.5,
       "favorite": "LV"
@@ -3177,7 +4097,7 @@
       "away_score": 85,
       "home": "WAS",
       "home_score": 86,
-      "date": "Jun 12",
+      "date": "2026-06-12",
       "market_total": 169.0,
       "market_spread": 1.5,
       "favorite": "WSH"
@@ -3187,7 +4107,7 @@
       "away_score": 76,
       "home": "SEA",
       "home_score": 72,
-      "date": "Jun 12",
+      "date": "2026-06-12",
       "market_total": 157.5,
       "market_spread": 10.5,
       "favorite": "GS"
@@ -3197,7 +4117,7 @@
       "away_score": 85,
       "home": "CON",
       "home_score": 75,
-      "date": "Jun 13",
+      "date": "2026-06-13",
       "market_total": 170.5,
       "market_spread": 8.5,
       "favorite": "IND"
@@ -3207,7 +4127,7 @@
       "away_score": 97,
       "home": "LV",
       "home_score": 100,
-      "date": "Jun 13",
+      "date": "2026-06-13",
       "market_total": 174.5,
       "market_spread": 3.5,
       "favorite": "LV"
@@ -3217,7 +4137,7 @@
       "away_score": 83,
       "home": "PDX",
       "home_score": 84,
-      "date": "Jun 13",
+      "date": "2026-06-13",
       "market_total": 167.5,
       "market_spread": 3.5,
       "favorite": "POR"
@@ -3227,7 +4147,7 @@
       "away_score": 111,
       "home": "PHO",
       "home_score": 102,
-      "date": "Jun 13",
+      "date": "2026-06-13",
       "market_total": 172.0,
       "market_spread": 1.5,
       "favorite": "LA"
@@ -3237,7 +4157,7 @@
       "away_score": 64,
       "home": "NY",
       "home_score": 86,
-      "date": "Jun 14",
+      "date": "2026-06-14",
       "market_total": 166.5,
       "market_spread": 13.5,
       "favorite": "NY"
@@ -3247,7 +4167,7 @@
       "away_score": 102,
       "home": "TOR",
       "home_score": 77,
-      "date": "Jun 14",
+      "date": "2026-06-14",
       "market_total": 170.5,
       "market_spread": 6.5,
       "favorite": "ATL"
@@ -3257,7 +4177,7 @@
       "away_score": 74,
       "home": "MIN",
       "home_score": 107,
-      "date": "Jun 15",
+      "date": "2026-06-15",
       "market_total": 168.5,
       "market_spread": 13.5,
       "favorite": "MIN"
@@ -3267,7 +4187,7 @@
       "away_score": 66,
       "home": "DAL",
       "home_score": 96,
-      "date": "Jun 15",
+      "date": "2026-06-15",
       "market_total": 178.0,
       "market_spread": 2.5,
       "favorite": "DAL"
@@ -3277,7 +4197,7 @@
       "away_score": 58,
       "home": "GS",
       "home_score": 78,
-      "date": "Jun 15",
+      "date": "2026-06-15",
       "market_total": 173.0,
       "market_spread": 4.5,
       "favorite": "GS"
@@ -3287,7 +4207,7 @@
       "away_score": 88,
       "home": "CON",
       "home_score": 81,
-      "date": "Jun 17",
+      "date": "2026-06-17",
       "market_total": 160.0,
       "market_spread": 1.5,
       "favorite": "CON"
@@ -3297,7 +4217,7 @@
       "away_score": 96,
       "home": "CHI",
       "home_score": 95,
-      "date": "Jun 17",
+      "date": "2026-06-17",
       "market_total": 169.5,
       "market_spread": 10.5,
       "favorite": "NY"
@@ -3307,7 +4227,7 @@
       "away_score": 89,
       "home": "PDX",
       "home_score": 94,
-      "date": "Jun 17",
+      "date": "2026-06-17",
       "market_total": 162.5,
       "market_spread": 4.5,
       "favorite": "POR"
@@ -3317,7 +4237,7 @@
       "away_score": 80,
       "home": "GS",
       "home_score": 91,
-      "date": "Jun 17",
+      "date": "2026-06-17",
       "market_total": 165.0,
       "market_spread": 3.5,
       "favorite": "GS"
@@ -3327,7 +4247,7 @@
       "away_score": 108,
       "home": "IND",
       "home_score": 101,
-      "date": "Jun 18",
+      "date": "2026-06-18",
       "market_total": 173.5,
       "market_spread": 1.5,
       "favorite": "ATL"
@@ -3337,7 +4257,7 @@
       "away_score": 86,
       "home": "NY",
       "home_score": 83,
-      "date": "Jun 19",
+      "date": "2026-06-19",
       "market_total": 168.5,
       "market_spread": 12.5,
       "favorite": "NY"
@@ -3347,7 +4267,7 @@
       "away_score": 101,
       "home": "CON",
       "home_score": 97,
-      "date": "Jun 19",
+      "date": "2026-06-19",
       "market_total": 168.5,
       "market_spread": 2.5,
       "favorite": "CON"
@@ -3357,7 +4277,7 @@
       "away_score": 81,
       "home": "GS",
       "home_score": 75,
-      "date": "Jun 19",
+      "date": "2026-06-19",
       "market_total": 166.0,
       "market_spread": 2.5,
       "favorite": "MIN"
@@ -3367,7 +4287,7 @@
       "away_score": 96,
       "home": "ATL",
       "home_score": 113,
-      "date": "Jun 20",
+      "date": "2026-06-20",
       "market_total": 176.5,
       "market_spread": 5.5,
       "favorite": "ATL"
@@ -3377,7 +4297,7 @@
       "away_score": 73,
       "home": "PHO",
       "home_score": 93,
-      "date": "Jun 20",
+      "date": "2026-06-20",
       "market_total": 163.5,
       "market_spread": 6.5,
       "favorite": "PHX"
@@ -3387,7 +4307,7 @@
       "away_score": 92,
       "home": "DAL",
       "home_score": 93,
-      "date": "Jun 20",
+      "date": "2026-06-20",
       "market_total": 174.5,
       "market_spread": 10.5,
       "favorite": "DAL"
@@ -3397,7 +4317,7 @@
       "away_score": 73,
       "home": "LV",
       "home_score": 92,
-      "date": "Jun 21",
+      "date": "2026-06-21",
       "market_total": 167.5,
       "market_spread": 3.5,
       "favorite": "LV"
@@ -3407,7 +4327,7 @@
       "away_score": 84,
       "home": "MIN",
       "home_score": 79,
-      "date": "Jun 21",
+      "date": "2026-06-21",
       "market_total": 169.5,
       "market_spread": 14.5,
       "favorite": "MIN"
@@ -3417,7 +4337,7 @@
       "away_score": 97,
       "home": "LA",
       "home_score": 98,
-      "date": "Jun 21",
+      "date": "2026-06-21",
       "market_total": 181.5,
       "market_spread": 6.5,
       "favorite": "LA"
@@ -3427,7 +4347,7 @@
       "away_score": 111,
       "home": "IND",
       "home_score": 109,
-      "date": "Jun 24",
+      "date": "2026-06-24",
       "market_total": 167.5,
       "market_spread": 16.5,
       "favorite": "IND"
@@ -3437,7 +4357,7 @@
       "away_score": 78,
       "home": "WAS",
       "home_score": 76,
-      "date": "Jun 24",
+      "date": "2026-06-24",
       "market_total": 169.0,
       "market_spread": 0.5,
       "favorite": "MIN"
@@ -3447,7 +4367,7 @@
       "away_score": 78,
       "home": "CHI",
       "home_score": 101,
-      "date": "Jun 24",
+      "date": "2026-06-24",
       "market_total": 168.5,
       "market_spread": 1.5,
       "favorite": "CHI"
@@ -3457,7 +4377,7 @@
       "away_score": 66,
       "home": "GS",
       "home_score": 77,
-      "date": "Jun 24",
+      "date": "2026-06-24",
       "market_total": 166.0,
       "market_spread": 2.5,
       "favorite": "GS"
@@ -3467,7 +4387,7 @@
       "away_score": 84,
       "home": "LV",
       "home_score": 99,
-      "date": "Jun 25",
+      "date": "2026-06-25",
       "market_total": 179.5,
       "market_spread": 0.5,
       "favorite": "LV"
@@ -3477,7 +4397,7 @@
       "away_score": 88,
       "home": "SEA",
       "home_score": 99,
-      "date": "Jun 25",
+      "date": "2026-06-25",
       "market_total": 167.0,
       "market_spread": 0.5,
       "favorite": "SEA"
@@ -3487,7 +4407,7 @@
       "away_score": 57,
       "home": "CON",
       "home_score": 68,
-      "date": "Jun 26",
+      "date": "2026-06-26",
       "market_total": 164.5,
       "market_spread": 4.5,
       "favorite": "CON"
@@ -3497,7 +4417,7 @@
       "away_score": 94,
       "home": "CHI",
       "home_score": 124,
-      "date": "Jun 26",
+      "date": "2026-06-26",
       "market_total": 173.5,
       "market_spread": 6.5,
       "favorite": "CHI"
@@ -3507,7 +4427,7 @@
       "away_score": 75,
       "home": "GS",
       "home_score": 78,
-      "date": "Jun 26",
+      "date": "2026-06-26",
       "market_total": 163.5,
       "market_spread": 2.5,
       "favorite": "GS"
@@ -3517,7 +4437,7 @@
       "away_score": 87,
       "home": "IND",
       "home_score": 111,
-      "date": "Jun 27",
+      "date": "2026-06-27",
       "market_total": 182.5,
       "market_spread": 0.5,
       "favorite": "IND"
@@ -3527,7 +4447,7 @@
       "away_score": 90,
       "home": "SEA",
       "home_score": 105,
-      "date": "Jun 27",
+      "date": "2026-06-27",
       "market_total": 169.5,
       "market_spread": 9.5,
       "favorite": "SEA"
@@ -3537,7 +4457,7 @@
       "away_score": 85,
       "home": "NY",
       "home_score": 93,
-      "date": "Jun 30",
+      "date": "2026-06-30",
       "market_total": 174.5,
       "market_spread": 6.5,
       "favorite": "NY"
@@ -3547,7 +4467,7 @@
       "away_score": 76,
       "home": "WAS",
       "home_score": 81,
-      "date": "Jul 2",
+      "date": "2026-01-02",
       "market_total": 167.0,
       "market_spread": 8.5,
       "favorite": "ATL"
@@ -3557,7 +4477,7 @@
       "away_score": 86,
       "home": "CON",
       "home_score": 83,
-      "date": "Jul 2",
+      "date": "2026-01-02",
       "market_total": 172.0,
       "market_spread": 6.5,
       "favorite": "DAL"
@@ -3567,7 +4487,7 @@
       "away_score": 67,
       "home": "PHO",
       "home_score": 90,
-      "date": "Jul 2",
+      "date": "2026-01-02",
       "market_total": 170.5,
       "market_spread": 4.5,
       "favorite": "PHX"
@@ -3577,7 +4497,7 @@
       "away_score": 85,
       "home": "MIN",
       "home_score": 90,
-      "date": "Jul 11",
+      "date": "2026-01-11",
       "market_total": 173.5,
       "market_spread": 4.5,
       "favorite": "MIN"
@@ -3587,7 +4507,7 @@
       "away_score": 102,
       "home": "ATL",
       "home_score": 92,
-      "date": "Jul 11",
+      "date": "2026-01-11",
       "market_total": 174.5,
       "market_spread": 12.5,
       "favorite": "ATL"
@@ -3597,7 +4517,7 @@
       "away_score": 58,
       "home": "LV",
       "home_score": 106,
-      "date": "Jul 11",
+      "date": "2026-01-11",
       "market_total": 168.5,
       "market_spread": 8.5,
       "favorite": "LV"
@@ -3607,7 +4527,7 @@
       "away_score": 91,
       "home": "TOR",
       "home_score": 93,
-      "date": "Jul 12",
+      "date": "2026-01-12",
       "market_total": 178.5,
       "market_spread": 7.5,
       "favorite": "TOR"
@@ -3617,7 +4537,7 @@
       "away_score": 79,
       "home": "WAS",
       "home_score": 84,
-      "date": "Jul 12",
+      "date": "2026-01-12",
       "market_total": 162.5,
       "market_spread": 5.5,
       "favorite": "WSH"
@@ -3627,7 +4547,7 @@
       "away_score": 91,
       "home": "DAL",
       "home_score": 96,
-      "date": "Jul 12",
+      "date": "2026-01-12",
       "market_total": 178.0,
       "market_spread": 9.5,
       "favorite": "DAL"
@@ -3637,7 +4557,7 @@
       "away_score": 109,
       "home": "LV",
       "home_score": 75,
-      "date": "Jul 12",
+      "date": "2026-01-12",
       "market_total": 180.5,
       "market_spread": 5.5,
       "favorite": "IND"
@@ -3647,7 +4567,7 @@
       "away_score": 92,
       "home": "ATL",
       "home_score": 101,
-      "date": "Jul 13",
+      "date": "2026-01-13",
       "market_total": 181.5,
       "market_spread": 9.5,
       "favorite": "ATL"
@@ -3657,7 +4577,7 @@
       "away_score": 100,
       "home": "MIN",
       "home_score": 104,
-      "date": "Jul 13",
+      "date": "2026-01-13",
       "market_total": 170.0,
       "market_spread": 11.5,
       "favorite": "MIN"
@@ -3667,7 +4587,7 @@
       "away_score": 87,
       "home": "CON",
       "home_score": 90,
-      "date": "Jul 14",
+      "date": "2026-01-14",
       "market_total": 167.0,
       "market_spread": 2.5,
       "favorite": "CON"
@@ -3677,7 +4597,7 @@
       "away_score": 79,
       "home": "TOR",
       "home_score": 62,
-      "date": "Jul 14",
+      "date": "2026-01-14",
       "market_total": 171.5,
       "market_spread": 1.5,
       "favorite": "WSH"
@@ -3687,7 +4607,7 @@
       "away_score": 90,
       "home": "CHI",
       "home_score": 95,
-      "date": "Jul 15",
+      "date": "2026-01-15",
       "market_total": 170.0,
       "market_spread": 1.0,
       "favorite": "SEA"
@@ -3697,7 +4617,7 @@
       "away_score": 87,
       "home": "MIN",
       "home_score": 96,
-      "date": "Jul 15",
+      "date": "2026-01-15",
       "market_total": 181.5,
       "market_spread": 10.5,
       "favorite": "MIN"
@@ -3707,7 +4627,7 @@
       "away_score": 88,
       "home": "IND",
       "home_score": 75,
-      "date": "Jul 15",
+      "date": "2026-01-15",
       "market_total": 166.0,
       "market_spread": 2.5,
       "favorite": "IND"
@@ -3717,7 +4637,7 @@
       "away_score": 75,
       "home": "WAS",
       "home_score": 56,
-      "date": "Jul 16",
+      "date": "2026-01-16",
       "market_total": 163.0,
       "market_spread": 7.5,
       "favorite": "WSH"
@@ -3727,7 +4647,7 @@
       "away_score": 111,
       "home": "TOR",
       "home_score": 92,
-      "date": "Jul 17",
+      "date": "2026-01-17",
       "market_total": 181.0,
       "market_spread": 10.5,
       "favorite": "ATL"
@@ -3737,7 +4657,7 @@
       "away_score": 107,
       "home": "IND",
       "home_score": 110,
-      "date": "Jul 17",
+      "date": "2026-01-17",
       "market_total": 178.0,
       "market_spread": 8.5,
       "favorite": "IND"
@@ -3747,7 +4667,7 @@
       "away_score": 82,
       "home": "CHI",
       "home_score": 96,
-      "date": "Jul 17",
+      "date": "2026-01-17",
       "market_total": 182.5,
       "market_spread": 1.5,
       "favorite": "CHI"
@@ -3757,7 +4677,7 @@
       "away_score": 96,
       "home": "PHO",
       "home_score": 83,
-      "date": "Jul 17",
+      "date": "2026-01-17",
       "market_total": 162.5,
       "market_spread": 4.5,
       "favorite": "CON"
@@ -3767,7 +4687,7 @@
       "away_score": 88,
       "home": "IND",
       "home_score": 108,
-      "date": "Jul 18",
+      "date": "2026-01-18",
       "market_total": 185.0,
       "market_spread": 1.5,
       "favorite": "IND"
@@ -3777,7 +4697,7 @@
       "away_score": 93,
       "home": "MIN",
       "home_score": 101,
-      "date": "Jul 18",
+      "date": "2026-01-18",
       "market_total": 174.5,
       "market_spread": 13.5,
       "favorite": "MIN"
@@ -3787,7 +4707,7 @@
       "away_score": 69,
       "home": "GS",
       "home_score": 74,
-      "date": "Jul 18",
+      "date": "2026-01-18",
       "market_total": 148.5,
       "market_spread": 8.5,
       "favorite": "GS"
@@ -3797,7 +4717,7 @@
       "away_score": 82,
       "home": "DAL",
       "home_score": 90,
-      "date": "Jul 19",
+      "date": "2026-01-19",
       "market_total": 183.5,
       "market_spread": 7.5,
       "favorite": "DAL"
@@ -3807,7 +4727,7 @@
       "away_score": 91,
       "home": "ATL",
       "home_score": 93,
-      "date": "Jul 19",
+      "date": "2026-01-19",
       "market_total": 179.0,
       "market_spread": 8.0,
       "favorite": "ATL"
@@ -3817,7 +4737,7 @@
       "away_score": 63,
       "home": "PHO",
       "home_score": 72,
-      "date": "Jul 19",
+      "date": "2026-01-19",
       "market_total": 165.5,
       "market_spread": 4.5,
       "favorite": "PHX"
@@ -3827,7 +4747,7 @@
       "away_score": 86,
       "home": "LA",
       "home_score": 82,
-      "date": "Jul 22",
+      "date": "2026-01-22",
       "market_total": 176.0,
       "market_spread": 1.5,
       "favorite": "PHX"
@@ -3837,7 +4757,7 @@
       "away_score": 86,
       "home": "SEA",
       "home_score": 76,
-      "date": "Jul 22",
+      "date": "2026-01-22",
       "market_total": 178.5,
       "market_spread": 10.5,
       "favorite": "MIN"
@@ -3847,7 +4767,7 @@
       "away_score": 94,
       "home": "NY",
       "home_score": 95,
-      "date": "Jul 22",
+      "date": "2026-01-22",
       "market_total": 178.0,
       "market_spread": 7.5,
       "favorite": "NY"
@@ -3857,7 +4777,7 @@
       "away_score": 99,
       "home": "WAS",
       "home_score": 100,
-      "date": "Jul 22",
+      "date": "2026-01-22",
       "market_total": 164.5,
       "market_spread": 5.5,
       "favorite": "LV"
@@ -3867,7 +4787,7 @@
       "away_score": 84,
       "home": "WAS",
       "home_score": 92,
-      "date": "Jul 23",
+      "date": "2026-01-23",
       "market_total": 161.0,
       "market_spread": 6.5,
       "favorite": "WSH"
@@ -3877,7 +4797,7 @@
       "away_score": 93,
       "home": "MIN",
       "home_score": 100,
-      "date": "Jul 23",
+      "date": "2026-01-23",
       "market_total": 187.0,
       "market_spread": 17.5,
       "favorite": "MIN"
@@ -3887,7 +4807,7 @@
       "away_score": 105,
       "home": "SEA",
       "home_score": 95,
-      "date": "Jul 23",
+      "date": "2026-01-23",
       "market_total": 186.5,
       "market_spread": 9.5,
       "favorite": "IND"
@@ -3897,7 +4817,7 @@
       "away_score": 113,
       "home": "LA",
       "home_score": 109,
-      "date": "Jul 23",
+      "date": "2026-01-23",
       "market_total": 182.5,
       "market_spread": 4.5,
       "favorite": "NY"
@@ -3907,7 +4827,7 @@
       "away_score": 89,
       "home": "ATL",
       "home_score": 98,
-      "date": "Jul 31",
+      "date": "2026-01-31",
       "market_total": 180.0,
       "market_spread": 12.5,
       "favorite": "ATL"
@@ -3917,7 +4837,7 @@
       "away_score": 75,
       "home": "WAS",
       "home_score": 81,
-      "date": "Jul 31",
+      "date": "2026-01-31",
       "market_total": 166.5,
       "market_spread": 3.5,
       "favorite": "WSH"
@@ -3927,7 +4847,7 @@
       "away_score": 112,
       "home": "PDX",
       "home_score": 98,
-      "date": "Jul 31",
+      "date": "2026-01-31",
       "market_total": 189.0,
       "market_spread": 7.5,
       "favorite": "IND"
@@ -3937,7 +4857,7 @@
       "away_score": 83,
       "home": "CHI",
       "home_score": 84,
-      "date": "Aug 1",
+      "date": "2026-01-01",
       "market_total": 184.0,
       "market_spread": 5.5,
       "favorite": "LV"
@@ -3947,7 +4867,7 @@
       "away_score": 94,
       "home": "PHO",
       "home_score": 92,
-      "date": "Aug 1",
+      "date": "2026-01-01",
       "market_total": 177.0,
       "market_spread": 2.5,
       "favorite": "NY"
@@ -3957,7 +4877,7 @@
       "away_score": 77,
       "home": "DAL",
       "home_score": 72,
-      "date": "May 11",
+      "date": "2026-05-11",
       "market_total": 181.0,
       "market_spread": 1.5,
       "favorite": "ATL"
@@ -3967,7 +4887,7 @@
       "away_score": 96,
       "home": "PDX",
       "home_score": 98,
-      "date": "May 11",
+      "date": "2026-05-11",
       "market_total": 173.5,
       "market_spread": 12.5,
       "favorite": "NY"
@@ -3977,7 +4897,7 @@
       "away_score": 88,
       "home": "PHO",
       "home_score": 84,
-      "date": "May 11",
+      "date": "2026-05-11",
       "market_total": 167.0,
       "market_spread": 4.5,
       "favorite": "PHO"
@@ -3987,7 +4907,7 @@
       "away_score": 85,
       "home": "ATL",
       "home_score": 84,
-      "date": "May 16",
+      "date": "2026-05-16",
       "market_total": 171.5,
       "market_spread": 3.5,
       "favorite": "LV"
@@ -3997,7 +4917,7 @@
       "away_score": 78,
       "home": "IND",
       "home_score": 89,
-      "date": "May 16",
+      "date": "2026-05-16",
       "market_total": 176.5,
       "market_spread": 11.5,
       "favorite": "IND"
@@ -4007,7 +4927,7 @@
       "away_score": 86,
       "home": "MIN",
       "home_score": 79,
-      "date": "May 16",
+      "date": "2026-05-16",
       "market_total": 165.5,
       "market_spread": 5.5,
       "favorite": "MIN"
@@ -4017,7 +4937,7 @@
       "away_score": 106,
       "home": "LA",
       "home_score": 96,
-      "date": "May 16",
+      "date": "2026-05-16",
       "market_total": 174.5,
       "market_spread": 7.5,
       "favorite": "LA"
@@ -4027,7 +4947,7 @@
       "away_score": 80,
       "home": "ATL",
       "home_score": 82,
-      "date": "May 24",
+      "date": "2026-05-24",
       "market_total": 168.5,
       "market_spread": 5.5,
       "favorite": "ATL"
@@ -4037,7 +4957,7 @@
       "away_score": 91,
       "home": "NY",
       "home_score": 76,
-      "date": "May 24",
+      "date": "2026-05-24",
       "market_total": 179.5,
       "market_spread": 6.5,
       "favorite": "NY"
@@ -4047,7 +4967,7 @@
       "away_score": 85,
       "home": "SEA",
       "home_score": 97,
-      "date": "May 24",
+      "date": "2026-05-24",
       "market_total": 158.0,
       "market_spread": 5.5,
       "favorite": "SEA"
@@ -4057,7 +4977,7 @@
       "away_score": 74,
       "home": "NY",
       "home_score": 84,
-      "date": "May 26",
+      "date": "2026-05-26",
       "market_total": 169.0,
       "market_spread": 4.5,
       "favorite": "NY"
@@ -4067,7 +4987,7 @@
       "away_score": 111,
       "home": "CHI",
       "home_score": 104,
-      "date": "May 26",
+      "date": "2026-05-26",
       "market_total": 174.0,
       "market_spread": 4.5,
       "favorite": "CHI"
@@ -4077,7 +4997,7 @@
       "away_score": 81,
       "home": "MIN",
       "home_score": 96,
-      "date": "May 26",
+      "date": "2026-05-26",
       "market_total": 166.5,
       "market_spread": 3.5,
       "favorite": "MIN"
@@ -4087,7 +5007,7 @@
       "away_score": 61,
       "home": "PDX",
       "home_score": 71,
-      "date": "May 26",
+      "date": "2026-05-26",
       "market_total": 165.5,
       "market_spread": 7.5,
       "favorite": "POR"
@@ -4097,7 +5017,7 @@
       "away_score": 87,
       "home": "DAL",
       "home_score": 95,
-      "date": "May 28",
+      "date": "2026-05-28",
       "market_total": 178.5,
       "market_spread": 5.5,
       "favorite": "LV"
@@ -4107,7 +5027,7 @@
       "away_score": 88,
       "home": "GS",
       "home_score": 90,
-      "date": "May 28",
+      "date": "2026-05-28",
       "market_total": 166.5,
       "market_spread": 2.5,
       "favorite": "GS"
@@ -4117,7 +5037,7 @@
       "away_score": 82,
       "home": "CHI",
       "home_score": 75,
-      "date": "Jun 9",
+      "date": "2026-06-09",
       "market_total": 165.0,
       "market_spread": 9.5,
       "favorite": "ATL"
@@ -4127,7 +5047,7 @@
       "away_score": 76,
       "home": "MIN",
       "home_score": 100,
-      "date": "Jun 9",
+      "date": "2026-06-09",
       "market_total": 171.0,
       "market_spread": 4.5,
       "favorite": "MIN"
@@ -4137,7 +5057,7 @@
       "away_score": 81,
       "home": "GS",
       "home_score": 87,
-      "date": "Jun 9",
+      "date": "2026-06-09",
       "market_total": 162.5,
       "market_spread": 8.5,
       "favorite": "GS"
@@ -4147,7 +5067,7 @@
       "away_score": 91,
       "home": "IND",
       "home_score": 113,
-      "date": "Jun 16",
+      "date": "2026-06-16",
       "market_total": 179.5,
       "market_spread": 8.5,
       "favorite": "IND"
@@ -4157,7 +5077,7 @@
       "away_score": 63,
       "home": "CON",
       "home_score": 92,
-      "date": "Jun 22",
+      "date": "2026-06-22",
       "market_total": 169.5,
       "market_spread": 3.5,
       "favorite": "CON"
@@ -4167,7 +5087,7 @@
       "away_score": 87,
       "home": "ATL",
       "home_score": 94,
-      "date": "Jun 22",
+      "date": "2026-06-22",
       "market_total": 178.5,
       "market_spread": 15.5,
       "favorite": "ATL"
@@ -4177,7 +5097,7 @@
       "away_score": 77,
       "home": "IND",
       "home_score": 86,
-      "date": "Jun 22",
+      "date": "2026-06-22",
       "market_total": 178.0,
       "market_spread": 7.5,
       "favorite": "IND"
@@ -4187,7 +5107,7 @@
       "away_score": 112,
       "home": "SEA",
       "home_score": 110,
-      "date": "Jun 22",
+      "date": "2026-06-22",
       "market_total": 171.0,
       "market_spread": 9.5,
       "favorite": "SEA"
@@ -4197,7 +5117,7 @@
       "away_score": 87,
       "home": "LV",
       "home_score": 76,
-      "date": "Jun 23",
+      "date": "2026-06-23",
       "market_total": 177.0,
       "market_spread": 2.5,
       "favorite": "LV"
@@ -4207,7 +5127,7 @@
       "away_score": 123,
       "home": "WAS",
       "home_score": 124,
-      "date": "Jun 28",
+      "date": "2026-06-28",
       "market_total": 168.0,
       "market_spread": 6.5,
       "favorite": "WAS"
@@ -4217,7 +5137,7 @@
       "away_score": 85,
       "home": "NY",
       "home_score": 93,
-      "date": "Jun 29",
+      "date": "2026-06-29",
       "market_total": 174.5,
       "market_spread": 6.5,
       "favorite": "NY"
@@ -4227,7 +5147,7 @@
       "away_score": 76,
       "home": "WAS",
       "home_score": 81,
-      "date": "Jul 1",
+      "date": "2026-01-01",
       "market_total": 167.0,
       "market_spread": 8.5,
       "favorite": "ATL"
@@ -4237,7 +5157,7 @@
       "away_score": 86,
       "home": "CON",
       "home_score": 83,
-      "date": "Jul 1",
+      "date": "2026-01-01",
       "market_total": 172.0,
       "market_spread": 6.5,
       "favorite": "DAL"
@@ -4247,7 +5167,7 @@
       "away_score": 67,
       "home": "PHO",
       "home_score": 90,
-      "date": "Jul 1",
+      "date": "2026-01-01",
       "market_total": 170.5,
       "market_spread": 4.5,
       "favorite": "PHX"
@@ -4257,7 +5177,7 @@
       "away_score": 86,
       "home": "NY",
       "home_score": 99,
-      "date": "Jul 3",
+      "date": "2026-01-03",
       "market_total": 175.0,
       "market_spread": 2.5,
       "favorite": "NY"
@@ -4267,7 +5187,7 @@
       "away_score": 90,
       "home": "LV",
       "home_score": 98,
-      "date": "Jul 3",
+      "date": "2026-01-03",
       "market_total": 180.0,
       "market_spread": 4.5,
       "favorite": "LV"
@@ -4277,7 +5197,7 @@
       "away_score": 88,
       "home": "ATL",
       "home_score": 83,
-      "date": "Jul 4",
+      "date": "2026-01-04",
       "market_total": 163.0,
       "market_spread": 4.5,
       "favorite": "ATL"
@@ -4287,7 +5207,7 @@
       "away_score": 77,
       "home": "SEA",
       "home_score": 72,
-      "date": "Jul 4",
+      "date": "2026-01-04",
       "market_total": 173.5,
       "market_spread": 4.5,
       "favorite": "SEA"
@@ -4297,7 +5217,7 @@
       "away_score": 89,
       "home": "TOR",
       "home_score": 76,
-      "date": "Jul 5",
+      "date": "2026-01-05",
       "market_total": 185.5,
       "market_spread": 6.5,
       "favorite": "DAL"
@@ -4307,7 +5227,7 @@
       "away_score": 84,
       "home": "LV",
       "home_score": 68,
-      "date": "Jul 5",
+      "date": "2026-01-05",
       "market_total": 181.5,
       "market_spread": 2.5,
       "favorite": "LV"
@@ -4317,7 +5237,7 @@
       "away_score": 62,
       "home": "WAS",
       "home_score": 49,
-      "date": "Jul 6",
+      "date": "2026-01-06",
       "market_total": 155.0,
       "market_spread": 7.5,
       "favorite": "GS"
@@ -4327,7 +5247,7 @@
       "away_score": 90,
       "home": "MIN",
       "home_score": 89,
-      "date": "Jul 6",
+      "date": "2026-01-06",
       "market_total": 165.5,
       "market_spread": 11.5,
       "favorite": "MIN"
@@ -4337,7 +5257,7 @@
       "away_score": 82,
       "home": "LA",
       "home_score": 64,
-      "date": "Jul 6",
+      "date": "2026-01-06",
       "market_total": 177.0,
       "market_spread": 4.5,
       "favorite": "SEA"
@@ -4347,7 +5267,7 @@
       "away_score": 88,
       "home": "NY",
       "home_score": 77,
-      "date": "Jul 7",
+      "date": "2026-01-07",
       "market_total": 175.5,
       "market_spread": 4.5,
       "favorite": "NY"
@@ -4357,7 +5277,7 @@
       "away_score": 77,
       "home": "PHO",
       "home_score": 66,
-      "date": "Jul 7",
+      "date": "2026-01-07",
       "market_total": 172.5,
       "market_spread": 4.5,
       "favorite": "PHO"
@@ -4367,7 +5287,7 @@
       "away_score": 83,
       "home": "TOR",
       "home_score": 75,
-      "date": "Jul 8",
+      "date": "2026-01-08",
       "market_total": 165.0,
       "market_spread": 8.5,
       "favorite": "TOR"
@@ -4377,7 +5297,7 @@
       "away_score": 86,
       "home": "CON",
       "home_score": 80,
-      "date": "Jul 8",
+      "date": "2026-01-08",
       "market_total": 166.5,
       "market_spread": 7.5,
       "favorite": "MIN"
@@ -4387,7 +5307,7 @@
       "away_score": 92,
       "home": "LA",
       "home_score": 106,
-      "date": "Jul 8",
+      "date": "2026-01-08",
       "market_total": 183.0,
       "market_spread": 6.5,
       "favorite": "IND"
@@ -4397,7 +5317,7 @@
       "away_score": 78,
       "home": "ATL",
       "home_score": 89,
-      "date": "Jul 9",
+      "date": "2026-01-09",
       "market_total": 170.5,
       "market_spread": 12.5,
       "favorite": "ATL"
@@ -4407,7 +5327,7 @@
       "away_score": 92,
       "home": "PHO",
       "home_score": 89,
-      "date": "Jul 9",
+      "date": "2026-01-09",
       "market_total": 172.0,
       "market_spread": 1.5,
       "favorite": "IND"
@@ -4417,7 +5337,7 @@
       "away_score": 88,
       "home": "PDX",
       "home_score": 80,
-      "date": "Jul 9",
+      "date": "2026-01-09",
       "market_total": 175.5,
       "market_spread": 9.5,
       "favorite": "LV"
@@ -4427,7 +5347,7 @@
       "away_score": 108,
       "home": "TOR",
       "home_score": 95,
-      "date": "Jul 10",
+      "date": "2026-01-10",
       "market_total": 179.5,
       "market_spread": 8.5,
       "favorite": "DAL"
@@ -4437,7 +5357,7 @@
       "away_score": 79,
       "home": "CON",
       "home_score": 64,
-      "date": "Jul 10",
+      "date": "2026-01-10",
       "market_total": 153.0,
       "market_spread": 6.5,
       "favorite": "GS"
@@ -4447,7 +5367,7 @@
       "away_score": 87,
       "home": "LA",
       "home_score": 102,
-      "date": "Jul 10",
+      "date": "2026-01-10",
       "market_total": 177.5,
       "market_spread": 1.5,
       "favorite": "LA"
@@ -4457,7 +5377,7 @@
       "away_score": 99,
       "home": "DAL",
       "home_score": 98,
-      "date": "Jul 20",
+      "date": "2026-01-20",
       "market_total": 175.0,
       "market_spread": 4.5,
       "favorite": "NY"
@@ -4467,7 +5387,7 @@
       "away_score": 109,
       "home": "TOR",
       "home_score": 83,
-      "date": "Jul 20",
+      "date": "2026-01-20",
       "market_total": 181.5,
       "market_spread": 10.5,
       "favorite": "LV"
@@ -4477,7 +5397,7 @@
       "away_score": 105,
       "home": "SEA",
       "home_score": 102,
-      "date": "Jul 20",
+      "date": "2026-01-20",
       "market_total": 175.5,
       "market_spread": 8.5,
       "favorite": "MIN"
@@ -4487,21 +5407,22 @@
       "away_score": 90,
       "home": "GS",
       "home_score": 82,
-      "date": "Jul 20",
+      "date": "2026-01-20",
       "market_total": 147.0,
       "market_spread": 8.5,
       "favorite": "GS"
     }
   ],
   "metadata": {
-    "nba_count": 232,
+    "nba_count": 324,
     "wnba_count": 217,
-    "total_count": 449,
+    "total_count": 541,
     "nba_target": 1230,
     "wnba_target": 217,
-    "nba_coverage_pct": 18.9,
+    "nba_coverage_pct": 26.3,
     "wnba_coverage_pct": 100.0,
     "data_source": "Covers.com + Script",
-    "last_updated": "2026-08-03"
+    "last_updated": "2026-08-03",
+    "total_coverage_pct": 37.4
   }
 }
