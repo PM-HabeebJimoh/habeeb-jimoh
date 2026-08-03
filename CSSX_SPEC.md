@@ -254,7 +254,7 @@ Separation between the worst distress case and the best control is **0.65**.
 |---|---|---|
 | Domain | $12/yr | any registrar (optional) |
 | Compute | $0 | local Python 3.11, stdlib only — **zero dependencies** |
-| Scheduling | $0 | GitHub Actions (2,000 min/month free) |
+| Scheduling | $0 | GitHub Actions — see `deploy/cssx-daily.workflow.yml` (2,000 min/month free) |
 | Storage | $0 | SQLite (`entities`, `observations`, `signal_history`, `verdicts`) |
 | Chain data | $0 | public RPC endpoints, `eth_call`/`eth_getBlockByNumber` |
 | TVL / market | $0 | DefiLlama, CoinGecko free tiers |
