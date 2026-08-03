@@ -1,0 +1,38 @@
+# Copy to .github/workflows/cssx-daily.yml to enable (needs workflow write permission).
+name: CSS-X daily scan
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 06:00 UTC daily
+  workflow_dispatch:
+  push:
+    paths: ["cssx/**", "tests/**", ".github/workflows/cssx-daily.yml"]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Test (stdlib only, no install step needed)
+        run: python -m unittest discover -s tests -v
+
+      - name: Restore signal history
+        uses: actions/cache@v4
+        with:
+          path: cssx.db
+          key: cssx-db-${{ github.run_id }}
+          restore-keys: cssx-db-
+
+      - name: Run scan
+        run: python -m cssx.cli --no-color run --demo --db cssx.db --alert-threshold 0.75
+
+      - name: Publish verdicts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cssx-verdicts
+          path: cssx.db
+          retention-days: 30

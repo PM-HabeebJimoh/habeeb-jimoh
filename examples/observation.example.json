@@ -1,0 +1,39 @@
+{
+  "entity_id": "example-protocol",
+  "asset_class": "defi",
+  "ts": "2026-08-03T06:00:00",
+  "sources": {
+    "tvl": "https://api.llama.fi/protocol/example",
+    "repo": "https://api.github.com/repos/example/core",
+    "treasury": "https://api.etherscan.io/api?module=account&action=txlist&address=0x..."
+  },
+  "facts": {
+    "tvl_native_delta_30d_pct": -0.55,
+    "top_lp_share": 0.48,
+    "depth_2pct_usd": 120000,
+    "circulating_mcap_usd": 400000000,
+    "depth_delta_30d_pct": -0.6,
+    "upgrade_control": "multisig",
+    "timelock_delay_hours": 6,
+    "escape_hatch_working": false,
+    "commits_90d": 2,
+    "unique_committers_90d": 1,
+    "days_since_release": 240,
+    "proposals_90d": 0,
+    "unique_voters_90d": 11,
+    "forum_posts_30d": 0,
+    "days_since_treasury_tx": 96,
+    "runway_months": 2.5,
+    "treasury_stable_share": 0.05,
+    "days_since_attestation": 420,
+    "promised_cadence_days": 90,
+    "oracle_staleness_s": 42000,
+    "oracle_heartbeat_s": 3600,
+    "unique_depositors_30d": 60,
+    "depositors_baseline_90d": 4100,
+    "inflow_30d_usd": 0,
+    "outflow_30d_usd": 6200000,
+    "frontend_http_status": 200,
+    "public_rpc_uptime_30d": 0.94
+  }
+}
