@@ -1,0 +1,99 @@
+{
+  "engine": "ABAKE USE V14.0 PHOENIX",
+  "version": "14.0.0",
+  "timestamp": "2026-08-04T12:33:33.768458",
+  "total_games": 1438,
+  "active_bets": 1438,
+  "pushes": 0,
+  "no_signal": 0,
+  "primary_hits": 1269,
+  "primary_misses": 169,
+  "primary_win_rate": 88.2,
+  "primary_roi": 68.5,
+  "direction_correct": 744,
+  "direction_wrong": 694,
+  "direction_accuracy": 51.7,
+  "dual_both_hit": 1076,
+  "dual_one_hit": 362,
+  "dual_none_hit": 0,
+  "dual_at_least_one_rate": 100.0,
+  "dual_roi": 66.9,
+  "tier_a": {
+    "hits": 746,
+    "misses": 85,
+    "win_rate": 89.8
+  },
+  "tier_b": {
+    "hits": 231,
+    "misses": 37,
+    "win_rate": 86.2
+  },
+  "tier_c": {
+    "hits": 292,
+    "misses": 47,
+    "win_rate": 86.1
+  },
+  "over_hits": 654,
+  "over_misses": 75,
+  "under_hits": 615,
+  "under_misses": 94,
+  "over_win_rate": 89.7,
+  "under_win_rate": 86.7,
+  "league_nba": {
+    "hits": 1082,
+    "misses": 139,
+    "win_rate": 88.6,
+    "dual_both": 926
+  },
+  "league_wnba": {
+    "hits": 187,
+    "misses": 30,
+    "win_rate": 86.2,
+    "dual_both": 150
+  },
+  "rule_counts": {
+    "Rule4:UnderDefault": {
+      "h": 17,
+      "m": 8
+    },
+    "Rule1:UpsetClause": {
+      "h": 635,
+      "m": 93
+    },
+    "Rule2:StructuralOutlier": {
+      "h": 219,
+      "m": 8
+    },
+    "Rule4:UnderExecution": {
+      "h": 181,
+      "m": 21
+    },
+    "Rule3:OverExecution": {
+      "h": 217,
+      "m": 39
+    }
+  },
+  "parameters": {
+    "oc_base": 0.95,
+    "uc_base": 0.95,
+    "dir_weights": [
+      5,
+      5,
+      3,
+      3,
+      5
+    ],
+    "flat_floors": {
+      "A": 5,
+      "B": 7,
+      "C": 12
+    },
+    "buffer_boost": {
+      "A": 0.0,
+      "B": 0.05,
+      "C": 0.1
+    },
+    "upset_threshold": 15.0,
+    "hca": 2.5
+  }
+}

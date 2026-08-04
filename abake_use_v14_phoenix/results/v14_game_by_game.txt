@@ -1,4 +1,4 @@
-V14 Phoenix Backtest - 2026-08-04T12:25:28.231824
+V14 Phoenix Backtest - 2026-08-04T12:33:33.768458
 
 Primary: 1269H/169M = 88.2%
 Tier A: 746H/85M = 89.8% (FLAT=5)
@@ -419,7 +419,7 @@ Game-by-game:
   411 2025-12-20   IND@NOP            NBA   UD=IND   Pick=UNDER   Tier=B     Ens=-20.58 SL_O=104.8 SL_U=128.8 UDSc=109 Zone=24.0 Pri=HIT   Dual=HIT  
   412 2025-12-21   CHI@ATL            NBA   UD=CHI   Pick=OVER    Tier=C     Ens=+17.62 SL_O=115.4 SL_U=143.6 UDSc=152 Zone=28.2 Pri=HIT   Dual=MISS 
   413 2025-12-21   HOU@SAC            NBA   UD=HOU   Pick=UNDER   Tier=A     Ens=-24.63 SL_O=94.0 SL_U=124.0 UDSc=124 Zone=29.9 Pri=MISS  Dual=HIT  
-  414 2025-12-21   MIA@NYK            NBA   UD=MIA   Pick=OVER    Tier=B     Ens=+20.13 SL_O=101.0 SL_U=125.0 UDSc=125 Zone=24.0 Pri=HIT   Dual=MISS 
+  414 2025-12-21   MIA@NYK            NBA   UD=MIA   Pick=OVER    Tier=B     Ens=+20.13 SL_O=101.0 SL_U=125.0 UDSc=125 Zone=24.0 Pri=HIT   Dual=PUSH 
   415 2025-12-21   MIL@MIN            NBA   UD=MIL   Pick=UNDER   Tier=A     Ens=-17.36 SL_O=95.4 SL_U=119.6 UDSc=100 Zone=24.2 Pri=HIT   Dual=HIT  
   416 2025-12-21   SAS@WAS            NBA   UD=SAS   Pick=UNDER   Tier=A     Ens=-14.24 SL_O=92.7 SL_U=129.3 UDSc=124 Zone=36.6 Pri=HIT   Dual=HIT  
   417 2025-12-21   TOR@BKN            NBA   UD=TOR   Pick=UNDER   Tier=B     Ens=-114.40 SL_O=94.8 SL_U=116.8 UDSc=81 Zone=22.0 Pri=HIT   Dual=MISS 
@@ -1384,7 +1384,7 @@ Game-by-game:
  1376 2026-06-06   SEA@MIN            WNBA  UD=SEA   Pick=OVER    Tier=A     Ens=+7.04 SL_O=56.4 SL_U=92.1 UDSc=68 Zone=35.7 Pri=HIT   Dual=HIT  
  1377 2026-06-06   GS@LV              WNBA  UD=GS    Pick=OVER    Tier=C     Ens=+28.85 SL_O=67.4 SL_U=96.6 UDSc=79 Zone=29.2 Pri=HIT   Dual=HIT  
  1378 2026-06-06   WAS@ATL            WNBA  UD=WAS   Pick=OVER    Tier=A     Ens=+55.13 SL_O=62.9 SL_U=89.1 UDSc=77 Zone=26.2 Pri=HIT   Dual=HIT  
- 1379 2026-06-06   IND@NY             WNBA  UD=IND   Pick=UNDER   Tier=B     Ens=-4.42 SL_O=75.0 SL_U=96.0 UDSc=75 Zone=21.0 Pri=HIT   Dual=MISS 
+ 1379 2026-06-06   IND@NY             WNBA  UD=IND   Pick=UNDER   Tier=B     Ens=-4.42 SL_O=75.0 SL_U=96.0 UDSc=75 Zone=21.0 Pri=HIT   Dual=PUSH 
  1380 2026-06-07   CHI@TOR            WNBA  UD=CHI   Pick=OVER    Tier=C     Ens=+82.01 SL_O=74.7 SL_U=99.8 UDSc=68 Zone=25.1 Pri=MISS  Dual=HIT  
  1381 2026-06-07   PDX@LA             WNBA  UD=PDX   Pick=OVER    Tier=A     Ens=+62.15 SL_O=70.9 SL_U=95.1 UDSc=72 Zone=24.2 Pri=HIT   Dual=HIT  
  1382 2026-06-08   NY@CON             WNBA  UD=CON   Pick=UNDER   Tier=A     Ens=-44.66 SL_O=58.4 SL_U=92.1 UDSc=80 Zone=33.8 Pri=HIT   Dual=HIT  
