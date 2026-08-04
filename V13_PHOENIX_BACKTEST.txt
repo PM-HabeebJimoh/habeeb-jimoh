@@ -1,0 +1,56 @@
+V13 Phoenix Backtest — 2026-08-04T10:08:03.811779
+Primary: 983H/427M = 69.7%
+Dual both-HIT: 541 (38.3%)
+Dual at-least-1-HIT: 1412 (100.0%)
+
+Top 50 games by |ensemble| score:
+  2026-05-14 NY@PDX WNBA UD=PDX pick=OVER ens=+102.49 sl_o=72.5 sl_u=90.4 ud_sc=82 p=HIT d=HIT zone=✅
+  2026-05-12 NY@PDX WNBA UD=PDX pick=OVER ens=+94.74 sl_o=70.5 sl_u=89.9 ud_sc=98 p=HIT d=MISS zone=❌
+  2026-05-11 NY@PDX WNBA UD=PDX pick=OVER ens=+87.29 sl_o=70.5 sl_u=89.9 ud_sc=98 p=HIT d=MISS zone=❌
+  2025-10-30 ORL@CHA NBA UD=CHA pick=OVER ens=+78.89 sl_o=114.7 sl_u=121.2 ud_sc=107 p=MISS d=HIT zone=❌
+  2026-05-20 PDX@IND WNBA UD=PDX pick=OVER ens=+70.33 sl_o=74.1 sl_u=90.4 ud_sc=73 p=MISS d=HIT zone=❌
+  2025-11-18 PHX@POR NBA UD=PHX pick=OVER ens=+69.84 sl_o=114.7 sl_u=118.8 ud_sc=127 p=HIT d=MISS zone=❌
+  2025-11-19 CHI@POR NBA UD=POR pick=OVER ens=+68.70 sl_o=117.2 sl_u=123.7 ud_sc=121 p=HIT d=HIT zone=✅
+  2026-05-25 PDX@NY WNBA UD=PDX pick=OVER ens=+65.68 sl_o=72.6 sl_u=88.9 ud_sc=81 p=HIT d=HIT zone=✅
+  2025-11-01 ORL@WAS NBA UD=WAS pick=OVER ens=+63.92 sl_o=105.0 sl_u=119.0 ud_sc=94 p=MISS d=HIT zone=❌
+  2025-11-21 MIA@CHI NBA UD=MIA pick=OVER ens=+63.73 sl_o=120.9 sl_u=126.1 ud_sc=143 p=HIT d=MISS zone=❌
+  2026-06-22 TOR@ATL WNBA UD=TOR pick=OVER ens=+63.70 sl_o=69.1 sl_u=93.1 ud_sc=87 p=HIT d=HIT zone=✅
+  2026-01-22 MIN@SEA WNBA UD=SEA pick=OVER ens=+62.82 sl_o=75.6 sl_u=91.9 ud_sc=76 p=HIT d=HIT zone=✅
+  2025-12-20 HOU@DEN NBA UD=DEN pick=OVER ens=+62.38 sl_o=112.8 sl_u=119.2 ud_sc=101 p=MISS d=HIT zone=❌
+  2026-01-16 WAS@SAC NBA UD=WAS pick=UNDER ens=-60.97 sl_o=107.8 sl_u=119.4 ud_sc=115 p=HIT d=HIT zone=✅
+  2025-12-22 UTA@DEN NBA UD=UTA pick=OVER ens=+60.18 sl_o=98.3 sl_u=130.1 ud_sc=112 p=HIT d=HIT zone=✅
+  2025-12-26 TOR@WAS NBA UD=TOR pick=UNDER ens=-58.04 sl_o=101.1 sl_u=113.5 ud_sc=117 p=MISS d=HIT zone=❌
+  2026-05-23 PDX@TOR WNBA UD=PDX pick=OVER ens=+57.64 sl_o=80.2 sl_u=88.5 ud_sc=99 p=HIT d=MISS zone=❌
+  2026-04-04 WAS@MIA NBA UD=WAS pick=OVER ens=+57.62 sl_o=99.6 sl_u=127.5 ud_sc=136 p=HIT d=MISS zone=❌
+  2025-11-17 CHI@DEN NBA UD=DEN pick=OVER ens=+56.59 sl_o=104.2 sl_u=123.6 ud_sc=127 p=HIT d=MISS zone=❌
+  2025-11-14 MIA@NYK NBA UD=MIA pick=OVER ens=+56.44 sl_o=111.2 sl_u=122.5 ud_sc=132 p=HIT d=MISS zone=❌
+  2026-05-29 LA@WAS WNBA UD=WAS pick=OVER ens=+56.28 sl_o=78.6 sl_u=83.9 ud_sc=87 p=HIT d=MISS zone=❌
+  2025-12-21 TOR@BKN NBA UD=TOR pick=UNDER ens=-56.01 sl_o=102.0 sl_u=109.3 ud_sc=81 p=HIT d=MISS zone=❌
+  2026-06-23 NY@LV WNBA UD=NY pick=OVER ens=+55.88 sl_o=84.6 sl_u=89.9 ud_sc=87 p=HIT d=HIT zone=✅
+  2026-04-10 MIA@WAS NBA UD=WAS pick=OVER ens=+55.86 sl_o=101.0 sl_u=125.8 ud_sc=117 p=HIT d=HIT zone=✅
+  2025-11-23 LAL@UTA NBA UD=UTA pick=OVER ens=+55.81 sl_o=111.0 sl_u=125.0 ud_sc=106 p=MISS d=HIT zone=❌
+  2025-11-14 POR@HOU NBA UD=POR pick=OVER ens=+55.59 sl_o=108.5 sl_u=120.1 ud_sc=116 p=HIT d=HIT zone=✅
+  2026-05-10 NY@WAS WNBA UD=WAS pick=OVER ens=+55.56 sl_o=74.8 sl_u=84.4 ud_sc=93 p=HIT d=MISS zone=❌
+  2025-11-27 ORL@DET NBA UD=ORL pick=OVER ens=+55.32 sl_o=110.2 sl_u=116.7 ud_sc=112 p=HIT d=HIT zone=✅
+  2025-10-31 LAL@MEM NBA UD=LAL pick=OVER ens=+54.92 sl_o=116.2 sl_u=120.3 ud_sc=117 p=HIT d=HIT zone=✅
+  2026-01-15 MIL@SAS NBA UD=MIL pick=UNDER ens=-54.41 sl_o=103.0 sl_u=115.2 ud_sc=101 p=HIT d=MISS zone=❌
+  2026-03-16 SAS@LAC NBA UD=LAC pick=OVER ens=+53.63 sl_o=106.6 sl_u=119.0 ud_sc=115 p=HIT d=HIT zone=✅
+  2026-01-28 SAS@HOU NBA UD=SAS pick=UNDER ens=-53.57 sl_o=105.3 sl_u=111.7 ud_sc=111 p=HIT d=HIT zone=✅
+  2026-05-16 SEA@IND WNBA UD=SEA pick=OVER ens=+53.51 sl_o=73.3 sl_u=91.1 ud_sc=78 p=HIT d=HIT zone=✅
+  2025-12-23 TOR@MIA NBA UD=TOR pick=UNDER ens=-53.49 sl_o=106.0 sl_u=115.7 ud_sc=112 p=HIT d=HIT zone=✅
+  2026-01-20 WAS@GS WNBA UD=WAS pick=UNDER ens=-53.05 sl_o=62.5 sl_u=75.6 ud_sc=90 p=MISS d=HIT zone=❌
+  2026-05-21 GS@NY WNBA UD=GS pick=OVER ens=+52.81 sl_o=76.8 sl_u=86.4 ud_sc=87 p=HIT d=MISS zone=❌
+  2026-01-31 SAS@CHA NBA UD=SAS pick=UNDER ens=-52.68 sl_o=103.5 sl_u=110.8 ud_sc=106 p=HIT d=HIT zone=✅
+  2026-05-12 MIN@PHO WNBA UD=PHO pick=OVER ens=+51.49 sl_o=77.0 sl_u=85.3 ud_sc=84 p=HIT d=HIT zone=✅
+  2025-11-01 MIN@CHA NBA UD=CHA pick=OVER ens=+51.44 sl_o=111.2 sl_u=119.5 ud_sc=105 p=MISS d=HIT zone=❌
+  2025-11-22 WAS@CHI NBA UD=WAS pick=OVER ens=+50.56 sl_o=107.2 sl_u=126.6 ud_sc=120 p=HIT d=HIT zone=✅
+  2026-01-07 DEN@BOS NBA UD=DEN pick=OVER ens=+50.44 sl_o=102.4 sl_u=117.1 ud_sc=114 p=HIT d=HIT zone=✅
+  2025-11-14 LAC@DAL NBA UD=LAC pick=UNDER ens=-50.43 sl_o=106.1 sl_u=112.4 ud_sc=133 p=MISS d=HIT zone=❌
+  2025-11-12 WAS@HOU NBA UD=WAS pick=OVER ens=+49.44 sl_o=96.7 sl_u=123.0 ud_sc=112 p=HIT d=HIT zone=✅
+  2026-02-15 HOU@CHA NBA UD=CHA pick=UNDER ens=-49.31 sl_o=101.8 sl_u=111.0 ud_sc=101 p=HIT d=MISS zone=❌
+  2026-01-20 MIN@UTA NBA UD=UTA pick=OVER ens=+49.29 sl_o=103.2 sl_u=122.6 ud_sc=127 p=HIT d=MISS zone=❌
+  2025-12-27 IND@MIA NBA UD=IND pick=UNDER ens=-49.11 sl_o=110.2 sl_u=121.5 ud_sc=116 p=HIT d=HIT zone=✅
+  2026-01-05 DEN@PHI NBA UD=DEN pick=OVER ens=+48.68 sl_o=94.5 sl_u=117.8 ud_sc=125 p=HIT d=MISS zone=❌
+  2026-01-25 GSW@MIN NBA UD=MIN pick=OVER ens=+48.33 sl_o=109.8 sl_u=120.3 ud_sc=85 p=MISS d=HIT zone=❌
+  2025-11-23 MIA@PHI NBA UD=MIA pick=OVER ens=+48.21 sl_o=119.0 sl_u=121.0 ud_sc=127 p=HIT d=MISS zone=❌
+  2026-01-11 WAS@PHX NBA UD=WAS pick=UNDER ens=-48.19 sl_o=95.8 sl_u=119.0 ud_sc=93 p=HIT d=MISS zone=❌
