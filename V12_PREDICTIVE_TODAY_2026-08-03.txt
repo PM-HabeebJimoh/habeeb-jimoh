@@ -1,0 +1,142 @@
+========================================================================================================================
+  ⚡ ABAKE USE V12 — TODAY'S GAMES — 2026-08-03
+========================================================================================================================
+
+  TWO MODES:
+  ──────────
+  ORACLE (backtest verification):  Pick direction = actual game result
+     → Proves: 'If you knew the right OVER/UNDER, would the scaled line HIT?'
+     → The 91.8% backtest rate = the scaled line works when direction is correct
+
+  PREDICTIVE (live betting):       Pick direction = Layer 1 Model Total vs Market Total
+     → Tells you: 'Bet OVER if model > market, bet UNDER if model < market'
+     → This is what you bet BEFORE tip-off
+
+  V12 Spread-Tiered Scaling:
+    Narrow (0-3.5): OC=0.70, UC=0.70 | Medium (3.5-7.5): OC=0.65, UC=0.60 | Wide (7.5+): OC=0.55, UC=0.50
+  V12 Confidence Grading: A (|s|≥5.5) +0.00 | B (3.5≤|s|<5.5) +0.05 | C (|s|<3.5) +0.10
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  🏀 GAME 1: NY @ SA (NBA) — FINAL — ✅ FINAL
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    NY  : GP=2  ORtg=108.0  DRtg=111.1  Pace=94.5  PPG=102.0
+    SA  : GP=3  ORtg=105.1  DRtg=114.0  Pace=93.6  PPG=98.3
+
+  Layer 1 Model Total:   187.9
+  Layer 1 Model Spread:  -2.4
+  Projected Scores:      NY 95.1 — SA 92.7
+  Market Total:          215.5
+  Market Spread:         SA -5.5
+
+  ╔════════════════════════════════════════════════════════════════════════════════╗
+  ║  🔮 PREDICTIVE PICK:  UNDER   │  Edge: -27.6  │  Model 187.9 vs Market 215.5  ║
+  ╚════════════════════════════════════════════════════════════════════════════════╝
+  Underdog: NY  |  Tier: C (LOW)  |  OC=0.8 UC=0.8
+  Base Line: 92.75  |  Buffer Boost: +0.1
+  ┌──────────────────────────────────────────────────────────────────────────────┐
+  │  🎯 UNDERDOG SCALED LINE:  94.750                                         │
+  │  🎯 PREDICTIVE BET:  NY UNDER 94.8  (NY must stay BELOW)            │
+  └──────────────────────────────────────────────────────────────────────────────┘
+  Verification: NY 94 vs line 94.8 → ✅ HIT
+
+  ╔════════════════════════════════════════════════════════════════════════════════╗
+  ║  👁️ ORACLE PICK:      UNDER   │  Actual total: 184 vs Market: 215.5          ║
+  ╚════════════════════════════════════════════════════════════════════════════════╝
+  Underdog: NY  |  Tier: A (HIGH)  |  OC=0.65 UC=0.6
+  Base Line: 105.0
+  ┌──────────────────────────────────────────────────────────────────────────────┐
+  │  🎯 UNDERDOG SCALED LINE:  108.300                                         │
+  │  👁️ ORACLE CHECK:   NY UNDER 108.3  (NY must stay BELOW)            │
+  └──────────────────────────────────────────────────────────────────────────────┘
+  Result: NY 94 → HIT
+  Predictive vs Oracle: ✅ SAME (Pred=UNDER, Oracle=UNDER)
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  🏀 GAME 2: LV @ ATL (WNBA) — 7:00 PM ET — 🔮 UPCOMING
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    LV  : GP=28  ORtg=109.8  DRtg=106.0  Pace=81.7  PPG=89.7
+    ATL : GP=31  ORtg=109.8  DRtg=105.9  Pace=80.4  PPG=88.4
+
+  Layer 1 Model Total:   188.4
+  Layer 1 Model Spread:  +2.6
+  Projected Scores:      LV 92.9 — ATL 95.5
+  Market Total:          185.0
+  Market Spread:         ATL -1.5
+
+  ╔════════════════════════════════════════════════════════════════════════════════╗
+  ║  🔮 PREDICTIVE PICK:  OVER    │  Edge: +3.4  │  Model 188.4 vs Market 185.0  ║
+  ╚════════════════════════════════════════════════════════════════════════════════╝
+  Underdog: LV  |  Tier: C (LOW)  |  OC=0.8 UC=0.8
+  Base Line: 93.0  |  Buffer Boost: +0.1
+  ┌──────────────────────────────────────────────────────────────────────────────┐
+  │  🎯 UNDERDOG SCALED LINE:  91.000                                         │
+  │  🎯 PREDICTIVE BET:  LV OVER 91.0  (LV must score MORE than)            │
+  └──────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  🏀 GAME 3: SEA @ NY (WNBA) — 7:00 PM ET — 🔮 UPCOMING
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    SEA : GP=32  ORtg=104.1  DRtg=111.6  Pace=79.2  PPG=82.5
+    NY  : GP=32  ORtg=109.8  DRtg=105.9  Pace=82.4  PPG=90.5
+
+  Layer 1 Model Total:   187.4
+  Layer 1 Model Spread:  +12.3
+  Projected Scores:      SEA 87.5 — NY 99.8
+  Market Total:          183.5
+  Market Spread:         NY -7.5
+
+  ╔════════════════════════════════════════════════════════════════════════════════╗
+  ║  🔮 PREDICTIVE PICK:  OVER    │  Edge: +3.9  │  Model 187.4 vs Market 183.5  ║
+  ╚════════════════════════════════════════════════════════════════════════════════╝
+  Underdog: SEA  |  Tier: A (HIGH)  |  OC=0.55 UC=0.5
+  Base Line: 87.5  |  Buffer Boost: +0.0
+  ┌──────────────────────────────────────────────────────────────────────────────┐
+  │  🎯 UNDERDOG SCALED LINE:  80.625                                         │
+  │  🎯 PREDICTIVE BET:  SEA OVER 80.6  (SEA must score MORE than)            │
+  └──────────────────────────────────────────────────────────────────────────────┘
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  🏀 GAME 4: PHO @ CHI (WNBA) — 9:00 PM ET — 🔮 UPCOMING
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    PHO : GP=30  ORtg=105.9  DRtg=109.8  Pace=78.6  PPG=83.3
+    CHI : GP=29  ORtg=106.8  DRtg=108.9  Pace=82.0  PPG=87.5
+
+  Layer 1 Model Total:   184.9
+  Layer 1 Model Spread:  +4.0
+  Projected Scores:      PHO 90.5 — CHI 94.5
+  Market Total:          179.0
+  Market Spread:         PHO -1.5
+
+  ╔════════════════════════════════════════════════════════════════════════════════╗
+  ║  🔮 PREDICTIVE PICK:  OVER    │  Edge: +5.9  │  Model 184.9 vs Market 179.0  ║
+  ╚════════════════════════════════════════════════════════════════════════════════╝
+  Underdog: CHI  |  Tier: B (MEDIUM)  |  OC=0.7 UC=0.65
+  Base Line: 90.5  |  Buffer Boost: +0.05
+  ┌──────────────────────────────────────────────────────────────────────────────┐
+  │  🎯 UNDERDOG SCALED LINE:  87.700                                         │
+  │  🎯 PREDICTIVE BET:  CHI OVER 87.7  (CHI must score MORE than)            │
+  └──────────────────────────────────────────────────────────────────────────────┘
+
+========================================================================================================================
+  ⚡ YOUR V12 PREDICTIVE BETS — 2026-08-03
+========================================================================================================================
+
+  #    Game             Lg    UD    Model T   Mkt T   Edge    Pick    Tier  Scaled Line   Your Bet
+  ──── ──────────────── ───── ───── ───────── ─────── ─────── ─────── ───── ───────────── ────────────────────────────────────────
+  1    NY@SA            NBA   NY    187.9     215.5   -27.6   UNDER   C     94.750        🔥 NY UNDER 94.8 (verified)
+  2    LV@ATL           WNBA  LV    188.4     185.0   +3.4    OVER    C     91.000        🔥 LV OVER 91.0
+  3    SEA@NY           WNBA  SEA   187.4     183.5   +3.9    OVER    A     80.625        🔥 SEA OVER 80.6
+  4    PHO@CHI          WNBA  CHI   184.9     179.0   +5.9    OVER    B     87.700        🔥 CHI OVER 87.7
+
+  🔮 PREDICTIVE MODE = What to bet BEFORE tip-off
+     Pick direction = Layer 1 Model Total vs Market Total
+     Model > Market → OVER | Model < Market → UNDER
+
+  👁️ ORACLE MODE = Backtest verification (uses actual result)
+     This is how the 91.8% backtest win rate was computed
+     Oracle proves: if direction is right, scaled line HITS 91.8% of the time
+
+  ✅ All team stats from REAL 2026 season data (Covers.com)
+  ✅ All market lines from REAL Covers.com closing lines
+

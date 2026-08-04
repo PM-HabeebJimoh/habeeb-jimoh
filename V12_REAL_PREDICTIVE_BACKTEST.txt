@@ -1,0 +1,73 @@
+========================================================================================================================
+  ⚡ ABAKE USE V12 — REAL PREDICTIVE BACKTEST — NO ORACLE — NO CHEATING
+========================================================================================================================
+
+  For EVERY game:
+    1. Compute team ORtg/DRtg/Pace from games played BEFORE this date (no look-ahead)
+    2. Layer 1: Model Total from team efficiency ratings
+    3. Pick Direction: Model Total vs Market Total
+    4. V12 Scaled Line → verify HIT/MISS against actual underdog score
+
+  Total games: 1438
+  Processing...
+    200/1438 processed — 77H/74M = 51.0%
+    400/1438 processed — 180H/170M = 51.4%
+    600/1438 processed — 261H/260M = 50.1%
+    800/1438 processed — 348H/362M = 49.0%
+    1000/1438 processed — 449H/458M = 49.5%
+    1200/1438 processed — 552H/553M = 50.0%
+    1400/1438 processed — 634H/659M = 49.0%
+
+========================================================================================================================
+  ⚡ REAL PREDICTIVE BACKTEST COMPLETE — NO ORACLE — NO CHEATING
+========================================================================================================================
+
+  Total games:        1438
+  No team stats:      79 (skipped — not enough prior games)
+  Active bets:        1329
+  System skips:       27
+  Pushes:             3
+
+  ┌────────────────────────────────────────────────────────────────────┐
+  │  ✅ HITs:                 651                                        │
+  │  ❌ MISSes:               678                                        │
+  │  ➖ PUSHes:                 3                                        │
+  │  🏆 WIN RATE:            49.0%                                       │
+  └────────────────────────────────────────────────────────────────────┘
+
+  📊 Pick Direction Accuracy (Predictive vs Oracle):
+     Predictive agreed with Oracle:  666 / 1333 = 50.0%
+     Predictive disagreed:           667
+
+  📊 By Category:
+     OVER:   592H / 626M = 48.6%
+     UNDER:  59H / 52M = 53.2%
+
+  📊 By Confidence Tier:
+     A (HIGH):   448H / 316M = 58.6%
+     B (MEDIUM):  106H / 113M = 48.4%
+     C (LOW):    97H / 249M = 28.0%
+
+  📊 By League:
+     NBA: 585H / 574M / 54 no-stats = 50.5% (1159 active bets)
+     WNBA: 66H / 104M / 25 no-stats = 38.8% (170 active bets)
+
+  ────────────────────────────────────────────────────────────
+  🔑 KEY INSIGHT:
+  Oracle backtest (cheating):  91.8% — proves scaled lines work IF direction is correct
+  Predictive backtest (real):  49.0% — actual performance when system picks its own direction
+  Pick accuracy:               50.0% — how often Layer 1 guesses the right OVER/UNDER
+
+  📋 Sample MISSes (first 10):
+  Date         Game             Lg    Model T   Mkt T   Edge    Pred    Oracle  UD    SL       UD Sc  Match
+  2025-10-27   CLE@DET          NBA   240.6     231.0   +9.6    OVER    UNDER   DET   116.0    95     ❌
+  2025-10-27   MEM@GSW          NBA   271.2     240.5   +30.7   OVER    OVER    MEM   133.6    118    ✅
+  2025-10-27   OKC@DAL          NBA   257.4     226.5   +30.9   OVER    UNDER   OKC   110.4    101    ❌
+  2025-10-27   TOR@SAS          NBA   253.4     232.5   +20.9   OVER    UNDER   TOR   106.8    103    ❌
+  2025-10-28   CHA@MIA          NBA   265.3     239.5   +25.8   OVER    OVER    CHA   131.4    117    ✅
+  2025-10-29   ATL@BKN          NBA   253.0     238.5   +14.5   OVER    UNDER   BKN   121.7    112    ❌
+  2025-10-29   CLE@BOS          NBA   225.4     233.5   -8.1    UNDER   UNDER   BOS   112.9    125    ✅
+  2025-10-29   IND@DAL          NBA   243.0     229.5   +13.5   OVER    UNDER   DAL   117.3    107    ❌
+  2025-10-29   LAL@MIN          NBA   243.3     224.5   +18.8   OVER    OVER    MIN   117.5    115    ✅
+  2025-10-29   NOP@DEN          NBA   257.6     238.0   +19.6   OVER    UNDER   NOP   99.9     88     ❌
+
