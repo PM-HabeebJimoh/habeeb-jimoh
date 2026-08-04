@@ -1,55 +1,55 @@
 {
   "engine": "ABAKE USE V14.0 PHOENIX",
   "version": "14.0.0",
-  "timestamp": "2026-08-04T12:33:33.768458",
+  "timestamp": "2026-08-04T13:07:47.779796",
   "total_games": 1438,
-  "active_bets": 1438,
-  "pushes": 0,
-  "no_signal": 0,
-  "primary_hits": 1269,
-  "primary_misses": 169,
-  "primary_win_rate": 88.2,
-  "primary_roi": 68.5,
-  "direction_correct": 744,
-  "direction_wrong": 694,
+  "active_bets": 1411,
+  "pushes": 1,
+  "no_signal": 26,
+  "primary_hits": 1243,
+  "primary_misses": 168,
+  "primary_win_rate": 88.1,
+  "primary_roi": 68.2,
+  "direction_correct": 730,
+  "direction_wrong": 682,
   "direction_accuracy": 51.7,
-  "dual_both_hit": 1076,
-  "dual_one_hit": 362,
+  "dual_both_hit": 1057,
+  "dual_one_hit": 355,
   "dual_none_hit": 0,
   "dual_at_least_one_rate": 100.0,
   "dual_roi": 66.9,
   "tier_a": {
-    "hits": 746,
-    "misses": 85,
-    "win_rate": 89.8
+    "hits": 737,
+    "misses": 86,
+    "win_rate": 89.6
   },
   "tier_b": {
-    "hits": 231,
-    "misses": 37,
-    "win_rate": 86.2
+    "hits": 223,
+    "misses": 35,
+    "win_rate": 86.4
   },
   "tier_c": {
-    "hits": 292,
+    "hits": 283,
     "misses": 47,
-    "win_rate": 86.1
+    "win_rate": 85.8
   },
-  "over_hits": 654,
-  "over_misses": 75,
-  "under_hits": 615,
-  "under_misses": 94,
-  "over_win_rate": 89.7,
-  "under_win_rate": 86.7,
+  "over_hits": 652,
+  "over_misses": 79,
+  "under_hits": 591,
+  "under_misses": 89,
+  "over_win_rate": 89.2,
+  "under_win_rate": 86.9,
   "league_nba": {
-    "hits": 1082,
-    "misses": 139,
-    "win_rate": 88.6,
-    "dual_both": 926
+    "hits": 1076,
+    "misses": 141,
+    "win_rate": 88.4,
+    "dual_both": 923
   },
   "league_wnba": {
-    "hits": 187,
-    "misses": 30,
-    "win_rate": 86.2,
-    "dual_both": 150
+    "hits": 167,
+    "misses": 27,
+    "win_rate": 86.1,
+    "dual_both": 134
   },
   "rule_counts": {
     "Rule4:UnderDefault": {
@@ -57,19 +57,19 @@
       "m": 8
     },
     "Rule1:UpsetClause": {
-      "h": 635,
-      "m": 93
+      "h": 622,
+      "m": 92
     },
     "Rule2:StructuralOutlier": {
       "h": 219,
       "m": 8
     },
     "Rule4:UnderExecution": {
-      "h": 181,
+      "h": 171,
       "m": 21
     },
     "Rule3:OverExecution": {
-      "h": 217,
+      "h": 214,
       "m": 39
     }
   },

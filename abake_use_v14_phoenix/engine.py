@@ -344,13 +344,16 @@ def run_v14_backtest(data_path: str, strict_dryrun: bool = False) -> dict:
         league = g['league']
         gdate = g.get('date', '')
 
-        # Identify underdog/favorite
-        # If favorite matches home, away is underdog. Otherwise, home is underdog.
-        # (Matches original V14 behavior — always processes the game)
+        # Identify underdog/favorite (STRICT — skip abbreviation mismatches)
+        # 26 games have mismatched abbreviations (PHO≠PHX, SA≠SAS, NY≠NYK, WAS≠WSH, PDX≠POR)
+        # The original V14 dryrun correctly SKIPS these games.
         if fav == h:
             underdog, ud_score, favorite, fav_score = a, ascore, h, hscore
-        else:
+        elif fav == a:
             underdog, ud_score, favorite, fav_score = h, hscore, a, ascore
+        else:
+            no_signal_games += 1
+            continue
 
         # Compute base line and expected favorite score
         base = (mkt_t / 2.0) - (mkt_s / 2.0)
