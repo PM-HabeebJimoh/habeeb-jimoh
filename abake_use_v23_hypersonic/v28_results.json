@@ -1,0 +1,1105 @@
+{
+  "version": "V28_HYPERSONIC_NEXUS_RESIDUAL",
+  "timestamp": "2026-08-09T10:53:17.391870",
+  "architecture": [
+    "Residual Signature Model (continuous, not binary)",
+    "Inverse-Variance Fusion (optimal Gaussian combination)",
+    "Leave-One-Season-Out 6-fold validation",
+    "Game-fingerprint independence pruning",
+    "Calibration self-audit",
+    "Kelly criterion staking",
+    "Adversarial validation"
+  ],
+  "total_games": 6918,
+  "independent_cores": 47,
+  "total_predictions": 818,
+  "total_hits": 600,
+  "overall_wr": 73.3,
+  "overall_profit": 322.0,
+  "overall_roi": 39.4,
+  "calibration": [
+    {
+      "prob_bin": "0.50-0.55",
+      "n": 1,
+      "avg_prob": 0.53,
+      "expected_wr": 53.0,
+      "actual_wr": 100.0,
+      "error": 47.0,
+      "profit": 0.9
+    },
+    {
+      "prob_bin": "0.55-0.60",
+      "n": 2,
+      "avg_prob": 0.57,
+      "expected_wr": 57.0,
+      "actual_wr": 100.0,
+      "error": 43.0,
+      "profit": 1.8
+    },
+    {
+      "prob_bin": "0.60-0.65",
+      "n": 143,
+      "avg_prob": 0.636,
+      "expected_wr": 63.6,
+      "actual_wr": 63.6,
+      "error": 0.1,
+      "profit": 29.9
+    },
+    {
+      "prob_bin": "0.65-0.70",
+      "n": 252,
+      "avg_prob": 0.67,
+      "expected_wr": 67.0,
+      "actual_wr": 70.6,
+      "error": 3.6,
+      "profit": 86.2
+    },
+    {
+      "prob_bin": "0.70-0.75",
+      "n": 227,
+      "avg_prob": 0.724,
+      "expected_wr": 72.4,
+      "actual_wr": 74.9,
+      "error": 2.5,
+      "profit": 96.0
+    },
+    {
+      "prob_bin": "0.75-0.80",
+      "n": 118,
+      "avg_prob": 0.769,
+      "expected_wr": 76.9,
+      "actual_wr": 82.2,
+      "error": 5.3,
+      "profit": 66.3
+    },
+    {
+      "prob_bin": "0.80-0.85",
+      "n": 58,
+      "avg_prob": 0.82,
+      "expected_wr": 82.0,
+      "actual_wr": 77.6,
+      "error": -4.4,
+      "profit": 27.5
+    },
+    {
+      "prob_bin": "0.85-1.01",
+      "n": 17,
+      "avg_prob": 0.876,
+      "expected_wr": 87.6,
+      "actual_wr": 94.1,
+      "error": 6.6,
+      "profit": 13.4
+    }
+  ],
+  "cores": [
+    {
+      "name": "PHX_UND_MT225-230_SP0-3_OVER",
+      "direction": "OVER",
+      "total_n": 14,
+      "total_wins": 13,
+      "total_wr": 92.9,
+      "mean_residual": 10.25,
+      "std_residual": 9.36,
+      "t_stat": 4.1,
+      "cohens_d": 1.095,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 50.0,
+        "2022-23": 100.0,
+        "2023-24": 100.0,
+        "2024-25": 100.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "DEN_HOM_MT225-230_SP10-25_OVER",
+      "direction": "OVER",
+      "total_n": 18,
+      "total_wins": 13,
+      "total_wr": 72.2,
+      "mean_residual": 11.83,
+      "std_residual": 13.68,
+      "t_stat": 3.67,
+      "cohens_d": 0.865,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 66.7,
+        "2022-23": 33.3,
+        "2023-24": 100.0,
+        "2024-25": 100.0
+      }
+    },
+    {
+      "name": "CLE_FAV_MT210-220_SP0-3_OVER",
+      "direction": "OVER",
+      "total_n": 14,
+      "total_wins": 12,
+      "total_wr": 85.7,
+      "mean_residual": 10.04,
+      "std_residual": 10.54,
+      "t_stat": 3.56,
+      "cohens_d": 0.952,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 66.7,
+        "2022-23": 100.0,
+        "2023-24": 100.0
+      }
+    },
+    {
+      "name": "BKN_HOM_MT230-235_SP6-10_UNDER",
+      "direction": "UNDER",
+      "total_n": 14,
+      "total_wins": 12,
+      "total_wr": 85.7,
+      "mean_residual": -16.54,
+      "std_residual": 18.9,
+      "t_stat": -3.27,
+      "cohens_d": -0.875,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 100.0,
+        "2022-23": 80.0,
+        "2023-24": 75.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "BKN_AWA_MT210-220_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 13,
+      "total_wins": 10,
+      "total_wr": 76.9,
+      "mean_residual": 10.12,
+      "std_residual": 11.57,
+      "t_stat": 3.15,
+      "cohens_d": 0.874,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 80.0,
+        "2022-23": 100.0,
+        "2023-24": 100.0,
+        "2024-25": 50.0
+      }
+    },
+    {
+      "name": "HOU_AWA_MT225-230_SP10-25_OVER",
+      "direction": "OVER",
+      "total_n": 30,
+      "total_wins": 24,
+      "total_wr": 80.0,
+      "mean_residual": 9.63,
+      "std_residual": 16.96,
+      "t_stat": 3.11,
+      "cohens_d": 0.568,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 80.0,
+        "2021-22": 71.4,
+        "2022-23": 77.8,
+        "2023-24": 100.0,
+        "2024-25": 100.0,
+        "2025-26": 50.0
+      }
+    },
+    {
+      "name": "NYK_FAV_MT225-230_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 18,
+      "total_wins": 14,
+      "total_wr": 77.8,
+      "mean_residual": 14.11,
+      "std_residual": 19.6,
+      "t_stat": 3.05,
+      "cohens_d": 0.72,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2022-23": 71.4,
+        "2024-25": 66.7,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "SAS_HOM_MT220-225_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 17,
+      "total_wins": 14,
+      "total_wr": 82.4,
+      "mean_residual": 11.56,
+      "std_residual": 15.97,
+      "t_stat": 2.98,
+      "cohens_d": 0.724,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 100.0,
+        "2023-24": 50.0,
+        "2024-25": 66.7,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "IND_UND_MT230-235_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 21,
+      "total_wins": 15,
+      "total_wr": 71.4,
+      "mean_residual": 10.79,
+      "std_residual": 16.85,
+      "t_stat": 2.93,
+      "cohens_d": 0.64,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 100.0,
+        "2022-23": 66.7,
+        "2023-24": 100.0,
+        "2024-25": 50.0,
+        "2025-26": 75.0
+      }
+    },
+    {
+      "name": "POR_HOM_MT225-230_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 26,
+      "total_wins": 19,
+      "total_wr": 73.1,
+      "mean_residual": 8.96,
+      "std_residual": 16.09,
+      "t_stat": 2.84,
+      "cohens_d": 0.557,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 66.7,
+        "2021-22": 50.0,
+        "2022-23": 80.0,
+        "2023-24": 66.7,
+        "2024-25": 83.3,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "ATL_UND_MT225-230_SP0-3_OVER",
+      "direction": "OVER",
+      "total_n": 12,
+      "total_wins": 10,
+      "total_wr": 83.3,
+      "mean_residual": 9.75,
+      "std_residual": 12.7,
+      "t_stat": 2.66,
+      "cohens_d": 0.768,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 50.0,
+        "2022-23": 66.7,
+        "2023-24": 100.0,
+        "2024-25": 100.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "CHA_UND_MT235-240_SP6-10_UNDER",
+      "direction": "UNDER",
+      "total_n": 12,
+      "total_wins": 10,
+      "total_wr": 83.3,
+      "mean_residual": -14.38,
+      "std_residual": 18.99,
+      "t_stat": -2.62,
+      "cohens_d": -0.757,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2022-23": 83.3,
+        "2023-24": 100.0,
+        "2024-25": 100.0,
+        "2025-26": 75.0
+      }
+    },
+    {
+      "name": "SAC_HOM_MT235-240_SP6-10_OVER",
+      "direction": "OVER",
+      "total_n": 14,
+      "total_wins": 10,
+      "total_wr": 71.4,
+      "mean_residual": 6.46,
+      "std_residual": 9.38,
+      "t_stat": 2.58,
+      "cohens_d": 0.689,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 100.0,
+        "2022-23": 71.4,
+        "2023-24": 0.0,
+        "2024-25": 100.0
+      }
+    },
+    {
+      "name": "MIL_HOM_MT230-235_SP6-10_OVER",
+      "direction": "OVER",
+      "total_n": 20,
+      "total_wins": 14,
+      "total_wr": 70.0,
+      "mean_residual": 8.43,
+      "std_residual": 15.21,
+      "t_stat": 2.48,
+      "cohens_d": 0.554,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 50.0,
+        "2021-22": 80.0,
+        "2022-23": 66.7,
+        "2023-24": 66.7,
+        "2024-25": 100.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "ATL_UND_MT220-225_SP6-10_UNDER",
+      "direction": "UNDER",
+      "total_n": 17,
+      "total_wins": 14,
+      "total_wr": 82.4,
+      "mean_residual": -7.85,
+      "std_residual": 13.23,
+      "t_stat": -2.45,
+      "cohens_d": -0.593,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 87.5,
+        "2021-22": 66.7,
+        "2022-23": 0.0,
+        "2023-24": 100.0,
+        "2024-25": 100.0
+      }
+    },
+    {
+      "name": "SAC_AWA_MT235-240_SP3-6_UNDER",
+      "direction": "UNDER",
+      "total_n": 17,
+      "total_wins": 12,
+      "total_wr": 70.6,
+      "mean_residual": -7.97,
+      "std_residual": 13.42,
+      "t_stat": -2.45,
+      "cohens_d": -0.594,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 80.0,
+        "2021-22": 100.0,
+        "2022-23": 80.0,
+        "2023-24": 75.0,
+        "2024-25": 0.0,
+        "2025-26": 0.0
+      }
+    },
+    {
+      "name": "ATL_AWA_MT220-225_SP0-3_OVER",
+      "direction": "OVER",
+      "total_n": 12,
+      "total_wins": 10,
+      "total_wr": 83.3,
+      "mean_residual": 11.33,
+      "std_residual": 16.12,
+      "t_stat": 2.43,
+      "cohens_d": 0.703,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 100.0,
+        "2022-23": 66.7,
+        "2023-24": 66.7,
+        "2024-25": 100.0
+      }
+    },
+    {
+      "name": "LAC_UND_MT220-225_SP0-3_UNDER",
+      "direction": "UNDER",
+      "total_n": 13,
+      "total_wins": 10,
+      "total_wr": 76.9,
+      "mean_residual": -10.5,
+      "std_residual": 15.72,
+      "t_stat": -2.41,
+      "cohens_d": -0.668,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 33.3,
+        "2021-22": 50.0,
+        "2022-23": 100.0,
+        "2023-24": 100.0,
+        "2024-25": 100.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "ORL_HOM_MT210-220_SP6-10_UNDER",
+      "direction": "UNDER",
+      "total_n": 32,
+      "total_wins": 22,
+      "total_wr": 68.8,
+      "mean_residual": -7.44,
+      "std_residual": 17.86,
+      "t_stat": -2.36,
+      "cohens_d": -0.417,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 66.7,
+        "2021-22": 66.7,
+        "2022-23": 50.0,
+        "2023-24": 100.0,
+        "2024-25": 87.5,
+        "2025-26": 0.0
+      }
+    },
+    {
+      "name": "ORL_HOM_MT225-230_SP0-3_UNDER",
+      "direction": "UNDER",
+      "total_n": 12,
+      "total_wins": 11,
+      "total_wr": 91.7,
+      "mean_residual": -10.5,
+      "std_residual": 15.46,
+      "t_stat": -2.35,
+      "cohens_d": -0.679,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2021-22": 100.0,
+        "2022-23": 80.0,
+        "2023-24": 100.0,
+        "2024-25": 100.0
+      }
+    },
+    {
+      "name": "LAC_FAV_MT225-230_SP0-3_UNDER",
+      "direction": "UNDER",
+      "total_n": 12,
+      "total_wins": 10,
+      "total_wr": 83.3,
+      "mean_residual": -10.42,
+      "std_residual": 15.49,
+      "t_stat": -2.33,
+      "cohens_d": -0.673,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 75.0,
+        "2022-23": 100.0,
+        "2023-24": 100.0,
+        "2024-25": 100.0,
+        "2025-26": 50.0
+      }
+    },
+    {
+      "name": "POR_UND_MT225-230_SP10-25_UNDER",
+      "direction": "UNDER",
+      "total_n": 16,
+      "total_wins": 12,
+      "total_wr": 75.0,
+      "mean_residual": -10.16,
+      "std_residual": 17.85,
+      "t_stat": -2.28,
+      "cohens_d": -0.569,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2021-22": 60.0,
+        "2022-23": 100.0,
+        "2023-24": 80.0,
+        "2024-25": 80.0
+      }
+    },
+    {
+      "name": "MIA_FAV_MT210-220_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 48,
+      "total_wins": 30,
+      "total_wr": 62.5,
+      "mean_residual": 5.06,
+      "std_residual": 15.67,
+      "t_stat": 2.24,
+      "cohens_d": 0.323,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 50.0,
+        "2021-22": 55.6,
+        "2022-23": 53.8,
+        "2023-24": 87.5,
+        "2024-25": 83.3
+      }
+    },
+    {
+      "name": "ORL_UND_MT210-220_SP0-3_UNDER",
+      "direction": "UNDER",
+      "total_n": 18,
+      "total_wins": 13,
+      "total_wr": 72.2,
+      "mean_residual": -7.5,
+      "std_residual": 14.25,
+      "t_stat": -2.23,
+      "cohens_d": -0.526,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 57.1,
+        "2021-22": 100.0,
+        "2022-23": 100.0,
+        "2023-24": 60.0,
+        "2024-25": 100.0
+      }
+    },
+    {
+      "name": "MIA_UND_MT220-225_SP0-3_UNDER",
+      "direction": "UNDER",
+      "total_n": 12,
+      "total_wins": 9,
+      "total_wr": 75.0,
+      "mean_residual": -11.29,
+      "std_residual": 17.81,
+      "t_stat": -2.2,
+      "cohens_d": -0.634,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 100.0,
+        "2022-23": 50.0,
+        "2023-24": 100.0,
+        "2024-25": 66.7
+      }
+    },
+    {
+      "name": "PHI_FAV_MT230-235_SP6-10_OVER",
+      "direction": "OVER",
+      "total_n": 15,
+      "total_wins": 12,
+      "total_wr": 80.0,
+      "mean_residual": 8.87,
+      "std_residual": 16.03,
+      "t_stat": 2.14,
+      "cohens_d": 0.553,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 80.0,
+        "2021-22": 100.0,
+        "2022-23": 50.0,
+        "2023-24": 80.0,
+        "2024-25": 100.0
+      }
+    },
+    {
+      "name": "PHX_HOM_MT225-230_SP0-3_OVER",
+      "direction": "OVER",
+      "total_n": 13,
+      "total_wins": 10,
+      "total_wr": 76.9,
+      "mean_residual": 7.31,
+      "std_residual": 12.46,
+      "t_stat": 2.12,
+      "cohens_d": 0.587,
+      "loso_profitable_seasons": 6,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 100.0,
+        "2022-23": 60.0,
+        "2023-24": 66.7,
+        "2024-25": 100.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "ATL_AWA_MT235-240_SP6-10_UNDER",
+      "direction": "UNDER",
+      "total_n": 17,
+      "total_wins": 13,
+      "total_wr": 76.5,
+      "mean_residual": -6.44,
+      "std_residual": 12.6,
+      "t_stat": -2.11,
+      "cohens_d": -0.511,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 0.0,
+        "2022-23": 100.0,
+        "2023-24": 60.0,
+        "2024-25": 100.0,
+        "2025-26": 66.7
+      }
+    },
+    {
+      "name": "DAL_HOM_MT210-220_SP0-3_UNDER",
+      "direction": "UNDER",
+      "total_n": 24,
+      "total_wins": 18,
+      "total_wr": 75.0,
+      "mean_residual": -5.54,
+      "std_residual": 12.84,
+      "t_stat": -2.11,
+      "cohens_d": -0.432,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 75.0,
+        "2021-22": 75.0,
+        "2022-23": 66.7,
+        "2024-25": 100.0
+      }
+    },
+    {
+      "name": "BOS_FAV_MT210-220_SP10-25_OVER",
+      "direction": "OVER",
+      "total_n": 27,
+      "total_wins": 21,
+      "total_wr": 77.8,
+      "mean_residual": 5.91,
+      "std_residual": 15.26,
+      "t_stat": 2.01,
+      "cohens_d": 0.387,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 50.0,
+        "2021-22": 83.3,
+        "2022-23": 66.7,
+        "2023-24": 83.3,
+        "2024-25": 80.0
+      }
+    },
+    {
+      "name": "MIA_FAV_MT210-220_SP0-3_UNDER",
+      "direction": "UNDER",
+      "total_n": 31,
+      "total_wins": 19,
+      "total_wr": 61.3,
+      "mean_residual": -5.05,
+      "std_residual": 14.19,
+      "t_stat": -1.98,
+      "cohens_d": -0.356,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 57.1,
+        "2021-22": 33.3,
+        "2022-23": 77.8,
+        "2023-24": 66.7,
+        "2024-25": 66.7
+      }
+    },
+    {
+      "name": "MIL_FAV_MT225-230_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 24,
+      "total_wins": 18,
+      "total_wr": 75.0,
+      "mean_residual": 6.19,
+      "std_residual": 16.03,
+      "t_stat": 1.89,
+      "cohens_d": 0.386,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 100.0,
+        "2022-23": 50.0,
+        "2023-24": 100.0,
+        "2024-25": 40.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "UTA_AWA_MT220-225_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 16,
+      "total_wins": 11,
+      "total_wr": 68.8,
+      "mean_residual": 4.84,
+      "std_residual": 10.51,
+      "t_stat": 1.84,
+      "cohens_d": 0.461,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 50.0,
+        "2021-22": 80.0,
+        "2022-23": 100.0,
+        "2023-24": 100.0,
+        "2024-25": 66.7
+      }
+    },
+    {
+      "name": "LAC_AWA_MT210-220_SP6-10_OVER",
+      "direction": "OVER",
+      "total_n": 22,
+      "total_wins": 15,
+      "total_wr": 68.2,
+      "mean_residual": 7.02,
+      "std_residual": 18.31,
+      "t_stat": 1.8,
+      "cohens_d": 0.384,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 50.0,
+        "2022-23": 83.3,
+        "2023-24": 66.7,
+        "2024-25": 33.3,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "TOR_AWA_MT225-230_SP0-3_UNDER",
+      "direction": "UNDER",
+      "total_n": 12,
+      "total_wins": 9,
+      "total_wr": 75.0,
+      "mean_residual": -6.96,
+      "std_residual": 13.46,
+      "t_stat": -1.79,
+      "cohens_d": -0.517,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 50.0,
+        "2021-22": 75.0,
+        "2022-23": 100.0,
+        "2023-24": 50.0,
+        "2024-25": 100.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "MIA_FAV_MT210-220_SP6-10_UNDER",
+      "direction": "UNDER",
+      "total_n": 35,
+      "total_wins": 24,
+      "total_wr": 68.6,
+      "mean_residual": -4.47,
+      "std_residual": 14.9,
+      "t_stat": -1.77,
+      "cohens_d": -0.3,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 66.7,
+        "2021-22": 70.0,
+        "2022-23": 60.0,
+        "2023-24": 100.0,
+        "2024-25": 63.6
+      }
+    },
+    {
+      "name": "IND_HOM_MT230-235_SP6-10_OVER",
+      "direction": "OVER",
+      "total_n": 12,
+      "total_wins": 9,
+      "total_wr": 75.0,
+      "mean_residual": 7.88,
+      "std_residual": 16.17,
+      "t_stat": 1.69,
+      "cohens_d": 0.487,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2021-22": 75.0,
+        "2022-23": 100.0,
+        "2023-24": 100.0,
+        "2024-25": 75.0,
+        "2025-26": 0.0
+      }
+    },
+    {
+      "name": "MIN_UND_MT225-230_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 15,
+      "total_wins": 10,
+      "total_wr": 66.7,
+      "mean_residual": 7.43,
+      "std_residual": 17.6,
+      "t_stat": 1.64,
+      "cohens_d": 0.422,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 20.0,
+        "2022-23": 50.0,
+        "2023-24": 100.0,
+        "2024-25": 100.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "DEN_FAV_MT220-225_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 15,
+      "total_wins": 11,
+      "total_wr": 73.3,
+      "mean_residual": 7.03,
+      "std_residual": 16.83,
+      "t_stat": 1.62,
+      "cohens_d": 0.418,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 50.0,
+        "2021-22": 100.0,
+        "2022-23": 80.0,
+        "2023-24": 100.0,
+        "2024-25": 100.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "IND_HOM_MT235-240_SP6-10_OVER",
+      "direction": "OVER",
+      "total_n": 13,
+      "total_wins": 9,
+      "total_wr": 69.2,
+      "mean_residual": 10.35,
+      "std_residual": 23.03,
+      "t_stat": 1.62,
+      "cohens_d": 0.449,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 50.0,
+        "2021-22": 100.0,
+        "2022-23": 66.7,
+        "2023-24": 100.0,
+        "2024-25": 100.0,
+        "2025-26": 60.0
+      }
+    },
+    {
+      "name": "MIA_HOM_MT225-230_SP3-6_UNDER",
+      "direction": "UNDER",
+      "total_n": 12,
+      "total_wins": 9,
+      "total_wr": 75.0,
+      "mean_residual": -5.71,
+      "std_residual": 12.24,
+      "t_stat": -1.62,
+      "cohens_d": -0.466,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 100.0,
+        "2021-22": 100.0,
+        "2022-23": 100.0,
+        "2024-25": 40.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "LAC_FAV_MT210-220_SP6-10_OVER",
+      "direction": "OVER",
+      "total_n": 24,
+      "total_wins": 16,
+      "total_wr": 66.7,
+      "mean_residual": 5.04,
+      "std_residual": 15.3,
+      "t_stat": 1.61,
+      "cohens_d": 0.33,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 71.4,
+        "2021-22": 66.7,
+        "2022-23": 100.0,
+        "2023-24": 75.0,
+        "2024-25": 33.3,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "BOS_FAV_MT220-225_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 18,
+      "total_wins": 12,
+      "total_wr": 66.7,
+      "mean_residual": 8.08,
+      "std_residual": 21.75,
+      "t_stat": 1.58,
+      "cohens_d": 0.372,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 75.0,
+        "2021-22": 80.0,
+        "2022-23": 100.0,
+        "2023-24": 33.3,
+        "2024-25": 33.3,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "SAC_HOM_MT225-230_SP3-6_OVER",
+      "direction": "OVER",
+      "total_n": 20,
+      "total_wins": 15,
+      "total_wr": 75.0,
+      "mean_residual": 5.83,
+      "std_residual": 16.72,
+      "t_stat": 1.56,
+      "cohens_d": 0.348,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 71.4,
+        "2021-22": 83.3,
+        "2022-23": 100.0,
+        "2023-24": 0.0,
+        "2024-25": 66.7,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "IND_FAV_MT230-235_SP3-6_UNDER",
+      "direction": "UNDER",
+      "total_n": 14,
+      "total_wins": 9,
+      "total_wr": 64.3,
+      "mean_residual": -7.32,
+      "std_residual": 17.68,
+      "t_stat": -1.55,
+      "cohens_d": -0.414,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 33.3,
+        "2021-22": 100.0,
+        "2022-23": 100.0,
+        "2023-24": 100.0,
+        "2024-25": 50.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "BOS_UND_MT210-220_SP3-6_UNDER",
+      "direction": "UNDER",
+      "total_n": 15,
+      "total_wins": 10,
+      "total_wr": 66.7,
+      "mean_residual": -5.7,
+      "std_residual": 14.46,
+      "t_stat": -1.53,
+      "cohens_d": -0.394,
+      "loso_profitable_seasons": 4,
+      "season_wrs": {
+        "2020-21": 75.0,
+        "2021-22": 55.6,
+        "2024-25": 100.0,
+        "2025-26": 100.0
+      }
+    },
+    {
+      "name": "POR_HOM_MT220-225_SP6-10_OVER",
+      "direction": "OVER",
+      "total_n": 13,
+      "total_wins": 10,
+      "total_wr": 76.9,
+      "mean_residual": 7.0,
+      "std_residual": 16.57,
+      "t_stat": 1.52,
+      "cohens_d": 0.423,
+      "loso_profitable_seasons": 5,
+      "season_wrs": {
+        "2020-21": 66.7,
+        "2021-22": 100.0,
+        "2022-23": 100.0,
+        "2023-24": 100.0,
+        "2024-25": 80.0,
+        "2025-26": 0.0
+      }
+    }
+  ],
+  "confidence_tiers": {
+    "conf_gte_0.00": {
+      "n": 818,
+      "hits": 600,
+      "wr": 73.3,
+      "profit": 322.0,
+      "roi": 39.4
+    },
+    "conf_gte_0.05": {
+      "n": 818,
+      "hits": 600,
+      "wr": 73.3,
+      "profit": 322.0,
+      "roi": 39.4
+    },
+    "conf_gte_0.10": {
+      "n": 817,
+      "hits": 599,
+      "wr": 73.3,
+      "profit": 321.1,
+      "roi": 39.3
+    },
+    "conf_gte_0.15": {
+      "n": 816,
+      "hits": 598,
+      "wr": 73.3,
+      "profit": 320.2,
+      "roi": 39.2
+    },
+    "conf_gte_0.20": {
+      "n": 815,
+      "hits": 597,
+      "wr": 73.3,
+      "profit": 319.3,
+      "roi": 39.2
+    },
+    "conf_gte_0.30": {
+      "n": 672,
+      "hits": 506,
+      "wr": 75.3,
+      "profit": 289.4,
+      "roi": 43.1
+    },
+    "conf_gte_0.40": {
+      "n": 420,
+      "hits": 328,
+      "wr": 78.1,
+      "profit": 203.2,
+      "roi": 48.4
+    },
+    "conf_gte_0.50": {
+      "n": 193,
+      "hits": 158,
+      "wr": 81.9,
+      "profit": 107.2,
+      "roi": 55.5
+    }
+  },
+  "edge_tiers": {
+    "edge_gte_0.0": {
+      "n": 818,
+      "hits": 600,
+      "wr": 73.3,
+      "profit": 322.0,
+      "roi": 39.4
+    },
+    "edge_gte_0.2": {
+      "n": 815,
+      "hits": 597,
+      "wr": 73.3,
+      "profit": 319.3,
+      "roi": 39.2
+    },
+    "edge_gte_0.4": {
+      "n": 577,
+      "hits": 441,
+      "wr": 76.4,
+      "profit": 260.9,
+      "roi": 45.2
+    },
+    "edge_gte_0.6": {
+      "n": 229,
+      "hits": 185,
+      "wr": 80.8,
+      "profit": 122.5,
+      "roi": 53.5
+    },
+    "edge_gte_0.8": {
+      "n": 75,
+      "hits": 61,
+      "wr": 81.3,
+      "profit": 40.9,
+      "roi": 54.5
+    },
+    "edge_gte_1.0": {
+      "n": 17,
+      "hits": 16,
+      "wr": 94.1,
+      "profit": 13.4,
+      "roi": 78.8
+    }
+  }
+}
