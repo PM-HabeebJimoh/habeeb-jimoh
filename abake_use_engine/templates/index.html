@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABAKE USE Engine — Basketball Analytics Dashboard</title>
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #1a2234;
+            --bg-card-hover: #1e2a3f;
+            --accent: #00d4ff;
+            --accent-dim: #0099cc;
+            --green: #00e676;
+            --red: #ff5252;
+            --yellow: #ffca28;
+            --orange: #ff9800;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --text-dim: #6b7280;
+            --border: #2d3748;
+            --hit-bg: rgba(0, 230, 118, 0.1);
+            --miss-bg: rgba(255, 82, 82, 0.1);
+            --skip-bg: rgba(255, 202, 40, 0.1);
+            --pending-bg: rgba(0, 212, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0a0e17 0%, #1a2234 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #0066cc);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+        }
+
+        .header-title h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .header-title p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-live {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--green);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+        }
+
+        .status-live::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .refresh-btn {
+            padding: 8px 20px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .refresh-btn:hover {
+            background: #33ddff;
+            transform: translateY(-1px);
+        }
+
+        .refresh-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 24px 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        .summary-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-dim);
+        }
+
+        .summary-card .label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .summary-card .value {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .summary-card .sub {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .value-green { color: var(--green); }
+        .value-red { color: var(--red); }
+        .value-yellow { color: var(--yellow); }
+        .value-accent { color: var(--accent); }
+        .value-orange { color: var(--orange); }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-header .league-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .league-tab {
+            padding: 6px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .league-tab.active {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+
+        .league-tab:hover:not(.active) {
+            border-color: var(--accent-dim);
+            color: var(--text-primary);
+        }
+
+        /* Game Results Table */
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .results-table thead th {
+            background: var(--bg-secondary);
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .results-table tbody tr {
+            border-bottom: 1px solid rgba(45, 55, 72, 0.5);
+            transition: background 0.15s;
+        }
+
+        .results-table tbody tr:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .results-table tbody td {
+            padding: 12px 16px;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        .matchup-cell {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .status-cell {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .status-HIT {
+            background: var(--hit-bg);
+            color: var(--green);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+        }
+
+        .status-MISS {
+            background: var(--miss-bg);
+            color: var(--red);
+            border: 1px solid rgba(255, 82, 82, 0.3);
+        }
+
+        .status-SKIP {
+            background: var(--skip-bg);
+            color: var(--yellow);
+            border: 1px solid rgba(255, 202, 40, 0.3);
+        }
+
+        .status-PENDING {
+            background: var(--pending-bg);
+            color: var(--accent);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .status-LIVE {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--green);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .pick-cell {
+            font-weight: 700;
+        }
+
+        .pick-OVER { color: var(--green); }
+        .pick-UNDER { color: var(--orange); }
+
+        .number-cell {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .details-cell {
+            font-size: 11px;
+            color: var(--text-dim);
+            max-width: 300px;
+        }
+
+        /* Verification Section */
+        .verification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .verify-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .verify-card.pass {
+            border-color: rgba(0, 230, 118, 0.4);
+        }
+
+        .verify-card.fail {
+            border-color: rgba(255, 82, 82, 0.4);
+        }
+
+        .verify-card .verify-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .verify-card .verify-header h3 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .verify-badge {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .verify-badge.pass {
+            background: var(--hit-bg);
+            color: var(--green);
+        }
+
+        .verify-badge.fail {
+            background: var(--miss-bg);
+            color: var(--red);
+        }
+
+        .verify-steps {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .verify-steps .step {
+            display: flex;
+            gap: 8px;
+        }
+
+        .verify-steps .step-num {
+            color: var(--accent);
+            font-weight: 700;
+            min-width: 20px;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            gap: 12px;
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-dim);
+        }
+
+        .empty-state .icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dim);
+            font-size: 11px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header { padding: 16px 20px; }
+            .main { padding: 16px 20px; }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            .results-table { font-size: 11px; }
+            .results-table thead th,
+            .results-table tbody td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">⚡</div>
+            <div class="header-title">
+                <h1>ABAKE USE Engine</h1>
+                <p>Dynamic Pacing & Possession Scaling — Basketball Analytics</p>
+            </div>
+        </div>
+        <div class="header-status">
+            <div class="status-badge status-live" id="engineStatus">
+                ENGINE LIVE
+            </div>
+            <button class="refresh-btn" id="refreshBtn" onclick="processToday()">
+                ▶ Process Today's Games
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Summary Cards -->
+        <div class="summary-grid" id="summaryGrid">
+            <div class="summary-card">
+                <div class="label">Total Games</div>
+                <div class="value value-accent" id="totalGames">—</div>
+                <div class="sub">All leagues today</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Active Bets</div>
+                <div class="value value-green" id="activeBets">—</div>
+                <div class="sub">After filter rules</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Validated Wins</div>
+                <div class="value value-green" id="validatedWins">—</div>
+                <div class="sub">ABAKE USE HITs</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">System Skips</div>
+                <div class="value value-yellow" id="systemSkips">—</div>
+                <div class="sub">Capital protected</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Losses</div>
+                <div class="value value-red" id="losses">—</div>
+                <div class="sub">Engine defects</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Win Rate</div>
+                <div class="value value-green" id="winRate">—</div>
+                <div class="sub">True performance</div>
+            </div>
+        </div>
+
+        <!-- Verification Profiles -->
+        <div class="section-header">
+            <h2>🔍 Engine Verification Profiles</h2>
+            <button class="refresh-btn" onclick="verifyProfiles()">
+                Verify Engine
+            </button>
+        </div>
+        <div class="verification-grid" id="verificationGrid">
+            <div class="loading">
+                <div class="spinner"></div>
+                Click "Verify Engine" to run calibration profiles...
+            </div>
+        </div>
+
+        <!-- Today's Games Results -->
+        <div class="section-header">
+            <h2>🏀 Today's Game Analysis</h2>
+            <div class="league-tabs">
+                <button class="league-tab active" onclick="filterLeague('all')">All</button>
+                <button class="league-tab" onclick="filterLeague('WNBA')">WNBA</button>
+                <button class="league-tab" onclick="filterLeague('Summer')">Summer League</button>
+                <button class="league-tab" onclick="filterLeague('NBA')">NBA</button>
+            </div>
+        </div>
+
+        <div id="resultsContainer">
+            <div class="empty-state">
+                <div class="icon">🏀</div>
+                <p>Click "Process Today's Games" to load and analyze all matchups</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            ABAKE USE Engine v1.0.0 — Dynamic Pacing & Possession Scaling Engine<br>
+            Mathematical Framework: Layer 1 (Linear Predictors) → Layer 2 (Implied Split) → Layer 3 (Dynamic Scaling) → Filter Rules 1-4
+        </div>
+    </main>
+
+    <script>
+        // ============================================================ //
+        // ABAKE USE Dashboard — JavaScript Controller                  //
+        // ============================================================ //
+
+        const API_BASE = '';
+        let currentResults = [];
+        let currentLeague = 'all';
+
+        // ---- Process Today's Games ----
+        async function processToday() {
+            const btn = document.getElementById('refreshBtn');
+            btn.disabled = true;
+            btn.textContent = '⏳ Processing...';
+
+            try {
+                const resp = await fetch(`${API_BASE}/api/today/process?league=${currentLeague}`);
+                const data = await resp.json();
+
+                currentResults = data.results || [];
+                updateSummary(data.summary);
+                renderResults(currentResults);
+
+                document.getElementById('engineStatus').innerHTML = '✓ PROCESSED';
+            } catch (err) {
+                console.error('Process error:', err);
+                document.getElementById('resultsContainer').innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">⚠️</div>
+                        <p>Error processing games: ${err.message}</p>
+                    </div>`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '▶ Process Today\'s Games';
+            }
+        }
+
+        // ---- Verify Engine Profiles ----
+        async function verifyProfiles() {
+            try {
+                const resp = await fetch(`${API_BASE}/api/verify/profiles`);
+                const data = await resp.json();
+
+                const grid = document.getElementById('verificationGrid');
+                grid.innerHTML = '';
+
+                data.verification_profiles.forEach((profile, i) => {
+                    const isPass = profile.verified;
+                    const card = document.createElement('div');
+                    card.className = `verify-card ${isPass ? 'pass' : 'fail'}`;
+
+                    const details = profile.details;
+                    let stepsHtml = '';
+
+                    if (details.baseline_source === 'independent') {
+                        stepsHtml = `
+                            <div class="step"><span class="step-num">1.</span> Pacing: ${details.proj_pace?.toFixed(1) || 'N/A'} possessions</div>
+                            <div class="step"><span class="step-num">2.</span> Away: ${details.score_away?.toFixed(2) || 'N/A'} | Home: ${details.score_home?.toFixed(2) || 'N/A'}</div>
+                            <div class="step"><span class="step-num">3.</span> Total: ${details.total} | Spread: ${details.spread}</div>
+                            <div class="step"><span class="step-num">4.</span> Base Line: ${details.base_line?.toFixed(2) || 'N/A'}</div>
+                            <div class="step"><span class="step-num">5.</span> Scaled Line: ${details.scaled_line?.toFixed(2) || 'N/A'}</div>
+                            <div class="step"><span class="step-num">6.</span> Actual: ${details.actual_score || 'N/A'} → ${details.status}</div>
+                        `;
+                    } else if (details.status === 'SYSTEM SKIP') {
+                        stepsHtml = `
+                            <div class="step"><span class="step-num">1.</span> Total: ${details.total} | Spread: ${details.spread}</div>
+                            <div class="step"><span class="step-num">2.</span> Win Prob: ${details.win_prob}%</div>
+                            <div class="step"><span class="step-num">3.</span> Rule: ${details.rule_triggered}</div>
+                            <div class="step"><span class="step-num">4.</span> → ${details.status}</div>
+                        `;
+                    } else {
+                        stepsHtml = `
+                            <div class="step"><span class="step-num">1.</span> Total: ${details.total} | Spread: ${details.spread}</div>
+                            <div class="step"><span class="step-num">2.</span> Base Line: ${details.base_line?.toFixed(2) || 'N/A'}</div>
+                            <div class="step"><span class="step-num">3.</span> Scaled Line: ${details.scaled_line?.toFixed(2) || 'N/A'}</div>
+                            <div class="step"><span class="step-num">4.</span> Actual: ${details.actual_score || 'N/A'} → ${details.status}</div>
+                        `;
+                    }
+
+                    card.innerHTML = `
+                        <div class="verify-header">
+                            <h3>${profile.matchup}</h3>
+                            <span class="verify-badge ${isPass ? 'pass' : 'fail'}">
+                                ${isPass ? '✓ VERIFIED' : '✗ FAILED'}
+                            </span>
+                        </div>
+                        <div class="verify-steps">
+                            ${stepsHtml}
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (err) {
+                console.error('Verify error:', err);
+            }
+        }
+
+        // ---- Update Summary Cards ----
+        function updateSummary(summary) {
+            if (!summary) return;
+            document.getElementById('totalGames').textContent = summary.total_matchups || 0;
+            document.getElementById('activeBets').textContent = summary.active_bets || 0;
+            document.getElementById('validatedWins').textContent = summary.validated_wins || 0;
+            document.getElementById('systemSkips').textContent = summary.system_skips || 0;
+            document.getElementById('losses').textContent = summary.losses || 0;
+            document.getElementById('winRate').textContent = `${summary.win_rate_pct || 0}%`;
+        }
+
+        // ---- Render Results Table ----
+        function renderResults(results) {
+            const container = document.getElementById('resultsContainer');
+
+            if (!results || results.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">🏀</div>
+                        <p>No games found for today. Check back later or try a different league.</p>
+                    </div>`;
+                return;
+            }
+
+            let rows = '';
+            results.forEach(r => {
+                const statusClass = r.status === 'HIT' ? 'status-HIT' :
+                                   r.status === 'MISS' ? 'status-MISS' :
+                                   r.status === 'SYSTEM SKIP' ? 'status-SKIP' :
+                                   r.status === 'PENDING' ? 'status-PENDING' : 'status-PENDING';
+
+                const pickClass = r.pick === 'OVER' ? 'pick-OVER' : 'pick-UNDER';
+
+                rows += `
+                    <tr>
+                        <td class="matchup-cell">${r.matchup}</td>
+                        <td><span class="status-cell ${statusClass}">${r.status}</span></td>
+                        <td class="pick-cell ${pickClass}">${r.pick || '—'}</td>
+                        <td class="number-cell">${r.total || '—'}</td>
+                        <td class="number-cell">${r.spread || '—'}</td>
+                        <td class="number-cell">${r.base_line?.toFixed(2) || '—'}</td>
+                        <td class="number-cell">${r.scaled_line?.toFixed(2) || '—'}</td>
+                        <td class="number-cell">${r.actual_score ?? '—'}</td>
+                        <td class="number-cell">${r.win_prob ?? '—'}%</td>
+                        <td class="details-cell">${r.details || ''}</td>
+                    </tr>
+                `;
+            });
+
+            container.innerHTML = `
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Matchup</th>
+                            <th>Status</th>
+                            <th>Pick</th>
+                            <th>Total</th>
+                            <th>Spread</th>
+                            <th>Base Line</th>
+                            <th>Scaled Line</th>
+                            <th>Actual</th>
+                            <th>Win Prob</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // ---- League Filter ----
+        function filterLeague(league) {
+            currentLeague = league;
+            document.querySelectorAll('.league-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // ---- Auto-load on page load ----
+        document.addEventListener('DOMContentLoaded', () => {
+            verifyProfiles();
+        });
+    </script>
+</body>
+</html>
