@@ -45,5 +45,11 @@ Status: payload **516 words — PASS**. Behavioural test **NOT YET RUN**.
 5. Neuralink count unresolved.
 6. Arena Level 3 install unverified.
 
+## Session 3 (2026-11-13): Nigeria health scan → `analyses/nigeria-health.md`
+- Verdict: **INVESTIGATE**, not ATTACK. The only candidate is quality-assured generics + task-shifted primary care; prize ratio ESTIMATE 4–8×.
+- Key unverified input: "11.5× IRP for cheapest generics" (BusinessDay ~2025; underlying report unidentified).
+- Bottleneck: landed naira cost of WHO-PQ generics vs shelf price. Kill rule: median shelf < 3× IRP → WALK.
+- Next physical action (Nigeria): 20-outlet, 10-drug price walk in one Lagos LGA.
+
 ## Next physical action
 Open a fresh chat, paste `musk-mode/BOOTSTRAP.md`, run probes A/B/C from `INSTALL.md`, score 11 criteria, record result here.
