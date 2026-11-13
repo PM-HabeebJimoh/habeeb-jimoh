@@ -45,11 +45,13 @@ Status: payload **516 words — PASS**. Behavioural test **NOT YET RUN**.
 5. Neuralink count unresolved.
 6. Arena Level 3 install unverified.
 
-## Session 3 (2026-11-13): Nigeria health scan → `analyses/nigeria-health.md`
-- Verdict: **INVESTIGATE**, not ATTACK. The only candidate is quality-assured generics + task-shifted primary care; prize ratio ESTIMATE 4–8×.
-- Key unverified input: "11.5× IRP for cheapest generics" (BusinessDay ~2025; underlying report unidentified).
-- Bottleneck: landed naira cost of WHO-PQ generics vs shelf price. Kill rule: median shelf < 3× IRP → WALK.
-- Next physical action (Nigeria): 20-outlet, 10-drug price walk in one Lagos LGA.
+## Session 3 (2026-11-13): Nigeria health → `analyses/nigeria-health.md` (v2)
+- v1 was rejected by Habeeb: it was a consultant-style market scan that shrank the goal (the cowardice failure).
+- **Protocol bug found:** I used the don't-apply list as a veto. Patch proposed for BOOTSTRAP: "The don't-apply list never means WALK. It means reclassify as Type 4 and switch to a permission weapon."
+- v2 goal: cut cheaply preventable deaths 10× (malaria ~31% of global deaths; maternal 28.5% of global; under-5 102/1000).
+- Method: turn ~200k existing drug shops into certified test-and-treat nodes, own the stack, climb the ladder malaria → hypertension → maternal.
+- Binding constraint: Type 4 (PCN accreditation for drug shops to test and treat). Odds: national 5–10%, rung 1 ~50% (ESTIMATE).
+- Next physical action (Nigeria): sit in 10 drug shops and time 10 fever visits end to end.
 
 ## Next physical action
 Open a fresh chat, paste `musk-mode/BOOTSTRAP.md`, run probes A/B/C from `INSTALL.md`, score 11 criteria, record result here.

@@ -1,92 +1,108 @@
-# Nigeria health — Musk-mode scan
+# Nigeria health — Musk mode, v2
 
-Date: 2026-11-13 · Status: **INVESTIGATE** (2-week kill test pending)
+Date: 2026-11-13 · Replaces v1 (a consultant-style market-entry scan that shrank "replace the industry" into "survey 20 pharmacies". That is the **cowardice** failure the protocol names.)
 
 ## Recommendation
-Don't try to replace "the health industry." That is six industries, and four of them are limited by permission or labour, not cost. Go after one unit only: **the cash price of a correctly treated primary-care episode** (diagnosis plus quality-assured generic drug). Before spending money, run a 2-week price survey that can kill the idea.
+**Don't build hospitals or clinics. Delete them from the critical path.** The goal is a **10× cut in the deaths that cost almost nothing to prevent**. Get there by turning the ~200,000 drug shops that already exist into certified test-and-treat nodes. Own the whole stack: medicine → kit → training → node → remote doctor → payment → data. Run it in a ladder: malaria first, then hypertension, then mothers.
 
-## Premise check
-- The protocol's own don't-apply list names healthcare delivery. Nigeria is a partial exception: **58–75% of health spending is out-of-pocket**, so patients pay cash at the shelf price. In a cash market, price competition works. In an insured market it does not.
-- Restated goal: **cut the cash price of a correctly treated episode for the top 5 primary-care conditions by ≥5× in one LGA within 12 months** (slip case 18–36 months), with ≥95% of drug batches passing quality tests.
+## Gate 0
 
-## Gate 0: segment classification
+### The physics ceiling
+A health system's output is **years of life**. Nigeria's life expectancy is **54.5 years** (World Bank, 2023), among the lowest in the world. The ceiling is not "a bit better than Ghana". It is the death rates middle-income countries already reach with the same molecules.
 
-| Segment | Impossibility type | Binding constraint | Verdict |
+| Death type | Now | 10× target | Source |
 |---|---|---|---|
-| Generic essential medicines (price) | 3 Cost + 4 (NAFDAC registration) | Procurement/FX, fragmented import | **INVESTIGATE**: the only segment with a possible ≥5 prize ratio |
-| Primary care by doctors | 4 + labour | 2.9–3.9 doctors/10k; ~4k leave per year | **WALK** on doctors. Use task-shifting (already legal under TSTS 2014/18/22) |
-| Primary care by nurses/CHEWs | 4 (scope of practice), **partly open** | State-level domestication of TSTS | **Use as the delivery channel** |
-| Health insurance | 4 + trust | ~10% enrolled | **WALK** (don't-apply list) |
-| Local drug manufacturing | 3 + capital + FX | Capex; local output is low-end | **WALK for v1**: a failure here could cost the ability to try again |
-| PHC power (solar vs diesel) | 3 | Already near parity | **Enabler, not the business**: prize ratio ~1–4 (ESTIMATE) |
-| Hospitals and specialists | 4 + labour | Licensing, emigration | **WALK** |
-| Diagnostics/labs | 3? | Unknown | **I don't know.** Cheapest check: price 5 tests at 10 labs |
+| Malaria | ~31% of global deaths; 39% of global under-5 malaria deaths | ÷10 | WHO World Malaria Report 2024 (2023 data), via Guardian/ICIR · T2 |
+| Maternal | 993–1,047 per 100k births; ~82,000 deaths = **28.5% of global maternal deaths** (2020) | < 100 per 100k | WHO/UN MMEIG via Africa Check · T2 |
+| Under-5 | 102 per 1,000 (MICS 2021) | ~10 per 1,000 | MICS 2021 · T1 (via secondary) |
 
-### Six-number scan: generic medicines
-1. Idiot index: **unknown.** An IRP is a supplier price, not raw material. Finding the real floor needs a landed-cost quote.
-2. Price per unit of utility: shelf price ≈ **11.5× IRP** for cheapest generics (BusinessDay, ~2025; underlying report not identified, so this is a hypothesis). The 2004 WHO/HAI survey found **2–64× IRP**.
-3. Floor: IRP is ≤ the floor's upper bound. **ESTIMATE: landed cost ≈ 1.5–3× IRP** once FX, tariffs and logistics are added. Verify with step 2 below.
-4. Prize ratio ≈ 11.5 ÷ (1.5–3) ≈ **4–8×**. This straddles the attack line, so **INVESTIGATE**.
-5. Physics shift: **PARTIAL.** It's cheap verification, point-of-care tests and solar+LFP (stationary storage $70/kWh, BNEF 2025), not a new drug-cost curve.
-6. Incumbent lock-in: the market is **fragmented chaos, not a locked incumbent.** Open markets (Idumota, Sabon Gari) are moving to coordinated wholesale centres. DrugStoc, Remedial Health and Pharmarun are already attacking distribution, so distribution alone is not a revolution.
+### Floor vs reality
+- One full malaria cure (artemether-lumefantrine) costs **$0.22–0.57** per course (Global Fund pooled-procurement reference price, Q2 2024 · T1).
+- Nigeria still carries ~31% of the world's malaria deaths. **ESTIMATE ≈ 185,000 a year**: 31% × ~597k global deaths, where the 597k is my memory of WMR 2024 (T4, so verify).
+- **The idiot index here is on the outcome, not a part.** A death that a sub-$1 molecule prevents still happens. The molecule is not the cost. Diagnosis, delivery, quality and permission are, and all four are solvable without new science.
+- **ESTIMATE floor per cured malaria episode** = rapid test (~$0.30–0.50, no reference price found) + drug course ($0.22–0.57) + ~10 minutes of node labour + logistics ≈ **$1–2**. Verification path: Global Fund rapid-test reference table, plus a shelf-price walk.
 
-**Key fact (WHO/HAI 2004, stale):** Nigeria's *retail* markups were the **lowest** of the 8 countries surveyed. High prices came from **procurement**. So attack import and procurement, not pharmacy margins. Re-verify this with the new survey.
+### Classification
+| Layer | Type | Weapon |
+|---|---|---|
+| Molecules | 3, **already solved globally** | Buy direct from WHO-prequalified makers; delete the middlemen |
+| Diagnosis at 200k nodes by non-doctors | **2 (capability)**: one protocol, one rapid test, decision support at scale; not proven at this size | Prototype in 50 nodes, fail cheap, measure |
+| Legal right for a drug shop (PPMV) to test and treat | **4 (permission)**, the binding constraint | Certification strategy with named regulators, plus private safety data. **No cost weapon.** |
+| Doctors | Staffing: 2.9–3.9 per 10k, ~4,000 leaving a year | Delete doctors from protocol cases; keep them for referral and remote oversight |
+
+**Lesson from FSD and Vegas:** this is a Type 2+4 problem. Making drugs cheaper (a Type 3 weapon) alone would repeat the robotaxi mistake.
+
+### Stated odds
+- National 10× in 10 years: **5–10%** (my judgement, ESTIMATE).
+- Rung 1, malaria test-and-treat at 50 nodes in one state: **~50%**.
+- Worth it because the failure value is bounded (see below) and success means roughly 100k+ lives a year (ESTIMATE).
 
 ### Failure value
-- Capital for one clinic: bounded. Acceptable.
-- **Unbounded:** patient harm from bad stock or out-of-scope care → NAFDAC/PCN shutdown and lost trust. This is human-rated, so **prove it privately**: test every batch, use written clinical protocols, set up referral to doctors. Safety wins over speed.
+- A failed rung costs capital: bounded.
+- A patient harmed by bad stock or a missed danger sign → regulators shut the network down and trust dies. That **destroys the ability to try again.** Rule: human-rated. **Prove it privately before scaling**: test every batch, refer every danger sign, publish the safety data.
 
-## Requirements with owners
+### Three-failure test
+If the mission is "Nigerians live to 70", it survives three public failures. If it is "a pharmacy business", it doesn't. Pick the mission, or don't start.
 
+### Schedule
+- Rung 1 at 50% probability: 6 months. Slip case: 9–18 months.
+- National at 50% probability: 10 years. Slip case: 15–30 years.
+- The plan survives the slip **only if every rung pays for itself.** Hence the ladder.
+
+## The Algorithm on the health system
+
+### 1. Requirements, with owners
 | Requirement | Owner | Verdict |
 |---|---|---|
-| Every clinic needs a doctor | Convention; TSTS policy (FMoH) says no for scoped tasks | **Delete** within TSTS scope; keep a doctor for referral |
-| SKUs must be NAFDAC-registered | NAFDAC (DG Prof. Mojisola Adeyeye) | **Keep**: physics-grade for liability |
-| Pharmacy needs a superintendent pharmacist | PCN | **Keep**: hire one |
-| Must manufacture locally | "Industry"/policy narrative, no owner for v1 | **Delete for v1** |
-| Need insurance to scale | No owner | **Delete**: cash, posted prices |
-| Need an app/platform | No owner | **Delete**: automate last |
+| Malaria diagnosis needs a doctor | MDCN scope of practice. WHO already endorses community test-and-treat (iCCM) | **Delete** for uncomplicated, test-positive cases |
+| Care happens in a facility | Nobody. 20–40% of ~34k public health centres function; people already go to drug shops first (up to 55% of under-5 illnesses) | **Delete** |
+| The patient travels to care | Nobody | **Delete**: care sits within walking distance |
+| Drugs pass through open markets and 4–6 hands | Nobody | **Delete**: maker → kit → node |
+| Insurance must pay | ~10% enrolled | **Delete** as a prerequisite |
+| Build new clinics | Nobody | **Delete**: about 200k nodes already exist |
+| Drug shops can't test or treat | PCN (Registrar: name to verify) | **Renegotiate.** This is the Type 4 gate. PCN has reportedly piloted tiered drug-shop accreditation (T4 memory, verify) |
+| Drugs must be NAFDAC-registered | NAFDAC (DG Prof. Mojisola Adeyeye) | **Keep**: safety |
+| Danger signs go to a doctor | Clinical safety | **Keep** |
 
-## Deleted
-- "Replace the industry" as scope.
-- Hospitals, specialists, insurance, local manufacturing (all v1).
-- Doctor-in-every-clinic (where TSTS covers the task).
-- Owned real estate; app/platform; national rollout.
-- Over-delete check: likely add-back is a **doctor tele-referral line**. That's fine; it's the ~10%.
+### 2. Delete
+Hospital visits for protocol cases · new buildings · a doctor in the loop for protocol cases · the open-market chain · paper records · insurance as a gate · app-first.
+Expected add-back (~10%): a remote doctor line for edge cases.
+
+### 3. Simplify
+- 1 kit, 1 price, 1 one-page protocol per condition.
+- Start with the killers: malaria → childhood pneumonia/diarrhoea → hypertension → maternal danger signs.
+
+### 4. Accelerate (bottleneck only)
+- Line rate = **certified nodes per week**.
+- Certify by observed competence (exam + 20 supervised cases), not years of schooling.
+
+### 5. Automate last
+Clinical decision support and AI triage on the phone come only after paper protocols hold safety at 50 nodes.
+
+## The stack (Starlink logic: own the vertical, reuse it)
+Molecules (direct from WHO-PQ makers) → kit → training/certification factory → node (shop owner keeps the shop, we own the standard) → rapid test → remote doctor → mobile-money payment → outcome data → procurement volume → lower molecule cost.
+
+**Kill shot:** "Our price for a *cured* malaria episode is below the shelf price of the drug alone in the open market." Being cheaper isn't enough; you need to be able to prove that claim on demand.
+
+## Ladder (master plan)
+1. Malaria test-and-treat at certified nodes. Kit margin pays.
+2. Use that to fund a monthly hypertension/diabetes subscription (recurring revenue, prevents strokes).
+3. Use that to fund maternal care: antenatal visits, danger-sign referral, transport.
+4. Use the volume to vertically integrate procurement, then local packaging and manufacturing of the top SKUs.
+5. Use all of it to fund high-volume surgical "factory" hospitals (analogy hypothesis only, untested).
 
 ## Plan
-1. **Price survey, weeks 1–2.** Owner: Habeeb. 10 tracer medicines + 5 conditions (malaria, hypertension, diabetes, UTI, childhood pneumonia), 20 outlets (pharmacies, PPMVs, private clinics) in **one LGA**, WHO/HAI method against the MSH IRP guide. **Kill rule: median < 3× IRP → WALK.**
-2. **Landed-cost quote, weeks 1–3.** Owner: Habeeb + one licensed importer. Same 10 SKUs from WHO-prequalified generic makers, landed in naira, with NAFDAC status per SKU. That gives the real floor.
-3. **Regulatory map, weeks 2–4.** Owner: Habeeb + hired superintendent pharmacist. What nurses/CHOs/CHEWs may do in the chosen state under domesticated TSTS (Kaduna and Kano have domesticated it).
-4. **One-clinic pilot, 90 days (slip case 135–270).** Owner: lead nurse/CHO (to hire). Solar-powered, 5 conditions, batch-tested stock, prices posted on the wall.
-5. **Only if the metric holds:** replicate clinic #2 from a written build sheet (the machine that builds the machine). Software last.
-
-## Numbers
-
-| Metric | Value | Source · date · tier |
-|---|---|---|
-| Out-of-pocket share | 58.3% (2024) / 58.8% (2023) NHA vs ~75% (2020) WHO; method dispute | NHA via Gazette, Dec 2025 (T2); WHO via Guardian (T2) |
-| Insured | 21.73M ≈ 10–13% (denominator-dependent) | NHIA via Nairametrics, Q4 2025 (T2) |
-| Doctors | 2.9–3.9 per 10k (WHO threshold 10–17) | Min. Pate 2025; State of Health report 2025 (T2) |
-| Doctor emigration | 3,974–4,193 in 2024 | Ministry review via BusinessDay/AllAfrica (T2) |
-| Medicines imported | 60–70% (NAFDAC says 60%) | NAFDAC via Premium Times; SOAS/ICIR (T2) |
-| Generic price vs IRP | ~11.5× (current, unverified report); 2–64× (2004) | BusinessDay (T2, origin unknown); WHO/HAI 2004 (T1, stale) |
-| Distribution markup | up to 100% on FOB | mPharma blog, undated (T3) |
-| Substandard/falsified | 12–13% | NAFDAC survey 2021–22 (T2) |
-| PHCs | ~34k; 20–40% functional; 40% of functional lack power | Dataphyte; SEforALL 2021–22 (T2/T3) |
-| Pharma market | ~$1.8–2.0B (2025) → ~$9/person/yr (my arithmetic, ~220M) | Freyr (T3); KPMG Jul 2026 (T2) |
-| Off-grid solar | ~$0.20/kWh lifetime, ≈ diesel | Heinrich Böll (T2) |
+1. **Go to the floor (week 1).** Owner: Habeeb. In one area, sit in 10 drug shops and time 10 fever visits end to end. Record what is sold, at what price, whether there is a test, and the NAFDAC number.
+2. **Permission map (weeks 1–3).** Owner: Habeeb. Get the PCN drug-shop accreditation rules and the Kaduna/Kano task-shifting policy text. Request meetings with the PCN Registrar and the state Primary Health Care Board.
+3. **Kit cost (weeks 2–4).** Owner: Habeeb + one licensed importer. Quote for rapid tests + ACT from WHO-prequalified makers, landed in naira.
+4. **50-node prototype (6 months; slip 9–18).** Owner: clinical lead (hire) + Habeeb. Paper protocol, batch-tested stock, referral line, safety data collected privately.
+5. **Take the data to the regulator.** Owner: Habeeb. Go from state approval to national. Only then build software and scale the certification factory.
 
 ## Bottleneck
-**Landed cost of quality-assured generics in naira.** If it isn't ≤ ⅓ of the median shelf price, there is no company, only a nicer pharmacy.
+The Type 4 gate: **the legal right for a certified drug shop to test and treat.** Everything else is cheap.
 
 ## Metric
-**₦ per correctly treated episode** (5 tracer conditions), divided by the LGA median. Target ≤ 0.2 with ≥95% batch pass rate.
+**% of fevers in node catchments tested and correctly treated within 24 hours**, plus cost per cured episode. Later, under-5 mortality in the catchment.
 
-## Risks
-- **Revenue shrink:** a 5× price cut on a ~$2B market only works if volume grows (unmet demand). Track volume per clinic per day.
-- **FX:** a naira move ruins landed cost. Price in a band, hedge with local fill where it exists.
-- **Copycats:** a cost floor only matters if it's below the competition's *price*, provably.
-
-## Next physical action (this week)
-Print a 10-drug price sheet and walk 20 outlets in one Lagos LGA. Record the price, brand, NAFDAC number and expiry for each.
+## Next physical action this week
+Sit in 10 drug shops and time 10 fever visits end to end.
