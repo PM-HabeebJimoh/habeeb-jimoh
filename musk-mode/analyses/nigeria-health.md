@@ -106,3 +106,52 @@ The Type 4 gate: **the legal right for a certified drug shop to test and treat.*
 
 ## Next physical action this week
 Sit in 10 drug shops and time 10 fever visits end to end.
+
+---
+
+# v3 addendum: the full replacement and the profit (2026-11-13)
+
+## The full replacement: 8 layers on one network
+| # | Layer | What it replaces | Profit mechanism |
+|---|---|---|---|
+| 1 | Certified test-and-treat nodes | Non-functional health centres, uncertified drug shops | Episode margin + chronic subscriptions + franchise fee |
+| 2 | Procurement + wholesale | Open markets, 4–6 middlemen (up to 100% markup on FOB, T3) | Wholesale margin on the ~$1.8–2.0B drug market |
+| 3 | Payer | Out-of-pocket chaos; 10% insured | Health plans priced on our own outcome data; NHIA capitation; donor pay-per-verified-cure |
+| 4 | Diagnostics hubs | Fragmented labs | Referral volume from nodes |
+| 5 | Focused-factory hospitals (C-section, cataract, hernia) | General hospitals | Guaranteed referral volume → high utilisation |
+| 6 | Manufacturing (pack, then make top-20 SKUs) | 60–70% imported medicines | Idiot-index capture; naira-denominated cost kills FX risk |
+| 7 | Training/certification factory | 6-year pipeline for protocol tasks | Certified workers for us and others |
+| 8 | Replication across West Africa | — | Copy the whole factory (Gigafactory logic) |
+
+## Unit economics (model: `nigeria-health-model.py`; every input ESTIMATE unless sourced)
+- FX: ₦1,347/$ (CBN official, 6 Nov 2026).
+- Per node per month at maturity: patients spend **$353**; our gross margin is **$122**; the shop owner nets **$100**.
+- Margin mix: **hypertension subscription $61 (50%)** · malaria $29 (24%) · diabetes $15 · acute $9 · fee $7.
+- **Malaria is the door. Chronic care is the profit.** That is Falcon 9 → Starlink: the low-margin product builds the network, the recurring product pays for it.
+
+| Scale | Gross margin/yr | Opex/yr | EBITDA/yr | Capex |
+|---|---|---|---|---|
+| 50 nodes (pilot) | $0.1M | $0.3M | **−$0.2M** | $0.03M |
+| 5,000 nodes | $7.3M | $4.3M | **$3.0M** | $3M |
+| 50,000 nodes | $73M | $31M | **$42M** | $30M |
+
+- Contribution per node ≈ $100/month; node payback ≈ **6 months**. Breakeven ≈ 250–2,500 nodes, depending on HQ cost.
+- 50k nodes = 36M malaria episodes/yr (vs 66.7–68M cases, WMR 2024) and 2.0M hypertension subscribers (vs 27.5M hypertensive, 12% treated, 2.8% controlled; Adeloye 2021).
+
+### Full stack at year ~10 (ESTIMATE ranges)
+| Layer | EBITDA/yr |
+|---|---|
+| 1 Nodes | ~$40M |
+| 2 Wholesale (10% of a $1.8–2.0B market, 15% GM, 5% opex) | ~$18–20M |
+| 3 Payer + donor pay-per-cure | ~$10–30M |
+| 4–5 Diagnostics + hospitals | ~$10–80M |
+| **Total** | **~$80–170M** |
+
+- Ceiling reference: total health expenditure ₦10.42T in 2024 (NHA) ≈ **$7.0B** at a ~₦1,480/$ 2024 average (ESTIMATE conversion); out-of-pocket 58.3% ≈ $4.1B.
+- Capital to year ~7 (ESTIMATE): ~$75–100M = $30M node capex + $10–20M pre-breakeven losses + ~$33M wholesale inventory + first hospitals.
+
+### Where the profit dies
+1. **FX:** costs are in $, revenue in ₦. A 30% naira fall cuts malaria margin from $0.49 to ~$0.14 per episode. Fix: index prices; layer 6 (local manufacturing) is the structural fix.
+2. **Volume per node:** halve hypertension subscribers and gross margin falls 25%.
+3. **Price:** every price is a guess until the shop walk. If today's shelf price is lower than assumed, the kill shot weakens.
+4. **Permission:** without accreditation the nodes are illegal. Revenue = 0.
