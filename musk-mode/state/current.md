@@ -52,6 +52,7 @@ Status: payload **516 words — PASS**. Behavioural test **NOT YET RUN**.
 - Method: turn ~200k existing drug shops into certified test-and-treat nodes, own the stack, climb the ladder malaria → hypertension → maternal.
 - Binding constraint: Type 4 (PCN accreditation for drug shops to test and treat). Odds: national 5–10%, rung 1 ~50% (ESTIMATE).
 - v3: full 8-layer replacement + unit economics (`analyses/nigeria-health-model.py`). Layer 1 at 50k nodes ≈ $42M EBITDA/yr; full stack ≈ $80–170M (all ESTIMATE). Hypertension subscription = 50% of node margin.
+- v4 Buffett lens: 1/6 Berkshire criteria; no margin of safety (single shock → loss); redesign = shop owner 33% of price + FX-indexed prices; certify only shops above stressed volume (~46 malaria + 30 BP/mo); prune to L1/L3/L7; EV $0.2–0.8M vs $0.6M at risk (ESTIMATE).
 - Next physical action (Nigeria): sit in 10 drug shops and time 10 fever visits end to end.
 
 ## Next physical action

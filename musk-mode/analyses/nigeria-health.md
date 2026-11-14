@@ -155,3 +155,58 @@ Sit in 10 drug shops and time 10 fever visits end to end.
 2. **Volume per node:** halve hypertension subscribers and gross margin falls 25%.
 3. **Price:** every price is a guess until the shop walk. If today's shelf price is lower than assumed, the kill shot weakens.
 4. **Permission:** without accreditation the nodes are illegal. Revenue = 0.
+
+---
+
+# v4: Buffett lens (2026-11-14) — model: `nigeria-health-buffett.py`
+
+**Verdict:** Buffett would not invest today. The plan scores 1 of 6 on Berkshire's acquisition criteria. My own model also has **no margin of safety**: any single shock makes the network loss-making at scale. Fix: redesign the economics, prune 8 layers to 3, run the pilot as cheap information, then grow only from internal cash.
+
+## Berkshire acquisition criteria (Berkshire annual report / 8-K filings)
+| Criterion | Plan | Pass? |
+|---|---|---|
+| ≥ $75M pre-tax earnings | Projected only | ✗ |
+| Demonstrated consistent earning power ("future projections are of no interest") | None | ✗ |
+| Good ROE with little or no debt | 48% after-tax ROIC, but projected | ✗ (unproven) |
+| Management in place | Not yet | ✗ |
+| Simple business | Shops selling tests and pills | ✓ |
+| Offering price | n/a | — |
+
+## Margin of safety (owner earnings = after 30% tax, after maintenance capex)
+| Case | Contribution/node/mo | Owner earnings @ 50k nodes |
+|---|---|---|
+| Base | $90 | $25M/yr (not the $42M EBITDA quoted in v3) |
+| Volume −50% | $33 | $1M |
+| Naira −30% | $15 | −$9M |
+| Price −20% | $20 | −$6M |
+| COGS +20% | $64 | $14M |
+| All four | −$44 | −$44M |
+
+**Cause:** the shop owner's cut is fixed in naira and our margin is the thin residual after dollar costs. **Redesign:** shop owner gets 33% of price; prices re-indexed to FX quarterly. Even then, with all shocks, a node needs **≥76% of base volume** (~46 malaria episodes + 30 BP subscribers a month) to break even. FX shock alone: ≥24%. **Margin of safety = only certify shops whose observed volume clears the stressed threshold.**
+
+## Intrinsic value (probability-weighted, all ESTIMATE)
+Probabilities: 50% die at pilot · 30% stall at 5k nodes stressed · 12% 5k nodes base · 8% 50k nodes base. Perpetuity from year 10, g = 3%.
+Result: **$0.2–0.8M** expected value (USD discount rate 15–20%) vs **~$0.6M pilot capital at risk**. Thin. A good use of capital only as an information purchase, not as a scale bet.
+
+## Moat audit
+| Candidate moat | Strength today | Durable? |
+|---|---|---|
+| Trust brand ("drugs here are real") | 0 | **Yes**, the See's/Coke moat, if never broken |
+| First regulatory accreditation | 0 | Temporary: regulators can accredit competitors |
+| Procurement scale (GEICO low-cost) | 0 | Yes, at scale |
+| Chronic-patient switching costs | 0 | Moderate |
+| Network effects | Weak | No |
+
+## Prune the stack (hurdle: FGN 10-year bond 17.05%, Oct 2026)
+- **Keep:** L1 nodes + chronic subscriptions · L3 prepaid plan (float, short-tail; combined ratio < 100 or don't write it) · L7 training.
+- **Partner, don't own:** L2 wholesale (thin margin, working-capital heavy) · L4 diagnostics.
+- **Avoid:** L5 hospitals (capital- and labour-heavy: the airline problem) · L6 generic manufacturing (commodity vs India/China scale, FX, capex) · L8 regional replication (until Nigeria earns).
+
+## Incentives
+Shop owners profit from selling an antimalarial to every fever; test-and-treat cuts sales on negative tests. **Pay for the test and correct treatment, not per pill.** Same for us: earn on subscription and test fees, not drug volume.
+
+## Inversion: how this dies
+Dollar debt against naira revenue · scaling before per-node volume is proven · one batch of fake stock · shop owners selling side stock · harm leading to a regulator ban · government price controls · founder outside their circle of competence.
+
+## Musk vs Buffett
+Musk picks the target (10× fewer cheap deaths) and states the odds. Buffett decides how much money to risk and which layers to own. Conflicts: urgency vs patience, vertical integration vs capital-light, 10% bets vs Rule #1. **Resolution: Musk on the mission, Buffett on the money.** Bet only the pilot; scale from internal cash; own only high-ROIC layers.
