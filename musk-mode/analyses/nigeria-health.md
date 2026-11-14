@@ -210,3 +210,47 @@ Dollar debt against naira revenue · scaling before per-node volume is proven ·
 
 ## Musk vs Buffett
 Musk picks the target (10× fewer cheap deaths) and states the odds. Buffett decides how much money to risk and which layers to own. Conflicts: urgency vs patience, vertical integration vs capital-light, 10% bets vs Rule #1. **Resolution: Musk on the mission, Buffett on the money.** Bet only the pilot; scale from internal cash; own only high-ROIC layers.
+
+---
+
+# v5: Musk × Buffett master plan (2026-11-14) — model: `nigeria-health-compound.py`
+
+**One line:** Musk sets the target and builds the machine. Buffett decides how much money is at risk and when the next rung unlocks. Seed with $0.5–1.5M of equity, run a lean HQ, certify only high-volume shops, and grow from internal cash. Model: 5,000 shops in ~3.5–5 years and 50,000 in ~6.5–10 years (slip case 1.5–3×: 10–30 years). No debt, no big raise until three years of proven earnings.
+
+## The combined operating system
+| # | Musk | Buffett | Combined rule |
+|---|---|---|---|
+| 1 | Physics ceiling, 10× target | Circle of competence | 10× target, executed only by people who know the domain (pharmacist + clinician as equity partners) |
+| 2 | State the odds; take 10% shots | Rule #1: don't lose money | Take the 10% shot with only the money you can lose (pilot ≤ $0.6M) |
+| 3 | Urgency | Patience, compounding | Maximum speed **that internal cash can fund** |
+| 4 | Vertical integration where the idiot index is high | Avoid capital-heavy, low-ROIC businesses | Integrate a layer only if index ≥ 5 **and** stressed ROIC > 17% hurdle (FGN 10-yr) **and** funded from cash |
+| 5 | Cost floor below the competitor's price (kill shot) | Low-cost-producer moat (GEICO) | The kill shot *is* the moat, if the cost advantage is structural |
+| 6 | Delete parts and steps | Frugality (tiny Berkshire HQ) | HQ fixed cost ≤ $8k/month until breakeven |
+| 7 | Requirements need a named owner | Incentives drive outcomes | Every actor is paid for the right outcome: shops for correct treatment, not pills |
+| 8 | Prove crewed systems privately | Reputation is irreplaceable | Batch-test everything; one harm event can end the company |
+| 9 | Fast public reversal | Inversion: avoid what kills you | Pre-write the kill list; reverse the moment a metric breaks |
+| 10 | Demo over deck | Judge on demonstrated earnings | Raise outside money only on 3 years of audited unit economics |
+
+## The master plan: Musk targets, Buffett gates
+| Phase | Musk target | Capital | Buffett gate to unlock the next phase |
+|---|---|---|---|
+| 0 Proximity + permission (0–3 mo) | Shop walk, landed cost, PCN path | < $50k | ≥ 50% of shops above the stressed-volume threshold; prize ratio ≥ 5; permission path exists |
+| 1 Pilot (50 shops, 6 mo; slip 9–18) | ≥ 80% of fevers tested; correct treatment | ≤ $0.6M equity | ≥ $81 contribution/shop/mo for 3 months; ≥ 95% batch pass; zero serious harm |
+| 2 Compounding (→ 5,000) | Certification line rate (shops/week) | Internal cash only | 4 straight quarters of positive owner earnings; BP-subscriber retention measured |
+| 3 Prepaid plan + partnered wholesale (→ 50,000) | 2M chronic subscribers | Equity only, after 3 years of proof | Claims < premiums (combined ratio < 100) |
+| 4 Integrate (import → packaging → labs → focused hospitals) | Cost floor under every competitor | Per layer | Each layer: index ≥ 5 and stressed ROIC > 17% |
+| 5 Replicate in West Africa | Copy the whole machine | Nigeria cash | Nigeria earning consistently |
+
+## Compounding model (ESTIMATE inputs; shops capped by cash and 15%/month certification throughput)
+| Case | Seed | HQ fixed | 5,000 shops | 50,000 shops |
+|---|---|---|---|---|
+| Base, $81/shop/mo | $0.5M | $8k/mo | 5.3 yrs | 9.6 yrs |
+| Base, $81/shop/mo | $1.5M | $8k/mo | 3.7 yrs | 7.8 yrs |
+| High-volume shops only, $100 | $1.0M | $8k/mo | 3.5 yrs | 6.6 yrs |
+| Stressed, $40 | $5.0M | $8k/mo | 2.8 yrs | never |
+| Base, $81, **fat HQ** | $0.5M | $20k/mo | 8.8 yrs | 13.0 yrs |
+| No seed at all | $0 | either | never | never (fixed HQ cost exceeds 50-shop contribution) |
+
+Breakeven shops = HQ fixed ÷ (contribution − $30): 157 at $8k HQ vs 392 at $20k HQ. The model has no saturation cap; ~200k drug shops exist, so ignore outputs above that.
+
+**Reading:** the stressed case never reaches 50k. **The volume threshold for certification is the margin of safety, and a lean HQ is the cheapest acceleration.**

@@ -53,6 +53,7 @@ Status: payload **516 words — PASS**. Behavioural test **NOT YET RUN**.
 - Binding constraint: Type 4 (PCN accreditation for drug shops to test and treat). Odds: national 5–10%, rung 1 ~50% (ESTIMATE).
 - v3: full 8-layer replacement + unit economics (`analyses/nigeria-health-model.py`). Layer 1 at 50k nodes ≈ $42M EBITDA/yr; full stack ≈ $80–170M (all ESTIMATE). Hypertension subscription = 50% of node margin.
 - v4 Buffett lens: 1/6 Berkshire criteria; no margin of safety (single shock → loss); redesign = shop owner 33% of price + FX-indexed prices; certify only shops above stressed volume (~46 malaria + 30 BP/mo); prune to L1/L3/L7; EV $0.2–0.8M vs $0.6M at risk (ESTIMATE).
+- v5 Musk×Buffett master plan: phase gates (Musk target / Buffett unlock); seed $0.5–1.5M equity, HQ ≤ $8k/mo → 5k shops in 3.5–5.3 yrs, 50k in 6.6–9.6 yrs (ESTIMATE; slip 1.5–3×). Zero seed never grows; stressed $40/shop never reaches 50k.
 - Next physical action (Nigeria): sit in 10 drug shops and time 10 fever visits end to end.
 
 ## Next physical action
