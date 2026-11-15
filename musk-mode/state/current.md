@@ -56,5 +56,12 @@ Status: payload **516 words — PASS**. Behavioural test **NOT YET RUN**.
 - v5 Musk×Buffett master plan: phase gates (Musk target / Buffett unlock); seed $0.5–1.5M equity, HQ ≤ $8k/mo → 5k shops in 3.5–5.3 yrs, 50k in 6.6–9.6 yrs (ESTIMATE; slip 1.5–3×). Zero seed never grows; stressed $40/shop never reaches 50k.
 - Next physical action (Nigeria): sit in 10 drug shops and time 10 fever visits end to end.
 
+## Session 4 (2026-11-15): evidence reset
+- Habeeb's rule: Musk + Buffett both forbid consultant data. Collect real market data.
+- v1–v5 Nigeria plans voided: invented volumes and prices. Real data: PPMV adult ACT ₦600–900 (ACTwatch 2024) vs my ₦3,000 bundle.
+- Real gaps found: testing (PPMVs with any malaria test: Abia 0.1%, Lagos 0.4%, Kano 31%; test ≥ drug price in the south) and brand-trust premium (4.5–7× same molecule, online prices collected 15 Nov 2026).
+- Built `musk-mode/field/`: 6 forms, analysis script with kill rules for 4 hypotheses, weekly online price tracker, first real price file.
+- Next physical action: load forms into KoboToolbox; audit 60 outlets in your own area over 2 weeks.
+
 ## Next physical action
 Open a fresh chat, paste `musk-mode/BOOTSTRAP.md`, run probes A/B/C from `INSTALL.md`, score 11 criteria, record result here.

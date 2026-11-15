@@ -1,0 +1,1 @@
+date,outlet_id,shopper_id,scenario(adult_fever_2days|child_fever_described|bp_refill_no_prescription),questions_asked_by_seller,test_offered(y/n),test_price_ngn,product_recommended,generic_or_brand,price_quoted_ngn,cheaper_option_offered(y/n),antibiotic_offered(y/n),injection_offered(y/n),referral_advised(y/n),time_spent_minutes,notes

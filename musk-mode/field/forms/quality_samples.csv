@@ -1,0 +1,1 @@
+date,sample_id,outlet_id,outlet_type,item,generic_or_brand,brand_name,manufacturer,batch,expiry,nafdac_number,price_paid_ngn,nafdac_mas_check(genuine|fail|no_code),visual_check(pass|fail),lab_test(pass|fail|pending),lab_name,lab_cost_ngn,api_percent_label_claim,notes

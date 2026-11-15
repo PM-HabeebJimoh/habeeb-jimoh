@@ -1,3 +1,5 @@
+> **EVIDENCE WARNING (2026-11-15):** versions v1–v5 below rest on invented inputs (shop volumes, prices, margins) and on consultant/press estimates. Real measured data contradicts the core pricing: PPMVs sell a WHO-prequalified adult malaria course for a median ₦600–900 (ACTwatch 2024), so the ₦3,000 test-and-treat bundle in v3–v5 was 3–5× above the market. **Every profit figure below is void.** The replacement is `musk-mode/field/`: collect real market data first, then design.
+
 # Nigeria health — Musk mode, v2
 
 Date: 2026-11-13 · Replaces v1 (a consultant-style market-entry scan that shrank "replace the industry" into "survey 20 pharmacies". That is the **cowardice** failure the protocol names.)
