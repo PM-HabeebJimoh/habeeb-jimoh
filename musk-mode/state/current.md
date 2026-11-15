@@ -63,5 +63,11 @@ Status: payload **516 words — PASS**. Behavioural test **NOT YET RUN**.
 - Built `musk-mode/field/`: 6 forms, analysis script with kill rules for 4 hypotheses, weekly online price tracker, first real price file.
 - Next physical action: load forms into KoboToolbox; audit 60 outlets in your own area over 2 weeks.
 
+## Session 5 (2026-11-15): digital-only restart
+- Habeeb rejected shop models entirely: digital only, start fresh. `musk-mode/field/` (shop kit) deleted; data and price tracker moved to `musk-mode/digital/`.
+- Collected today: Google Play installs (Nigerian health apps top out ~100K+; OPay 50M+, Moniepoint 10M+), competitor sites (Doctoora domain dead; reliancehealth.com for sale; Healthtracka Flourish Care ₦60–90k/quarter), online drug prices (brand/generic spread 4.5–7×, one site only; GoMed scrape timed out).
+- Hypothesis: trust-and-price layer for medicine on WhatsApp + payment rails; relatives abroad pay pharmacies directly. Rejected: diaspora chronic care (already exists).
+- Next physical action: WhatsApp Business number, post in 10 groups, answer every medicine check by hand, log it.
+
 ## Next physical action
 Open a fresh chat, paste `musk-mode/BOOTSTRAP.md`, run probes A/B/C from `INSTALL.md`, score 11 criteria, record result here.

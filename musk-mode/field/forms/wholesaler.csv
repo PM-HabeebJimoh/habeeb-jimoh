@@ -1,1 +1,0 @@
-date,market_or_location,wholesaler_id,type(open_market|licensed_wholesaler|distributor|manufacturer_depot),item,brand_name,manufacturer,pack_size_units,price_ngn,min_order_qty,credit_days_offered,delivery(y/n),price_change_last_3m(up|down|same),notes
